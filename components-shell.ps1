@@ -1,8 +1,8 @@
 # These components will be loaded when running Microsoft.Powershell (i.e. Not Visual Studio)
 
-Push-Location (Join-Path (Split-Path -parent $profile) "components")
+Push-Location (Split-Path -parent $profile)
 
 # From within the ./components directory...
-. .\console.ps1
+.\console.ps1
 
 Pop-Location
