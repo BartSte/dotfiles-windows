@@ -155,25 +155,25 @@ function Rename-PC {
 }
 Admin-Check;
 
-Disable-WindowsFeature "WindowsMediaPlayer" "Windows Media Player";
-Disable-WindowsFeature "Internet-Explorer-Optional-amd64" "Internet Explorer";
-Disable-WindowsFeature "Printing-XPSServices-Features" "Microsoft XPS Document Writer";
-Disable-WindowsFeature "WorkFolders-Client" "WorkFolders-Client";
-Enable-WindowsFeature "Containers-DisposableClientVM" "Windows Sandbox";
+#Disable-WindowsFeature "WindowsMediaPlayer" "Windows Media Player";
+#Disable-WindowsFeature "Internet-Explorer-Optional-amd64" "Internet Explorer";
+#Disable-WindowsFeature "Printing-XPSServices-Features" "Microsoft XPS Document Writer";
+#Disable-WindowsFeature "WorkFolders-Client" "WorkFolders-Client";
+#Enable-WindowsFeature "Containers-DisposableClientVM" "Windows Sandbox";
 
-Uninstall-AppPackage "Microsoft.Getstarted";
-Uninstall-AppPackage "Microsoft.GetHelp";
-Uninstall-AppPackage "Microsoft.WindowsFeedbackHub";
-Uninstall-AppPackage "Microsoft.MicrosoftSolitaireCollection";
+#Uninstall-AppPackage "Microsoft.Getstarted";
+#Uninstall-AppPackage "Microsoft.GetHelp";
+#Uninstall-AppPackage "Microsoft.WindowsFeedbackHub";
+#Uninstall-AppPackage "Microsoft.MicrosoftSolitaireCollection";
 
-Set-WindowsExplorer-ShowFileExtensions;
-Set-WindowsFileExplorer-StartFolder;
-Set-Multitasking-Configuration;
-Set-Classic-ContextMenu-Configuration;
-Set-SetAsBackground-To-Extended-ContextMenu;
-Disable-RecentlyOpenedItems-From-JumpList;
-Set-Power-Configuration;
-Set-Custom-Regional-Format;
-Rename-PC;
+#Set-WindowsExplorer-ShowFileExtensions;
+#Set-WindowsFileExplorer-StartFolder;
+#Set-Multitasking-Configuration;
+#Set-Classic-ContextMenu-Configuration;
+#Set-SetAsBackground-To-Extended-ContextMenu;
+#Disable-RecentlyOpenedItems-From-JumpList;
+#Set-Power-Configuration;
+#Set-Custom-Regional-Format;
+#Rename-PC;
 
 
