@@ -79,3 +79,4 @@ Set-Alias vim gvim
 # Add bare repos
 ${function:base} = { git.exe --git-dir=C:\Users\barts\.dotfiles\ --work-tree=C:\Users\barts @args }
 ${function:win} = { git.exe --git-dir=C:\Users\barts\.dotfiles-windows\ --work-tree=C:\Users\barts @args }
+${function:python3} = {python.exe @args}

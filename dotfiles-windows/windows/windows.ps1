@@ -153,27 +153,133 @@ function Rename-PC {
     Write-Host "The PC name is PROBOOK so it is not necessary to rename it." -ForegroundColor "Green";
   }
 }
+
+function Get-WindowsFeature-Installation-Status {
+  [CmdletBinding()]
+  param(
+    [Parameter(Position = 0, Mandatory = $TRUE)]
+    [string]
+    $FeatureName
+  )
+
+  if ((Get-WindowsOptionalFeature -FeatureName $FeatureName -Online).State -eq "Enabled") {
+    return $TRUE;
+  }
+  else {
+    return $FALSE;
+  }
+}
+
+function Disable-WindowsFeature {
+  [CmdletBinding()]
+  param (
+    [Parameter( Position = 0, Mandatory = $TRUE)]
+    [String]
+    $FeatureKey,
+
+    [Parameter( Position = 1, Mandatory = $TRUE)]
+    [String]
+    $FeatureName
+  )
+
+  if (Get-WindowsFeature-Installation-Status $FeatureKey) {
+    Write-Host "Disabling" $FeatureName ":" -ForegroundColor "Green";
+    Disable-WindowsOptionalFeature -FeatureName $FeatureKey -Online -NoRestart;
+  }
+  else {
+    Write-Host $FeatureName "is already disabled." -ForegroundColor "Green";
+  }
+}
+
+function Enable-WindowsFeature {
+  [CmdletBinding()]
+  param (
+    [Parameter( Position = 0, Mandatory = $TRUE)]
+    [String]
+    $FeatureKey,
+
+    [Parameter( Position = 1, Mandatory = $TRUE)]
+    [String]
+    $FeatureName
+  )
+
+  if (-not (Get-WindowsFeature-Installation-Status $FeatureKey)) {
+    Write-Host "Enabling" $FeatureName ":" -ForegroundColor "Green";
+    Enable-WindowsOptionalFeature -FeatureName $FeatureKey -Online -All -NoRestart;
+  }
+  else {
+    Write-Host $FeatureName "is already enabled." -ForegroundColor "Green";
+  }
+}
+
+function Test-PathRegistryKey {
+  [CmdletBinding()]
+  param (
+    [Parameter( Position = 0, Mandatory = $TRUE)]
+    [String]
+    $Path,
+
+    [Parameter( Position = 1, Mandatory = $TRUE)]
+    [String]
+    $Name
+  )
+
+  try {
+    $Reg = Get-ItemPropertyValue -Path $Path -Name $Name;
+    Return $TRUE;
+  }
+  catch {
+    Return $FALSE;
+  }
+}
+
+function Set-PSDrive-HKCR {
+  Write-Host "Setting alias of HKEY_CLASSES_ROOT:" -ForegroundColor "Green";
+  New-PSDrive -PSProvider "registry" -Root "HKEY_CLASSES_ROOT" -Name "HKCR" -Scope global;
+}
+
+function Uninstall-AppPackage {
+  [CmdletBinding()]
+  param (
+    [Parameter( Position = 0, Mandatory = $TRUE)]
+    [String]
+    $Name
+  )
+
+  try {
+    Get-AppxPackage $Name -AllUsers | Remove-AppxPackage;
+    Get-AppXProvisionedPackage -Online | Where-Object DisplayName -like $Name | Remove-AppxProvisionedPackage -Online;    
+  }
+  catch {
+    
+  }  
+}
+
 Admin-Check;
 
-#Disable-WindowsFeature "WindowsMediaPlayer" "Windows Media Player";
-#Disable-WindowsFeature "Internet-Explorer-Optional-amd64" "Internet Explorer";
-#Disable-WindowsFeature "Printing-XPSServices-Features" "Microsoft XPS Document Writer";
-#Disable-WindowsFeature "WorkFolders-Client" "WorkFolders-Client";
-#Enable-WindowsFeature "Containers-DisposableClientVM" "Windows Sandbox";
+Disable-WindowsFeature "WindowsMediaPlayer" "Windows Media Player";
+Disable-WindowsFeature "Internet-Explorer-Optional-amd64" "Internet Explorer";
+Disable-WindowsFeature "Printing-XPSServices-Features" "Microsoft XPS Document Writer";
+Disable-WindowsFeature "WorkFolders-Client" "WorkFolders-Client";
+Enable-WindowsFeature "Containers-DisposableClientVM" "Windows Sandbox";
 
-#Uninstall-AppPackage "Microsoft.Getstarted";
-#Uninstall-AppPackage "Microsoft.GetHelp";
-#Uninstall-AppPackage "Microsoft.WindowsFeedbackHub";
-#Uninstall-AppPackage "Microsoft.MicrosoftSolitaireCollection";
+Uninstall-AppPackage "Microsoft.Getstarted";
+Uninstall-AppPackage "Microsoft.GetHelp";
+Uninstall-AppPackage "Microsoft.WindowsFeedbackHub";
+Uninstall-AppPackage "Microsoft.MicrosoftSolitaireCollection";
 
-#Set-WindowsExplorer-ShowFileExtensions;
-#Set-WindowsFileExplorer-StartFolder;
-#Set-Multitasking-Configuration;
-#Set-Classic-ContextMenu-Configuration;
-#Set-SetAsBackground-To-Extended-ContextMenu;
-#Disable-RecentlyOpenedItems-From-JumpList;
-#Set-Power-Configuration;
-#Set-Custom-Regional-Format;
-#Rename-PC;
+Set-WindowsExplorer-ShowFileExtensions;
+Set-WindowsFileExplorer-StartFolder;
+Set-Multitasking-Configuration;
+Set-Classic-ContextMenu-Configuration;
+Set-SetAsBackground-To-Extended-ContextMenu;
+Disable-RecentlyOpenedItems-From-JumpList;
+Set-Power-Configuration;
+Set-Custom-Regional-Format;
+Rename-PC;
+
+#TODO review al the settings above
+#TODO Restructure the functions, place some of them in a helper powershell profile or something.
+#TODO add personal settings
 
 
