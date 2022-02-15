@@ -66,10 +66,6 @@ Set-Alias cleandisks Clean-Disks
 # Reload the shell
 Set-Alias reload Reload-Powershell
 
-# http://xkcd.com/530/
-Set-Alias mute Set-SoundMute
-Set-Alias unmute Set-SoundUnmute
-
 # Update installed Ruby Gems, NPM, and their installed packages.
 Set-Alias update System-Update
 
@@ -80,3 +76,6 @@ Set-Alias vim gvim
 ${function:base} = { git.exe --git-dir=C:\Users\barts\.dotfiles\ --work-tree=C:\Users\barts @args }
 ${function:win} = { git.exe --git-dir=C:\Users\barts\.dotfiles-windows\ --work-tree=C:\Users\barts @args }
 ${function:python3} = {python.exe @args}
+
+# Kmonad
+${function:run_kmonad} = { kmonad.exe C:\Users\barts\my_config.kbd -l info }
