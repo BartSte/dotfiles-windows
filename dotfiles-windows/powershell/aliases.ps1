@@ -11,6 +11,10 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 ${function:dt} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\Documents }
 ${function:dl} = { Set-Location ~\Downloads }
+${function:ju} = { Set-Location ~\junk }
+${function:vs} = { Set-Location ~\VSCodeProjects }
+${function:dot} = { Set-Location ~\dotfiles }
+${function:dotw} = { Set-Location ~\dotfiles-windows }
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
@@ -76,6 +80,3 @@ Set-Alias vim gvim
 ${function:base} = { git.exe --git-dir=C:\Users\barts\.dotfiles\ --work-tree=C:\Users\barts @args }
 ${function:win} = { git.exe --git-dir=C:\Users\barts\.dotfiles-windows\ --work-tree=C:\Users\barts @args }
 ${function:python3} = {python.exe @args}
-
-# Kmonad
-${function:run_kmonad} = { kmonad.exe C:\Users\barts\my_config.kbd -l info }
