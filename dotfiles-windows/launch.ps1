@@ -1,9 +1,14 @@
-function start-process-new-desktop($programs) {
-    new-desktop | switch-desktop
+function start-processes($programs) {
     foreach($program in $programs) {
-        start-process $program -NoNewWindow
+        start-process $program 
+        start-sleep 1
     }
+}
+
+function new-desktop-switch(){
+    $desktop = new-desktop 
     start-sleep 2
+    switch-desktop $desktop
 }
 
 $programs_desktop_0 = @(
@@ -12,8 +17,7 @@ $programs_desktop_0 = @(
 )
 
 $programs_desktop_1 = @(
-'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe',
-'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe'
+'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe'
 )
 
 $programs_desktop_2 = @(
@@ -21,11 +25,10 @@ $programs_desktop_2 = @(
 'C:\Program Files\Mozilla Firefox\firefox.exe'
 )
 
-$programs = @($programs_desktop_0, $programs_desktop_1, $programs_desktop_2)
+$desktops = @($programs_desktop_0, $programs_desktop_1, $programs_desktop_2)
 
 remove-alldesktops
-$current = get-desktop
-foreach($arg in $programs) {
-    start-process-new-desktop($arg)
+foreach($programs in $desktops){
+    new-desktop-switch
+    start-processes($programs)
 }
-remove-desktop $current
