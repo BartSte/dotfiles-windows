@@ -3,8 +3,8 @@
 
 Admin-Check;
 
-for($i=0; $i -lt $disable_arg_1.length; $i++){
-    Disable-WindowsFeature $disable_arg_1[$i] $disable_arg_2[$i]        
+foreach($app in $disable){
+    Disable-WindowsFeature $app[0] $app[1]
 }
 
 foreach($app in $uninstall){

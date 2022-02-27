@@ -1,6 +1,13 @@
 $computer_name = "PROBOOK"
 
-$uninstall = @(
+$disable = 
+@("WindowsMediaPlayer", "Windows Media Player"),
+@("Internet-Explorer-Optional-amd64", "Internet Explorer"),
+@("Printing-XPSServices-Features", "Microsoft XPS Document Writer"),
+@("WorkFolders-Client", "WorkFolders-Client"),
+@("Containers-DisposableClientVM", "Windows Sandbox")
+
+$uninstall = 
 "Microsoft.Getstarted",
 "Microsoft.GetHelp",
 "Microsoft.WindowsFeedbackHub",
@@ -21,17 +28,5 @@ $uninstall = @(
 "Microsoft.XboxApp", 
 "Microsoft.People", 
 "Microsoft.XboxGamingOverlay", 
-"Microsoft.XboxSpeechToTextOverlay")
+"Microsoft.XboxSpeechToTextOverlay"
 
-$disable_arg_1 = @(
-"Windows Media Player",
-"Internet Explorer",
-"Microsoft XPS Document Writer",
-"WorkFolders-Client",
-"Windows Sandbox")
-$disable_arg_2 = @(
-"WindowsMediaPlayer",
-"Internet-Explorer-Optional-amd64",
-"Printing-XPSServices-Features",
-"WorkFolders-Client",
-"Containers-DisposableClientVM")
