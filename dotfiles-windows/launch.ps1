@@ -1,7 +1,7 @@
 function start-processes($programs) {
     foreach($program in $programs) {
         start-process $program 
-        start-sleep 1
+        start-sleep 2
     }
 }
 
@@ -17,7 +17,8 @@ $programs_desktop_0 = @(
 )
 
 $programs_desktop_1 = @(
-'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe'
+'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe',
+'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe'
 )
 
 $programs_desktop_2 = @(
@@ -28,7 +29,9 @@ $programs_desktop_2 = @(
 $desktops = @($programs_desktop_0, $programs_desktop_1, $programs_desktop_2)
 
 remove-alldesktops
+start-sleep 2
 foreach($programs in $desktops){
     new-desktop-switch
     start-processes($programs)
 }
+remove-desktop 0
