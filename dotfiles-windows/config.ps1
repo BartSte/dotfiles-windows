@@ -55,4 +55,4 @@ $uninstall =
 "Microsoft.YourPhone", 
 "Microsoft.ZuneMusic", 
 "Microsoft.ZuneVideo", 
-"SpotifyAB.SpotifyMusic",
+"SpotifyAB.SpotifyMusic"

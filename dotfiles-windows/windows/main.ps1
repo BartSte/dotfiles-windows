@@ -4,24 +4,24 @@
 Admin-Check;
 Rename-PC($computer_name);
 
-################################################################################
-#### Applications
-################################################################################
-#Write-Host "Configuring Apps..." -ForegroundColor "Yellow"
-#
-#foreach($app in $disable){
-#    Disable-WindowsFeature $app[0] $app[1]
-#}
-#
-#foreach($app in $uninstall){
-#    Uninstall-AppPackage $app
-#}
-#
-## Remove ISS
-#get-package "IIS" -erroraction 'silentlycontinue'| uninstall-package;
-#
-## Enable Developer Mode
-#Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
+##############################################################################
+### Applications
+###############################################################################
+Write-Host "Configuring Apps..." -ForegroundColor "Yellow"
+
+foreach($app in $disable){
+    Disable-WindowsFeature $app[0] $app[1]
+}
+
+foreach($app in $uninstall){
+    Uninstall-AppPackage $app
+}
+
+# Remove ISS
+get-package "IIS" -erroraction 'silentlycontinue'| uninstall-package;
+
+# Enable Developer Mode
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
 # Bash on Windows
 Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart | Out-Null
@@ -163,7 +163,7 @@ if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Cabine
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" -Type Folder | Out-Null}
 
 # Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
-Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 0
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 2
 
 # Explorer: Show file extensions by default
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "HideFileExt" 0
@@ -250,151 +250,3 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" "I
 $MU = New-Object -ComObject Microsoft.Update.ServiceManager -Strict
 $MU.AddService2("7971f918-a847-4430-9279-4a52d1efe18d",7,"") | Out-Null
 Remove-Variable MU
-
-# Delivery Optimization: Download from 0: Http Only [Disable], 1: Peering on LAN, 2: Peering on AD / Domain, 3: Peering on Internet, 99: No peering, 100: Bypass & use BITS
-#Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" "DODownloadMode" 0
-if (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization")) {New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" -Type Folder | Out-Null}
-if (!(Test-Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization")) {New-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization" -Type Folder | Out-Null}
-Set-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" 0
-Set-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" 0
-
-###############################################################################
-### Windows Defender                                                          #
-###############################################################################
-Write-Host "Configuring Windows Defender..." -ForegroundColor "Yellow"
-
-# Disable Cloud-Based Protection: Enabled Advanced: 2, Enabled Basic: 1, Disabled: 0
-Set-MpPreference -MAPSReporting 0
-
-# Disable automatic sample submission: Prompt: 0, Auto Send Safe: 1, Never: 2, Auto Send All: 3
-Set-MpPreference -SubmitSamplesConsent 2
-
-###############################################################################
-### Disk Cleanup (CleanMgr.exe)                                               #
-###############################################################################
-Write-Host "Configuring Disk Cleanup..." -ForegroundColor "Yellow"
-
-$diskCleanupRegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\"
-
-# Cleanup Files by Group: 0=Disabled, 2=Enabled
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "BranchCache"                                  ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Downloaded Program Files"                     ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Internet Cache Files"                         ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Offline Pages Files"                          ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Old ChkDsk Files"                             ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Previous Installations"                       ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Recycle Bin"                                  ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "RetailDemo Offline Content"                   ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Service Pack Cleanup"                         ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Setup Log Files"                              ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "System error memory dump files"               ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "System error minidump files"                  ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Temporary Files"                              ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Temporary Setup Files"                        ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Thumbnail Cache"                              ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Update Cleanup"                               ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Upgrade Discarded Files"                      ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "User file versions"                           ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Defender"                             ) "StateFlags6174" 2   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Error Reporting Archive Files"        ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Error Reporting Queue Files"          ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Error Reporting System Archive Files" ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Error Reporting System Queue Files"   ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Error Reporting Temp Files"           ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows ESD installation files"               ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-Set-ItemProperty $(Join-Path $diskCleanupRegPath "Windows Upgrade Log Files"                    ) "StateFlags6174" 0   -ErrorAction SilentlyContinue
-
-Remove-Variable diskCleanupRegPath
-
-###############################################################################
-### PowerShell Console                                                        #
-###############################################################################
-Write-Host "Configuring Console..." -ForegroundColor "Yellow"
-
-# Make 'Source Code Pro' an available Console font
-Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont' 000 'Source Code Pro'
-
-@(`
-"HKCU:\Console\%SystemRoot%_System32_bash.exe",`
-"HKCU:\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe",`
-"HKCU:\Console\%SystemRoot%_SysWOW64_WindowsPowerShell_v1.0_powershell.exe",`
-"HKCU:\Console\Windows PowerShell (x86)",`
-"HKCU:\Console\Windows PowerShell",`
-"HKCU:\Console"`
-) | ForEach {
-    If (!(Test-Path $_)) {
-        New-Item -path $_ -ItemType Folder | Out-Null
-    }
-
-# Dimensions of window, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
-Set-ItemProperty $_ "WindowSize"           0x002D0078 # 45h x 120w
-# Dimensions of screen buffer in memory, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
-Set-ItemProperty $_ "ScreenBufferSize"     0x0BB80078 # 3000h x 120w
-# Percentage of Character Space for Cursor: 25: Small, 50: Medium, 100: Large
-Set-ItemProperty $_ "CursorSize"           100
-# Name of display font
-Set-ItemProperty $_ "FaceName"             "Source Code Pro"
-# Font Family: Raster: 0, TrueType: 54
-Set-ItemProperty $_ "FontFamily"           54
-# Dimensions of font character in pixels, not Points: 8-byte; 4b height, 4b width. 0: Auto
-Set-ItemProperty $_ "FontSize"             0x00110000 # 17px height x auto width
-# Boldness of font: Raster=(Normal: 0, Bold: 1), TrueType=(100-900, Normal: 400)
-Set-ItemProperty $_ "FontWeight"           400
-# Number of commands in history buffer
-Set-ItemProperty $_ "HistoryBufferSize"    50
-# Discard duplicate commands
-Set-ItemProperty $_ "HistoryNoDup"         1
-# Typing Mode: Overtype: 0, Insert: 1
-Set-ItemProperty $_ "InsertMode"           1
-# Enable Copy/Paste using Mouse
-Set-ItemProperty $_ "QuickEdit"            1
-# Background and Foreground Colors for Window: 2-byte; 1b background, 1b foreground; Color: 0-F
-Set-ItemProperty $_ "ScreenColors"         0x0F
-# Background and Foreground Colors for Popup Window: 2-byte; 1b background, 1b foreground; Color: 0-F
-Set-ItemProperty $_ "PopupColors"          0xF0
-# Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
-Set-ItemProperty $_ "WindowAlpha"          0xF2
-
-# The 16 colors in the Console color well (Persisted values are in BGR).
-# Theme: Jellybeans
-Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#151515") # Black (0)
-Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8197bf") # DarkBlue (1)
-Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#437019") # DarkGreen (2)
-Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#556779") # DarkCyan (3)
-Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#902020") # DarkRed (4)
-Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#540063") # DarkMagenta (5)
-Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#dad085") # DarkYellow (6)
-Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#888888") # Gray (7)
-Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#606060") # DarkGray (8)
-Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#7697d6") # Blue (9)
-Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#99ad6a") # Green (A)
-Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#c6b6ee") # Cyan (B)
-Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#cf6a4c") # Red (C)
-Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#f0a0c0") # Magenta (D)
-Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#fad07a") # Yellow (E)
-Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#e8e8d3") # White (F)
-}
-
-# Customizing PoSh syntax
-# Theme: Jellybeans
-Set-PSReadlineOption -Colors @{
-    "Default"   = "#e8e8d3"
-    "Comment"   = "#888888"
-    "Keyword"   = "#8197bf"
-    "String"    = "#99ad6a"
-    "Operator"  = "#c6b6ee"
-    "Variable"  = "#c6b6ee"
-    "Command"   = "#8197bf"
-    "Parameter" = "#e8e8d3"
-    "Type"      = "#fad07a"
-    "Number"    = "#cf6a4c"
-    "Member"    = "#fad07a"
-    "Emphasis"  = "#f0a0c0"
-    "Error"     = "#902020"
-}
-
-# Remove property overrides from PowerShell and Bash shortcuts
-Reset-AllPowerShellShortcuts
-Reset-AllBashShortcuts
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."
