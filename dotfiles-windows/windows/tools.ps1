@@ -1,13 +1,3 @@
-function Admin-Check {
-    if (!(Verify-Elevated)) {
-       $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-       $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-       $newProcess.Verb = "runas";
-       [System.Diagnostics.Process]::Start($newProcess);
-       exit
-    }
-}
-
 function Set-WindowsExplorer-ShowFileExtensions {
   Write-Host "Configuring Windows File Explorer to show file extensions:" -ForegroundColor "Green";
 

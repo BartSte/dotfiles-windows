@@ -1,5 +1,10 @@
 $computer_name = "PROBOOK"
 
+# @(program, args)
+$install = 
+@('curl', ''),
+@('vim', '')
+
 $disable = 
 @("WindowsMediaPlayer", "Windows Media Player"),
 @("Internet-Explorer-Optional-amd64", "Internet Explorer"),
@@ -56,3 +61,4 @@ $uninstall =
 "Microsoft.ZuneMusic", 
 "Microsoft.ZuneVideo", 
 "SpotifyAB.SpotifyMusic"
+

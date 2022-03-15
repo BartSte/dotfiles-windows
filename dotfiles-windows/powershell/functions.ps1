@@ -101,6 +101,15 @@ function Set-Environment([String] $variable, [String] $value) {
     Invoke-Expression "`$env:${variable} = `"$value`""
 }
 
+function Admin-Check {
+    if (!(Verify-Elevated)) {
+       $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+       $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+       $newProcess.Verb = "runas";
+       [System.Diagnostics.Process]::Start($newProcess);
+       exit
+    }
+}
 # Add a folder to $env:Path
 function Prepend-EnvPath([String]$path) { $env:PATH = $env:PATH + ";$path" }
 function Prepend-EnvPathIfExists([String]$path) { if (Test-Path $path) { Prepend-EnvPath $path } }
