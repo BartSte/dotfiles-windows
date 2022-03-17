@@ -1,121 +1,102 @@
-﻿# Jay Harris's dotfiles for Windows
+﻿# Dotfiles B. Steensma
+This readme is relevant for the following dotfiles repositories:
+- BartSte/dotfiles
+- BartSte/doffiles-windows
 
-A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults. 
+Please read the following sections to get started with this repository. Make sure you have installed git.
 
-Are you a Mac user? Check out my [dotfiles](https://github.com/jayharris/dotfiles) repository.
+## Bare repository
+The text below was inspired on the following article of [atlassian](https://www.atlassian.com/git/tutorials/dotfiles).
 
-## Installation
 
-### Using Git and the bootstrap script
-
-You can clone the repository wherever you want. (I like to keep it in `~\Projects\dotfiles-windows`.) The bootstrapper script will copy the files to your PowerShell Profile folder.
-
-From PowerShell:
-```posh
-git clone https://github.com/jayharris/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
+Add the following alias to your .bashrc:
+```
+alias win='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+```
+Or to your $PSHome/profile.ps1:
+```
+${function:win} = { git.exe --git-dir=~\.dotfiles-windows\ --work-tree=~ @args }
 ```
 
-To update your settings, `cd` into your local `dotfiles-windows` repository within PowerShell and then:
+And that your source repository ignores the folder where you'll clone it, so that you don't create weird recursion problems:
 
-```posh
-. .\bootstrap.ps1
-```
+echo ".cfg" >> .gitignore
 
-Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work: `Set-ExecutionPolicy Unrestricted`.
+    Now clone your dotfiles into a bare repository in a "dot" folder of your $HOME:
 
-### Git-free install
+git clone --bare <git-repo-url> $HOME/.cfg
 
-> **Note:** You must have your execution policy set to unrestricted (or at least in bypass) for this to work. To set this, run `Set-ExecutionPolicy Unrestricted` from a PowerShell running as Administrator.
+    Define the alias in the current shell scope:
 
-To install these dotfiles from PowerShell without Git:
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-```bash
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/jayharris/dotfiles-windows/master/setup/install.ps1'))
-```
+    Checkout the actual content from the bare repository to your $HOME:
 
-To update later on, just run that command again.
+config checkout
 
-### Add custom commands without creating a new fork
+    The step above might fail with a message like:
 
-If `.\extra.ps1` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don't want to commit to a public repository.
+error: The following untracked working tree files would be overwritten by checkout:
+    .bashrc
+    .gitignore
+Please move or remove them before you can switch branches.
+Aborting
 
-My `.\extra.ps1` looks something like this:
+This is because your $HOME folder might already have some stock configuration files which would be overwritten by Git. The solution is simple: back up the files if you care about them, remove them if you don't care. I provide you with a possible rough shortcut to move all the offending files automatically to a backup folder:
 
-```posh
-# Hg credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "EMAIL" "Jay Harris <jay@aranasoft.com>"
+mkdir -p .config-backup && \
+config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
+xargs -I{} mv {} .config-backup/{}
 
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "GIT_AUTHOR_NAME" "Jay Harris","User"
-Set-Environment "GIT_COMMITTER_NAME" $env:GIT_AUTHOR_NAME
-git config --global user.name $env:GIT_AUTHOR_NAME
-Set-Environment "GIT_AUTHOR_EMAIL" "jay@aranasoft.com"
-Set-Environment "GIT_COMMITTER_EMAIL" $env:GIT_AUTHOR_EMAIL
-git config --global user.email $env:GIT_AUTHOR_EMAIL
-```
+    Re-run the check out if you had problems:
 
-Extras is designed to augment the existing settings and configuration. You could also use `./extra.ps1` to override settings, functions and aliases from my dotfiles repository, but it is probably better to [fork this repository](#forking-your-own-version).
+config checkout
 
-### Sensible Windows defaults
+    Set the flag showUntrackedFiles to no on this specific (local) repository:
 
-When setting up a new Windows PC, you may want to set some Windows defaults and features, such as showing hidden files in Windows Explorer and installing IIS. This will also set your machine name and full user name, so you may want to modify this file before executing.
+config config --local status.showUntrackedFiles no
 
-```post
-.\windows.ps1
-```
+    You're done, from now on you can now type config commands to add and update your dotfiles:
 
-### Install dependencies and packages
+config status
+config add .vimrc
+config commit -m "Add vimrc"
+config add .bashrc
+config commit -m "Add bashrc"
+config push
 
-When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js packages via [NPM](https://www.npmjs.org), [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Extensions from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/).
+Again as a shortcut not to have to remember all these steps on any new machine you want to setup, you can create a simple script, store it as Bitbucket snippet like I did, create a short url for it and call it like this:
 
-```posh
-.\deps.ps1
-```
+curl -Lks http://bit.do/cfg-install | /bin/bash
 
-> The scripts will install Chocolatey, node.js, and WebPI if necessary.
+For completeness this is what I ended up with (tested on many freshly minted Alpine Linux containers to test it out):
 
-> **Visual Studio Extensions**  
-> Extensions will be installed into your most current version of Visual Studio. You can also install additional plugins at any time via `Install-VSExtension $url`. The Url can be found on the gallery; it's the extension's `Download` link url.
+git clone --bare https://bitbucket.org/durdn/cfg.git $HOME/.cfg
+function config {
+   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+config checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+config config status.showUntrackedFiles no
+
+Wrapping up
+
+I hope you find this technique useful to track your configuration. If you're curious, my dotfiles live here. Also please do stay connected by following @durdn or my awesome team at @atlassiandev.
 
 
 
-## Forking your own version
 
-This repository is built around how I use Windows, which is predominantly in a VM hosted on OS X. As such, things like VNC, FileZilla, or Skype are not installed, as they are available to me on the OS X side, installed by my [OS X dotfiles](https://github.com/jayharris/dotfiles). If you are using Windows as your primary OS, you may want a different configuration that reflects that, and I recommend you [fork this repository](https://github.com/jayharris/dotfiles-windows/fork).
+## Multiple layers
 
-If you do fork for your own custom configuration, you will need to touch a few files to reference your own repository, instead of mine.
+## Main script
 
-Within `/setup/install.ps1`, modify the Repository variables.
-```posh
-$account = "jayharris"
-$repo    = "dotfiles-windows"
-$branch  = "master"
-```
+## Config file
 
-Within the Windows Defaults file, `/windows.ps1`, modify the Machine
-name on the first line.
-```posh
-(Get-WmiObject Win32_ComputerSystem).Rename("MyMachineName") | Out-Null
-```
 
-Finally, be sure to reference your own repository in the git-free installation command.
-```bash
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/$account/$repo/$branch/setup/install.ps1'))
-```
-
-## Feedback
-
-Suggestions/improvements are
-[welcome and encouraged](https://github.com/jayharris/dotfiles-windows/issues)!
-
-## Author
-
-| [![twitter/jayharris](http://gravatar.com/avatar/1318668b99b2d5a3900f3f7758763a69?s=70)](http://twitter.com/jayharris "Follow @jayharris on Twitter") |
-|---|
-| [Jay Harris](http://twitter.com/jayharris/) |
-
-## Thanks to…
-
-* @[Mathias Bynens](http://mathiasbynens.be/) for his [OS X dotfiles](http://mths.be/dotfiles), which this repository is modeled after.
