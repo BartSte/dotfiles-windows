@@ -1,10 +1,19 @@
 $computer_name = "PROBOOK"
 
+$launch = @( 
+'C:\Users\barts\AppData\Local\slack\slack.exe',
+'C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE',
+'C:\Program Files\WindowsApps\SpotifyAB.SpotifyMusic_1.180.699.0_x86__zpdnekdrzrea0\Spotify.exe',
+'C:\Program Files\Mozilla Firefox\firefox.exe',
+'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe',
+'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe')
+
 # @(program, args)
 $install = 
 @('curl', ''),
 @('vim', '')
 
+# @(program, name)
 $disable = 
 @("WindowsMediaPlayer", "Windows Media Player"),
 @("Internet-Explorer-Optional-amd64", "Internet Explorer"),
@@ -12,7 +21,7 @@ $disable =
 @("WorkFolders-Client", "WorkFolders-Client"),
 @("Containers-DisposableClientVM", "Windows Sandbox")
 
-$uninstall = 
+$uninstall = @(
 "*.AutodeskSketchBook",
 "*.DisneyMagicKingdoms",
 "*.Facebook",
@@ -60,5 +69,4 @@ $uninstall =
 "Microsoft.YourPhone", 
 "Microsoft.ZuneMusic", 
 "Microsoft.ZuneVideo", 
-"SpotifyAB.SpotifyMusic"
-
+"SpotifyAB.SpotifyMusic")
