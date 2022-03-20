@@ -1,0 +1,281 @@
+{
+    "files.autoSave": "afterDelay",
+    "sortLines.filterBlankLines": true,
+  
+    "terminal.integrated.confirmOnKill": "never",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+  
+    "explorer.autoReveal": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+  
+    "git-graph.commitDetailsView.location": "Docked to Bottom",
+  
+    "debug.console.acceptSuggestionOnEnter": "on",
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.openDebug": "neverOpen",
+    "debug.terminal.clearBeforeReusing": true,
+    "workbench.colorTheme": "PyCharm Dark+ Theme",
+    "workbench.commandPalette.preserveInput": true,
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
+    "workbench.tree.indent": 16,
+  
+    "workbench.colorCustomizations": {
+      "[PyCharm Dark+ Theme]": {
+        "activityBar.activeBackground": "#2b2b2b",
+        "activityBar.activeBorder": "#ffffff",
+        "activityBar.background": "#000000",
+        "activityBar.border": "#2b2b2b",
+        "editor.background": "#000000",
+        "editor.foldBackground": "#121212",
+        "editor.lineHighlightBackground": "#1b1b1b",
+        "editorGroupHeader.border": "#2b2b2b",
+        "editorGroupHeader.tabsBackground": "#000000",
+        "editorGroupHeader.tabsBorder": "#2b2b2b",
+        "editorGutter.background": "#000000",
+        "editorIndentGuide.activeBackground": "#202020",
+        "editorIndentGuide.background": "#202020",
+        "editorRuler.foreground": "#2b2b2b",
+        "panel.background": "#000000",
+        "scrollbarSlider.activeBackground": "#ffffff22",
+        "scrollbarSlider.background": "#ffffff22",
+        "scrollbarSlider.hoverBackground": "#ffffff22",
+        "sideBar.background": "#000000",
+        "sideBar.border": "#2b2b2b",
+        "statusBar.background": "#202020",
+        "tab.activeBackground": "#2b2b2b",
+        "tab.activeBorder": "#2b2b2b",
+        "tab.activeBorderTop": "#2b2b2b",
+        "tab.border": "#2b2b2b",
+        "tab.inactiveBackground": "#000000",
+        "terminal.ansiGreen": "#000000",
+        "terminal.background": "#000000",
+        "titleBar.activeBackground": "#000000",
+        "titleBar.border": "#2b2b2b",
+        "titleBar.inactiveBackground": "#000000",
+      }
+    },
+  
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+  
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorSurroundingLines": 100,
+    "editor.guides.bracketPairs": false,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.rulers": [80, 80],
+    "editor.suggestSelection": "first",
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 80,
+    "editor.wrappingIndent": "same",
+  
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "files.associations": {
+      "*.js": "javascript",
+      "*.jsx": "javascriptreact",
+      "*.txt": "code-text-binary"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.printWidth": 80,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+  
+    "python.testing.unittestEnabled": true,
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": [
+      "--max-line-length",
+      "80",
+      "--experimental"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--max-line-length=80"],
+    "[python]": {
+      "editor.codeActionsOnSave": { "source.organizeImports": false }
+    },
+  
+    "testing.automaticallyOpenPeekView": "never",
+  
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.view.pdf.invertMode.enabled": "always",
+    "latex-workshop.view.pdf.invert": 1,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+  
+    "vim.camelCaseMotion.enable": false,
+    "vim.easymotion": true,
+    "vim.foldfix": true,
+    "vim.highlightedyank.color": "rgba(255, 255, 255, 0.7)",
+    "vim.highlightedyank.duration": 300,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.textColor": "rgba(0, 0, 0, 1)",
+    "vim.leader": " ",
+    "vim.searchHighlightColor": "rgba(255, 255, 255, 0.7)",
+    "vim.searchHighlightTextColor": "rgba(0, 0, 0, 1)",
+    "vim.textwidth": 80,
+    "vim.useSystemClipboard": false,
+    "vim.vimrc.enable": true,
+  
+    "vim.normalModeKeyBindings": [
+      { "before": ["leader", "m"], "commands": ["editor.foldLevel2"] },
+      { "before": ["leader", "leader", "m"], "commands": ["editor.unfoldAll"] },
+  
+      {
+        "before": ["g", "D"],
+        "commands": ["editor.action.openDeclarationToTheSide"]
+      },
+      {
+        "before": ["leader", "f"],
+        "commands": ["editor.action.formatDocument"]
+      },
+      {
+        "before": ["leader", "p"],
+        "commands": ["editor.action.triggerParameterHints"]
+      },
+      {
+        "before": ["leader", "i"],
+        "commands": ["editor.action.organizeImports"]
+      },
+      {
+        "before": ["leader", "leader", "t", "o"],
+        "commands": ["workbench.action.closeOtherEditors"]
+      },
+      {
+        "before": ["leader", "leader", "t", "t"],
+        "commands": ["workbench.action.files.newUntitledFile"]
+      },
+      {
+        "before": ["leader", "leader", "t", "r"],
+        "commands": ["workbench.action.reopenClosedEditor"]
+      },
+      {
+        "before": ["leader", "leader", "t", "a"],
+        "commands": ["workbench.action.closeEditorsInGroup"]
+      },
+      {
+        "before": ["leader", "r"],
+        "commands": ["editor.action.rename"]
+      },
+      {
+        "before": ["leader", "v"],
+        "commands": ["workbench.action.moveEditorToNextGroup"]
+      },
+      {
+        "before": ["leader", "leader", "v"],
+        "commands": ["workbench.action.moveEditorToPreviousGroup"]
+      },
+      {
+        "before": ["leader", "d"],
+        "commands": ["autoDocstring.generateDocstring"]
+      }
+    ],
+  
+    "vim.normalModeKeyBindingsNonRecursive": [
+      { "before": ["leader", "/"], "after": ["leader", "leader", "/"] },
+      { "before": ["leader", "b"], "after": ["leader", "leader", "b"] },
+      { "before": ["leader", "e"], "after": ["leader", "leader", "e"] },
+      { "before": ["leader", "g", "e"], "after": ["leader", "leader", "g", "e"] },
+      { "before": ["leader", "j"], "after": ["leader", "leader", "j"] },
+      { "before": ["leader", "k"], "after": ["leader", "leader", "k"] },
+      { "before": ["leader", "s"], "after": ["leader", "leader", "s"] },
+      { "before": ["leader", "t"], "after": ["leader", "leader", "t"] },
+      { "before": ["leader", "T"], "after": ["leader", "leader", "T"] },
+      { "before": ["leader", "w"], "after": ["leader", "leader", "w"] },
+      { "before": ["leader", "a"], "after": ["leader", "leader", "l"] },
+      { "before": ["leader", "leader", "a"], "after": ["leader", "leader", "h"] },
+    ],
+  
+    "vim.visualModeKeyBindings": [
+      {
+        "before": ["leader", "s", "l"],
+        "commands": ["sortLines.sortLinesLineLength"]
+      },
+      {
+        "before": ["leader", "leader", "s", "l"],
+        "commands": ["sortLines.sortLinesLineLengthReverse"]
+      },
+      {
+        "before": ["leader", "s", "v"],
+        "commands": ["sortLines.sortLinesVariableLength"]
+      },
+      {
+        "before": ["leader", "leader", "s", "v"],
+        "commands": ["sortLines.sortLinesVariableLengthReverse"]
+      },
+      {
+        "before": ["leader", "s", "c"],
+        "commands": ["sortLines.sortLines"]
+      },
+      {
+        "before": ["leader", "leader", "s", "c"],
+        "commands": ["sortLines.sortLinesReverse"]
+      },
+      {
+        "before": ["leader", "s", "n"],
+        "commands": ["sortLines.sortLinesNatural"]
+      }
+    ],
+    "gitlens.currentLine.enabled": false,
+    "gitlens.currentLine.pullRequests.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.statusBar.pullRequests.enabled": false,
+    "gitlens.hovers.enabled": false,
+    "gitlens.hovers.avatars": false,
+    "gitlens.hovers.pullRequests.enabled": false,
+    "gitlens.hovers.autolinks.enabled": false,
+    "gitlens.hovers.currentLine.enabled": false,
+    "gitlens.hovers.autolinks.enhanced": false,
+    "gitlens.hovers.currentLine.details": false,
+    "gitlens.hovers.annotations.enabled": false,
+    "gitlens.hovers.currentLine.changes": false,
+    "gitlens.hovers.annotations.details": false,
+    "gitlens.hovers.annotations.changes": false,
+    "gitlens.views.showRelativeDateMarkers": false,
+    "gitlens.views.commits.pullRequests.enabled": false,
+    "gitlens.views.commits.pullRequests.showForBranches": false,
+    "gitlens.views.commits.pullRequests.showForCommits": false,
+    "gitlens.views.commits.avatars": false,
+    "gitlens.views.commits.reveal": false,
+    "gitlens.views.repositories.showUpstreamStatus": false,
+    "gitlens.views.repositories.pullRequests.enabled": false,
+    "gitlens.views.repositories.pullRequests.showForBranches": false,
+    "gitlens.views.repositories.pullRequests.showForCommits": false,
+    "gitlens.views.repositories.showCommits": false,
+    "gitlens.views.repositories.showRemotes": false,
+    "gitlens.views.repositories.showBranches": false,
+    "gitlens.views.repositories.showStashes": false,
+    "gitlens.views.repositories.showTags": false,
+    "gitlens.views.repositories.showContributors": false,
+    "gitlens.views.repositories.autoRefresh": false,
+    "gitlens.views.repositories.autoReveal": false,
+    "gitlens.views.repositories.avatars": false,
+  
+    "window.enableMenuBarMnemonics": false,
+    "window.dialogStyle": "custom",
+    "window.menuBarVisibility": "compact",
+    "output.smartScroll.enabled": false,
+    "editor.fontSize": 12,
+    "workbench.list.keyboardNavigation": "simple",
+    "python.diagnostics.sourceMapsEnabled": true,
+    "vim.showMarksInGutter": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "local-history.daysLimit": 14,
+    "local-history.saveDelay": 10,
+    "extensions.ignoreRecommendations": true,
+  }
