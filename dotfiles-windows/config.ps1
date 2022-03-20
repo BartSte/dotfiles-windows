@@ -13,6 +13,36 @@ $install =
 @('curl', ''),
 @('vim', '')
 
+$vscode_extensions=@(
+'batisteo.vscode-django',
+'donjayamanne.python-extension-pack',
+'dsznajder.es7-react-js-snippets',
+'eamodio.gitlens',
+'esbenp.prettier-vscode',
+'firefox-devtools.vscode-firefox-debug',
+'GitLab.gitlab-workflow',
+'Gruntfuggly.todo-tree',
+'hbenl.vscode-test-explorer',
+'idleberg.innosetup',
+'James-Yu.latex-workshop',
+'KevinRose.vsc-python-indent',
+'littlefoxteam.vscode-python-test-adapter',
+'mgmcdermott.vscode-language-babel',
+'mhutchie.git-graph',
+'ms-python.python',
+'ms-python.vscode-pylance',
+'ms-toolsai.jupyter',
+'ms-vscode.test-adapter-converter',
+'nicohlr.pycharm',
+'njpwerner.autodocstring',
+'njqdev.vscode-python-typehint',
+'streetsidesoftware.code-spell-checker',
+'Tyriar.sort-lines',
+'vscodevim.vim',
+'wholroyd.jinja',
+'xabikos.JavaScriptSnippets',
+'xyz.local-history')
+
 # @(program, name)
 $disable = 
 @("WindowsMediaPlayer", "Windows Media Player"),
