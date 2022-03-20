@@ -277,5 +277,5 @@
     "latex-workshop.message.warning.show": false,
     "local-history.daysLimit": 14,
     "local-history.saveDelay": 10,
-    "extensions.ignoreRecommendations": true,
+    "extensions.ignoreRecommendations": false,
   }

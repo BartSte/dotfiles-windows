@@ -8,7 +8,7 @@ function Hard-Link-VSCode-Configurations {
         $targets = Get-ChildItem -Path "${PSScriptRoot}\*" -Include "*.json" -Recurse
         ForEach($target in $targets) {
             $path = Join-Path -Path $vscode_settings_path -ChildPath $target.Name
-            Remove-Item $target -ErrorAction SilentlyContinue
+            Remove-Item $path -ErrorAction SilentlyContinue
             New-Item -ItemType HardLink -Path $path -Target $target
         }
     }
