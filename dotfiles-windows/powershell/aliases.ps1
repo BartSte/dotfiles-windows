@@ -15,6 +15,7 @@ ${function:ju} = { Set-Location ~\junk }
 ${function:vs} = { Set-Location ~\VSCodeProjects }
 ${function:dot} = { Set-Location ~\dotfiles }
 ${function:dotw} = { Set-Location ~\dotfiles-windows }
+${function:python3} = {python.exe @args}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
@@ -79,4 +80,3 @@ Set-Alias vim gvim
 # Add bare repos
 ${function:base} = { git.exe --git-dir=C:\Users\barts\.dotfiles\ --work-tree=C:\Users\barts @args }
 ${function:win} = { git.exe --git-dir=C:\Users\barts\.dotfiles-windows\ --work-tree=C:\Users\barts @args }
-${function:python3} = {python.exe @args}

@@ -12,6 +12,15 @@ $launch = @(
 $install = 
 @('curl', ''),
 @('vim', '')
+@('vscode', '')
+@('inkscape', '')
+@('firefox', '')
+@('slack', '')
+@('qtcreator', '')
+@('powertoys', '')
+@('teamvier', '')
+@('python3', '')
+
 
 $vscode_extensions=@(
 'batisteo.vscode-django',
