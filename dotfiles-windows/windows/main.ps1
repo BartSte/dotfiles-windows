@@ -1,5 +1,5 @@
 . ~/dotfiles-windows/config.ps1
-. ~/dotfiles-windows/windows/tools.ps1
+. ~/dotfiles-windows/windows/helpers.ps1
 
 Admin-Check;
 Rename-PC($computer_name);

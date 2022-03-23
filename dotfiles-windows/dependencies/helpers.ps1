@@ -1,3 +1,19 @@
+. ./../config.ps1
+
+function Install-Chocolately {
+    if ((which cinst) -eq $null) {
+        iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')
+        Refresh-Environment
+        choco feature enable -n=allowGlobalConfirmation
+    }
+}
+
+function Install-Desktop-Apps {
+    foreach($app in $install){
+        choco install $app[0] $app[1]
+    }
+}
+
 function Install-Nuget {
     if (-not (Get-PackageProvider-Installation-Status -PackageProviderName "NuGet")) {
       Write-Host "Installing NuGet as package provider:" -ForegroundColor "Green";
@@ -91,3 +107,4 @@ function Get-Module-Installation-Status {
     return $FALSE;
   }
 }
+

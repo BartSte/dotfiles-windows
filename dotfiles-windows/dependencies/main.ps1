@@ -12,6 +12,10 @@ Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
 Install-Module PSWindowsUpdate -Scope CurrentUser -Force
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
+
+Install-NuGet
+Install-PSGallery
+Install-PackageManagement
 Install-Chocolately
 Install-Desktop-Apps
 
