@@ -1,4 +1,4 @@
-. ./../config.ps1
+. ~\dotfiles-windows\config.ps1
 
 function Install-Chocolately {
     if ((which cinst) -eq $null) {

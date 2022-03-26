@@ -1,4 +1,6 @@
-$computer_name = "PROBOOK"
+$computer_name = "zbook"
+
+$wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
 $launch = @( 
 'C:\Users\barts\AppData\Local\slack\slack.exe',
@@ -9,17 +11,19 @@ $launch = @(
 'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe')
 
 # @(program, args)
-$install = 
+$install = @(
 @('curl', ''),
-@('vim', '')
-@('vscode', '')
-@('inkscape', '')
-@('firefox', '')
-@('slack', '')
-@('qtcreator', '')
-@('powertoys', '')
-@('teamvier', '')
-@('python3', '')
+@('vim', ''),
+@('vscode', ''),
+@('inkscape', ''),
+@('firefox', ''),
+@('slack', ''),
+@('qtcreator', ''),
+@('powertoys', ''),
+@('teamvier', ''),
+@('python3', ''),
+@('python3', '--version=3.6.8')
+)
 
 
 $vscode_extensions=@(
@@ -61,6 +65,14 @@ $disable =
 @("Containers-DisposableClientVM", "Windows Sandbox")
 
 $uninstall = @(
+"Microsoft.MixedReality.Portal",
+"Microsoft.Xbox.TCUI",
+"SynapticsIncorporated.SynHPCommercialStykDApp",
+"Microsoft.Microsoft3DViewer_6.1908.2042.0_x64__8wekyb3d8bbwe",
+"Microsoft.MicrosoftEdge.Stable_99.0.1150.46_neutral__8wekyb3d8bbwe",
+"Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe",
+"Microsoft.Wallet_2.4.18324.0_x64__8wekyb3d8bbwe",
+"Microsoft.XboxGameOverlay_1.46.11001.0_x64__8wekyb3d8bbwe",
 "*.AutodeskSketchBook",
 "*.DisneyMagicKingdoms",
 "*.Facebook",

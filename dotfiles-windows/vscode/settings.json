@@ -266,7 +266,7 @@
   
     "window.enableMenuBarMnemonics": false,
     "window.dialogStyle": "custom",
-    "window.menuBarVisibility": "compact",
+    "window.menuBarVisibility": "toggle",
     "output.smartScroll.enabled": false,
     "editor.fontSize": 12,
     "workbench.list.keyboardNavigation": "simple",
@@ -278,4 +278,5 @@
     "local-history.daysLimit": 14,
     "local-history.saveDelay": 10,
     "extensions.ignoreRecommendations": false,
+    "window.zoomLevel": 1,
   }

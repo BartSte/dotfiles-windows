@@ -1,4 +1,4 @@
-. ./helpers.ps1
+. ~/dotfiles-windows/dependencies/helpers.ps1
 
 Admin-Check;
 

@@ -144,6 +144,8 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliver
 ###############################################################################
 Write-Host "Configuring Explorer, Taskbar, and System Tray..." -ForegroundColor "Yellow"
 
+$path = Join-Path -Path $HOME -Child $wall_paper
+Set-WallPaper($path);
 Set-WindowsExplorer-ShowFileExtensions;
 Set-WindowsFileExplorer-StartFolder;
 Set-Multitasking-Configuration;
@@ -151,12 +153,15 @@ Set-Classic-ContextMenu-Configuration;
 Set-SetAsBackground-To-Extended-ContextMenu;
 Disable-RecentlyOpenedItems-From-JumpList;
 
+# Enable dark mode
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+
 # Ensure necessary registry paths
 if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Type Folder | Out-Null}
 if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState")) {New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState" -Type Folder | Out-Null}
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" -Type Folder | Out-Null}
 
-# Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2 #FIXME
+# Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
 
 # Explorer: Show file extensions by default

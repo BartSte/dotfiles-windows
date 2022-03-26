@@ -1,5 +1,5 @@
-. .\helpers.ps1
-. .\..\config.ps1
+. ~\dotfiles-windows\vscode\helpers.ps1
+. ~\dotfiles-windows\config.ps1
 
 Hard-Link-VSCode-Configurations;
 refreshenv;

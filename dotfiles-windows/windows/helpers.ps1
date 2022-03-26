@@ -1,3 +1,9 @@
+function Set-WallPaper ([string]$desktopImage)
+{
+     set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value $desktopImage
+     RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True
+}
+
 function Set-WindowsExplorer-ShowFileExtensions {
   Write-Host "Configuring Windows File Explorer to show file extensions:" -ForegroundColor "Green";
 
@@ -14,7 +20,7 @@ function Set-WindowsFileExplorer-StartFolder {
     New-ItemProperty -Path $RegPath -Name "LaunchTo" -PropertyType DWord;
   }
 
-  Set-ItemProperty -Path $RegPath -Name "LaunchTo" -Value 0; # [This PC: 1], [Quick access: 2], [Downloads: 3]
+  Set-ItemProperty -Path $RegPath -Name "LaunchTo" -Value 2; # [This PC: 1], [Quick access: 2], [Downloads: 3]
 }
 
 function Set-Multitasking-Configuration {
