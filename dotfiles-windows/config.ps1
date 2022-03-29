@@ -1,13 +1,13 @@
-$computer_name = "zbook"
+$computer_name = "barts"
 
 $wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
 $launch = @( 
-'C:\Users\barts\AppData\Local\slack\slack.exe',
+'$HOME\AppData\Local\slack\slack.exe',
 'C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE',
 'C:\Program Files\WindowsApps\SpotifyAB.SpotifyMusic_1.180.699.0_x86__zpdnekdrzrea0\Spotify.exe',
 'C:\Program Files\Mozilla Firefox\firefox.exe',
-'C:\Users\barts\AppData\Local\Programs\Microsoft VS Code\Code.exe',
+'$HOME\AppData\Local\Programs\Microsoft VS Code\Code.exe',
 'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe')
 
 # @(program, args)
@@ -22,9 +22,10 @@ $install = @(
 @('powertoys', ''),
 @('teamvier', ''),
 @('python3', ''),
-@('python3', '--version=3.6.8')
+@('python3', '--version=3.6.8'),
+@('mingw', ''),
+@('innosetup', '')
 )
-
 
 $vscode_extensions=@(
 'batisteo.vscode-django',

@@ -279,4 +279,5 @@
     "local-history.saveDelay": 10,
     "extensions.ignoreRecommendations": false,
     "window.zoomLevel": 1,
-  }
+    "editor.inlineSuggest.enabled": true,
+    "
