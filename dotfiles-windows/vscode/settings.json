@@ -63,15 +63,24 @@
   
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorSurroundingLines": 100,
+    "editor.fontSize": 14,
     "editor.guides.bracketPairs": false,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "editor.rulers": [80, 80],
-    "editor.suggestSelection": "first",
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 80,
     "editor.wrappingIndent": "same",
+
+    "editor.suggestSelection": "first",
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.wordBasedSuggestions": true,
+    "editor.quickSuggestions": true,
+    "editor.quickSuggestionsDelay": 1000000,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.inlineSuggest.enable": true,
+
   
     "javascript.updateImportsOnFileMove.enabled": "always",
     "files.associations": {
@@ -125,6 +134,7 @@
     "vim.textwidth": 80,
     "vim.useSystemClipboard": false,
     "vim.vimrc.enable": true,
+    "vim.showMarksInGutter": true,
   
     "vim.normalModeKeyBindings": [
       { "before": ["leader", "m"], "commands": ["editor.foldLevel2"] },
@@ -268,16 +278,20 @@
     "window.dialogStyle": "custom",
     "window.menuBarVisibility": "toggle",
     "output.smartScroll.enabled": false,
-    "editor.fontSize": 12,
     "workbench.list.keyboardNavigation": "simple",
     "python.diagnostics.sourceMapsEnabled": true,
-    "vim.showMarksInGutter": true,
     "security.workspace.trust.untrustedFiles": "open",
     "latex-workshop.message.error.show": false,
     "latex-workshop.message.warning.show": false,
     "local-history.daysLimit": 14,
     "local-history.saveDelay": 10,
     "extensions.ignoreRecommendations": false,
-    "window.zoomLevel": 1,
-    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+      "*": true,
+      "yaml": false,
+      "plaintext": false,
+      "markdown": false,
+      "python": true
+    },
+    "C_Cpp.formatting": "vcFormat",
     "

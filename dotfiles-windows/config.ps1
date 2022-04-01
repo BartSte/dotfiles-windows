@@ -25,6 +25,8 @@ $install = @(
 @('python3', '--version=3.6.8'),
 @('mingw', ''),
 @('innosetup', '')
+@('teamviewer', '')
+@('adobereader', '')
 )
 
 $vscode_extensions=@(

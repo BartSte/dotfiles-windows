@@ -116,3 +116,26 @@ function Prepend-EnvPathIfExists([String]$path) { if (Test-Path $path) { Prepend
 function Append-EnvPath([String]$path) { $env:PATH = $env:PATH + ";$path" }
 function Append-EnvPathIfExists([String]$path) { if (Test-Path $path) { Append-EnvPath $path } }
 
+# Modifies the command prompt.
+function prompt {
+
+    #Assign Windows Title Text
+    $host.ui.RawUI.WindowTitle = "Current Folder: $pwd"
+
+    #Configure current user, current folder and date outputs
+    $CmdPromptCurrentFolder = Split-Path -Path $pwd -Leaf
+
+    # Test for Admin / Elevated
+    $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+
+    #Decorate the CMD Prompt
+    Write-host "PS " -NoNewline
+    Write-host ($(if ($IsAdmin) { 'Admin ' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
+    If ($CmdPromptCurrentFolder -like "*:*") {
+        Write-Host " $CmdPromptCurrentFolder"  -NoNewline
+    }
+    else {
+        Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline
+    }
+    return "> "
+} #end prompt function
