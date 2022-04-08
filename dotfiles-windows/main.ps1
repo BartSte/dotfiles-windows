@@ -10,5 +10,5 @@ Write-Host "Please don't use your device while the script is running." -Foregrou
 
 Write-Host "The process has finished." -ForegroundColor "Yellow";
 Write-Host "Restarting the PC in 10 seconds..." -ForegroundColor "Green";
-#Start-Sleep -Seconds 10;
-#Restart-Computer;
+Start-Sleep -Seconds 10;
+Restart-Computer;

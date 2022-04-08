@@ -63,7 +63,7 @@
   
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorSurroundingLines": 100,
-    "editor.fontSize": 14,
+    "editor.fontSize": 12,
     "editor.guides.bracketPairs": false,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
@@ -77,7 +77,7 @@
     "editor.suggestOnTriggerCharacters": true,
     "editor.wordBasedSuggestions": true,
     "editor.quickSuggestions": true,
-    "editor.quickSuggestionsDelay": 1000000,
+    "editor.quickSuggestionsDelay": 10,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.inlineSuggest.enable": true,
 
@@ -100,6 +100,7 @@
     },
   
     "python.testing.unittestEnabled": true,
+    "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "autopep8",
     "python.formatting.autopep8Args": [
       "--max-line-length",
@@ -294,4 +295,5 @@
       "python": true
     },
     "C_Cpp.formatting": "vcFormat",
-    "
+    "cSpell.enabled": false,
+  }

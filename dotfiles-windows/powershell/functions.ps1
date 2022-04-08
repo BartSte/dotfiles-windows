@@ -130,9 +130,10 @@ function prompt {
 
     #Decorate the CMD Prompt
     Write-host "PS " -NoNewline
-    Write-host ($(if ($IsAdmin) { 'Admin ' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
+    Write-host ($(if ($IsAdmin) { 'Admin' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
+    Write-host ($(if ($IsAdmin) { ' ' })) -NoNewline
     If ($CmdPromptCurrentFolder -like "*:*") {
-        Write-Host " $CmdPromptCurrentFolder"  -NoNewline
+        Write-Host "$CmdPromptCurrentFolder"  -NoNewline
     }
     else {
         Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline
