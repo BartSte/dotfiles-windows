@@ -12,10 +12,9 @@ ${function:dt} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\Documents }
 ${function:dl} = { Set-Location ~\Downloads }
 ${function:ju} = { Set-Location ~\junk }
-${function:vs} = { Set-Location ~\VSCodeProjects }
+${function:vs} = { Set-Location ~\code }
 ${function:dot} = { Set-Location ~\dotfiles }
 ${function:dotw} = { Set-Location ~\dotfiles-windows }
-${function:python3} = {python.exe @args}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
@@ -73,9 +72,6 @@ Set-Alias reload Reload-Powershell
 
 # Update installed Ruby Gems, NPM, and their installed packages.
 Set-Alias update System-Update
-
-# Set GVim as default vim
-Set-Alias vim gvim
 
 # Add bare repos
 ${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
