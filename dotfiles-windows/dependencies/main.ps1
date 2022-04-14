@@ -10,6 +10,8 @@ Get-PackageProvider NuGet -Force | Out-Null
 
 Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
 Install-Module PSWindowsUpdate -Scope CurrentUser -Force
+Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module PSFzf
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 

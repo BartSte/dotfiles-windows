@@ -76,3 +76,8 @@ Set-Alias update System-Update
 # Add bare repos
 ${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }
+
+# Vim 
+${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
+${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
+
