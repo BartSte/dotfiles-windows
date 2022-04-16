@@ -1,5 +1,7 @@
 $computer_name = "barts"
 
+$git_settings=@{user='barts'; email='b.steensma@fleetcleaner.com'}
+
 $wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
 $launch = @( 

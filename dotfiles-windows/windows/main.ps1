@@ -24,7 +24,7 @@ get-package "IIS" -erroraction 'silentlycontinue'| uninstall-package;
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
 # Bash on Windows
-Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart | Out-Null
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
 # Prevent "Suggested Applications" from returning
 $key = "HKLM:\Software\Policies\Microsoft\Windows\CloudContent"
