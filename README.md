@@ -1,6 +1,7 @@
 ﻿# Dotfiles BartSte
 This readme is relevant for the following dotfiles repositories:
 - BartSte/dotfiles
+- BartSte/dotfiles-linux
 - BartSte/doffiles-windows
 
 Please read the following sections to get started with this repository. Make sure you have installed [git](https://git-scm.com/downloads).

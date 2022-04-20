@@ -30,7 +30,10 @@ $install = @(
 @('teamviewer', ''),
 @('adobereader', ''),
 @('vlc', ''),
-@('nodejs', '')
+@('nodejs', ''),
+@('jetbrainsmono', ''),
+@('JetBrainsMonoNF', ''),
+@('ag', '')
 )
 
 $vscode_extensions=@(
