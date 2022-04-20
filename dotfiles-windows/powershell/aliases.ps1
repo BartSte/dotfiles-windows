@@ -1,13 +1,9 @@
-# Easier Navigation: .., ..., ...., ....., and ~
 ${function:~} = { Set-Location ~ }
-# PoSh won't allow ${function:..} because of an invalid path error, so...
 ${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation
 ${function:...} = { Set-Location ..\.. }
 ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
-
-# Navigation Shortcuts
 ${function:dt} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\Documents }
 ${function:dl} = { Set-Location ~\Downloads }
@@ -15,6 +11,13 @@ ${function:ju} = { Set-Location ~\junk }
 ${function:vs} = { Set-Location ~\vscode }
 ${function:dot} = { Set-Location ~\dotfiles }
 ${function:dotw} = { Set-Location ~\dotfiles-windows }
+
+${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
+${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }
+
+${function:ex} = {explorer.exe .}
+${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
+${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
@@ -73,11 +76,5 @@ Set-Alias reload Reload-Powershell
 # Update installed Ruby Gems, NPM, and their installed packages.
 Set-Alias update System-Update
 
-# Add bare repos
-${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
-${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }
 
-# Vim 
-${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
-${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
 

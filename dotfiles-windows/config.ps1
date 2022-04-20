@@ -33,6 +33,7 @@ $install = @(
 @('nodejs', ''),
 @('jetbrainsmono', ''),
 @('JetBrainsMonoNF', ''),
+@('yarn', ''),
 @('ag', '')
 )
 
