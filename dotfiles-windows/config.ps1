@@ -37,6 +37,11 @@ $install = @(
 @('ag', '')
 )
 
+$lsps = @(
+'coc-json',
+'coc-sh',
+'coc-pyright')
+
 $vscode_extensions=@(
 'batisteo.vscode-django',
 'donjayamanne.python-extension-pack',

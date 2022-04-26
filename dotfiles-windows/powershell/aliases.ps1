@@ -8,7 +8,7 @@ ${function:dt} = { Set-Location ~\Desktop }
 ${function:docs} = { Set-Location ~\Documents }
 ${function:dl} = { Set-Location ~\Downloads }
 ${function:ju} = { Set-Location ~\junk }
-${function:vs} = { Set-Location ~\vscode }
+${function:co} = { Set-Location ~\code }
 ${function:dot} = { Set-Location ~\dotfiles }
 ${function:dotw} = { Set-Location ~\dotfiles-windows }
 
