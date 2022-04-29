@@ -16,6 +16,7 @@ ${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @arg
 ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }
 
 ${function:ex} = {explorer.exe .}
+${function:act} = {.venv/Scripts/Activate.ps1}
 ${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
 ${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
 

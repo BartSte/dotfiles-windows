@@ -37,10 +37,11 @@ $install = @(
 @('ag', '')
 )
 
-$lsps = @(
+$language_servers = @(
 'coc-json',
 'coc-sh',
-'coc-pyright')
+'coc-pyright',
+'coc-pydocstring')
 
 $vscode_extensions=@(
 'batisteo.vscode-django',

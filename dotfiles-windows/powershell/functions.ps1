@@ -152,10 +152,10 @@ function prompt {
     Write-host ($(if ($IsAdmin) { ' ' })) -NoNewline
 
     If ($CmdPromptCurrentFolder -like "*:*") {
-        Write-Host "$CmdPromptCurrentFolder"  -NoNewline
+        Write-Host "$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
     }
     else {
-        Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline
+        Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
     }
 
     if (Test-Path .git) {
