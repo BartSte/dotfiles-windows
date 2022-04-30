@@ -4,27 +4,19 @@ $git_settings=@{user='barts'; email='b.steensma@fleetcleaner.com'}
 
 $wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
-$launch = @( 
-'$HOME\AppData\Local\slack\slack.exe',
-'C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE',
-'C:\Program Files\WindowsApps\SpotifyAB.SpotifyMusic_1.180.699.0_x86__zpdnekdrzrea0\Spotify.exe',
-'C:\Program Files\Mozilla Firefox\firefox.exe',
-'$HOME\AppData\Local\Programs\Microsoft VS Code\Code.exe',
-'C:\Program Files\WindowsApps\53707johannesjo.SuperProductivity_7.10.1.0_x64__ch45amy23cdv6\app\superProductivity.exe')
-
 # @(program, args)
 $install = @(
 @('curl', ''),
 @('vim', ''),
-@('vscode', ''),
 @('inkscape', ''),
 @('firefox', ''),
 @('slack', ''),
 @('qtcreator', ''),
 @('powertoys', ''),
 @('teamvier', ''),
-@('python3', ''),
 @('python3', '--version=3.6.8'),
+@('python3', '--version=3.9.7'),
+$('python3', ''),
 @('mingw', ''),
 @('innosetup', ''),
 @('teamviewer', ''),
@@ -36,12 +28,6 @@ $install = @(
 @('yarn', ''),
 @('ag', '')
 )
-
-$language_servers = @(
-'coc-json',
-'coc-sh',
-'coc-pyright',
-'coc-pydocstring')
 
 $vscode_extensions=@(
 'batisteo.vscode-django',
