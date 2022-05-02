@@ -18,16 +18,10 @@ $Env:FZF_ALT_C_COMMAND = -join @('Get-ChildItem . -Recurse -Directory |'
         '$_.FullName -notlike "Fleet Cleaner" -and '
         '$_.FullName -notlike "*.git*" -and '
         '$_.FullName -notlike "*.dot*" '
-        '}')
-
-function Fuzzy-Directory-Get() {
-    $file = Get-ChildItem . -Recurse -Attributes Directory | Invoke-Fzf 
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($file)
-}
+    '}')
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
                 -PSReadlineChordReverseHistory 'Ctrl+r' `
 
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Key 'alt+o' -ScriptBlock { Invoke-FuzzyEdit }
-Set-PSReadLineKeyHandler -Key 'alt+d' -ScriptBlock { Fuzzy-Directory-Get } 
