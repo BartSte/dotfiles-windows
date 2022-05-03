@@ -19,6 +19,7 @@ ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
 ${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
 ${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
+${function:test} = {python -m unittest discover -s ./test}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
