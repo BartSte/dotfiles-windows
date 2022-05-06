@@ -4,22 +4,15 @@ function parse_text_rows_to_array($file, $delimiter) {
     return $as_string
 }
 
-$ignores = parse_text_rows_to_array ~/.ignore ' --ignore '
+$alt_c_head = 'Get-ChildItem . -Recurse -Directory | Where {$_.FullName -notlike "'
+$alt_c_middle = parse_text_rows_to_array ~/.ignore '" -and $_.FullName -notlike "' 
+$alt_c_tail = '"}'
 
-$Env:EDITOR="gvim.bat"
-$Env:_PSFZF_FZF_DEFAULT_OPTS="--height 40% --reverse"
+$Env:EDITOR = "gvim.bat"
+$Env:FZF_DEFAULT_COMMAND = "ag --hidden -U --path-to-ignore '$HOME\.ignore' -g ."
+$Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --reverse"
 $Env:FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
-$Env:FZF_DEFAULT_COMMAND = "ag --hidden --ignore $ignores -g ."
-
-# FIXME: refactor
-$Env:FZF_ALT_C_COMMAND = -join @('Get-ChildItem . -Recurse -Directory |'
-    'Where {'
-        '$_.FullName -notlike "*\.vscode\*" -and '
-        '$_.FullName -notlike "*.venv*" -and '
-        '$_.FullName -notlike "Fleet Cleaner" -and '
-        '$_.FullName -notlike "*.git*" -and '
-        '$_.FullName -notlike "*.dot*" '
-    '}')
+$Env:FZF_ALT_C_COMMAND = $alt_c_head + $alt_c_middle + $alt_c_tail
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
                 -PSReadlineChordReverseHistory 'Ctrl+r' `
