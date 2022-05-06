@@ -21,6 +21,9 @@ ${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
 ${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
 ${function:test} = {python -m unittest discover -s ./test}
 
+${function:rm} = {Remove-ItemSafely @args}
+${function:rm -r} = {Remove-ItemSafely -Recusively @args}
+
 # Missing Bash aliases
 Set-Alias time Measure-Command
 
