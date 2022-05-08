@@ -24,7 +24,7 @@ $('python3', ''),
 @('vlc', ''),
 @('nodejs', ''),
 @('jetbrainsmono', ''),
-@('JetBrainsMonoNF', ''),
+@('vscode', ''),
 @('yarn', ''),
 @('ag', '')
 )
