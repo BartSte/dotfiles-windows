@@ -26,6 +26,7 @@ $('python3', ''),
 @('jetbrainsmono', ''),
 @('vscode', ''),
 @('yarn', ''),
+@('ccls', ''),
 @('ag', '')
 )
 
