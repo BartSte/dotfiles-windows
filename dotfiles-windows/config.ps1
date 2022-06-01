@@ -28,6 +28,7 @@ $('python3', ''),
 @('yarn', ''),
 @('ccls', ''),
 @('winscp', ''),
+@('alacritty', ''),
 @('ag', '')
 )
 
