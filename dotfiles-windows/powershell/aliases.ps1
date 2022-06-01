@@ -23,6 +23,7 @@ ${function:test} = {python -m unittest discover -s @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
 ${function:rm -r} = {Remove-ItemSafely -Recusively @args}
+${function:cc} = {clear}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command

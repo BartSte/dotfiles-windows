@@ -6,6 +6,9 @@ Import-Module -Name Terminal-Icons
 ~/dotfiles-windows/powershell/helpers/set_font.ps1 'JetBrainsMono NF' 16
 
 Push-Location (Split-Path -parent $profile) 
-"functions","aliases", "fzf" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
+
+"functions", "aliases", "fzf" | 
+Where-Object { Test-Path "$_.ps1" } | 
+ForEach-Object -process { Invoke-Expression ". .\$_.ps1" }
 
 Pop-Location
