@@ -3,8 +3,6 @@ function Hard-Link-Keyboard-Settings {
     $power_toys_settings = Join-Path -Path $env:LOCALAPPDATA -ChildPath "Microsoft" | Join-Path -ChildPath "PowerToys" | Join-Path -ChildPath "Keyboard Manager" | Join-Path -ChildPath "settings.json";
     Remove-Item $power_toys_settings -ErrorAction SilentlyContinue
     New-Item -ItemType HardLink -Path $power_toys_settings -Target $my_settings
-    # Write-Host $power_toys_settings
-    # Write-Host $my_settings
     Write-Host "Make hardlink to keyboard Manager of PowerToys"
 }
 
