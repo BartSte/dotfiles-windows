@@ -1,5 +1,5 @@
 function symbolic-link-config {
-    $target = "${HOME}\alacritty.yml"
+    $target = "${HOME}\.alacritty.yml"
     $directory = "${env:APPDATA}\alacritty" 
     $file = "alacritty.yml" 
     $path = "${directory}\${file}"
