@@ -17,8 +17,8 @@ ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HO
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
-${function:gvims} = {gvim.bat -S @args -c 'source ~/.vimrc|source ~/.gvimrc'}
-${function:vims} = {vim.bat -S @args -c 'source ~/.vimrc'}
+${function:vim} = {C:\tools\vim\vim82\gvim.exe @args}
+${function:gvim} = {C:\tools\vim\vim82\gvim.exe @args}
 ${function:test} = {python -m unittest discover -s @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
