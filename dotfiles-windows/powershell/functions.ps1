@@ -147,7 +147,8 @@ function prompt {
     $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 
     #Decorate the CMD Prompt
-    Write-host "PS " -NoNewline
+    Write-host "PS" -NoNewline -ForegroundColor White -BackgroundColor DarkRed
+    Write-host " " -NoNewline 
     Write-host ($(if ($IsAdmin) { 'Admin' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
     Write-host ($(if ($IsAdmin) { ' ' })) -NoNewline
 

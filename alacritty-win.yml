@@ -1,5 +1,13 @@
+window:
+  opacity: 0.9
+
+font:
+  size: 10.0
+
+colors:
+  transparent_background_colors: true
+
 shell:
   program: C:/Windows/System32/wsl.exe
   args:
     - --cd ~
-
