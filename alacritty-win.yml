@@ -2,7 +2,7 @@ window:
   opacity: 0.9
 
 font:
-  size: 10.0
+  size:  12
 
   normal:
     family: JetBrainsMono Nerd Font
