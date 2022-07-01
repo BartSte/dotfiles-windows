@@ -17,6 +17,7 @@ ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HO
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
+${function:dact} = {deactivate}
 ${function:test} = {python -m unittest discover -s @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
