@@ -14,6 +14,7 @@ ${function:dotw} = { Set-Location ~\dotfiles-windows }
 
 ${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }
+${function:sec} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$HOME @args }
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}

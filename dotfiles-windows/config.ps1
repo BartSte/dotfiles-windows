@@ -1,6 +1,6 @@
-$computer_name = "barts"
+$computer_name = "jsmith"
 
-$git_settings=@{user='barts'; email='b.steensma@fleetcleaner.com'}
+$git_settings=@{user='jsmith'; email='name@domain.com'}
 
 $wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
