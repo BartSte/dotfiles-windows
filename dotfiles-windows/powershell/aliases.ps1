@@ -4,13 +4,6 @@ ${function:...} = { Set-Location ..\.. }
 ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
-${function:dt} = { Set-Location ~\Desktop }
-${function:docs} = { Set-Location ~\Documents }
-${function:dl} = { Set-Location ~\Downloads }
-${function:ju} = { Set-Location ~\junk }
-${function:co} = { Set-Location ~\code }
-${function:dot} = { Set-Location ~\dotfiles }
-${function:dotw} = { Set-Location ~\dotfiles-windows }
 
 ${function:base} = { git.exe --git-dir="$HOME\.dotfiles\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\.dotfiles-windows\" --work-tree=$HOME @args }

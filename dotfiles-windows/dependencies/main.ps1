@@ -6,18 +6,18 @@ Write-Host "Updating Help..." -ForegroundColor "Yellow"
 Update-Help -Force
 
 Write-Host "Installing Package Providers..." -ForegroundColor "Yellow"
-Get-PackageProvider NuGet -Force | Out-Null
-
-Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
-Install-Module PSWindowsUpdate -Scope CurrentUser -Force
-Install-Module -Name Terminal-Icons -Repository PSGallery
-Install-Module PSFzf
-
-Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
-
 Install-NuGet
 Install-PSGallery
 Install-PackageManagement
+
+Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
+Install-Module PSWindowsUpdate -Scope CurrentUser -Force
+Install-Module PSReadline -Scope CurrentUser -Force
+Install-Module PSFzf
+Install-Module Terminal-Icons
+Install-Module Recycle 
+
+Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 Install-Chocolately
 Install-Desktop-Apps
 

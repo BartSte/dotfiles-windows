@@ -10,10 +10,3 @@ $Env:FZF_CTRL_T_OPTS='--preview "bat --theme=gruvbox-dark --style=numbers --colo
 $Env:FZF_ALT_C_COMMAND = "fd --hidden --no-ignore-vcs --max-depth 4 --ignore-file $HOME/.ignore -t d '' ."
 $Env:FZF_ALT_C_OPTS = '--preview "Get-ChildItem {} -Force | Select-Object Name, Parent | select -first 500"'
 
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
-                -PSReadlineChordReverseHistory 'Ctrl+r'
-
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-Set-PSReadLineKeyHandler -Key 'ctrl-b' -ScriptBlock {[Microsoft.PowerShell.PSConsoleReadLine]::Insert($(git branch --all|Invoke-Fzf).substring(2))}
-Set-PSReadLineKeyHandler -Key 'alt-l' -ScriptBlock {[Microsoft.PowerShell.PSConsoleReadLine]::Insert('cls'); [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()}
-

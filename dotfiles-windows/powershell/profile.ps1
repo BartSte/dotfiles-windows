@@ -4,7 +4,7 @@ Import-Module Terminal-Icons
 
 Push-Location (Split-Path -parent $profile) 
 
-"vim_mode", "functions", "aliases", "fzf" | 
+"vi_mode", "functions", "aliases", "env", "bindings" | 
 Where-Object { Test-Path "$_.ps1" } | 
 ForEach-Object -process { Invoke-Expression ". .\$_.ps1" }
 
