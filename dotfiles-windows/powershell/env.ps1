@@ -1,6 +1,6 @@
 $Env:PATH += ";$HOME/vimfiles/plugged/fzf/bin"
 $Env:SHELL = "powershell.exe"
-$Env:EDITOR = "C:/tools/vim/vim82/vim.exe"
+$Env:EDITOR = "C:/tools/vim/vim90/vim.exe"
 $Env:FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 100% --reverse --border"
 
