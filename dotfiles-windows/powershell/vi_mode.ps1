@@ -8,4 +8,5 @@ function OnViModeChange {
     }
 }
 Set-PSReadlineOption -EditMode vi
+Set-PSReadLineOption -ViModeIndicator Prompt
 # Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
