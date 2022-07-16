@@ -13,13 +13,20 @@ Please read the following sections to get started with this repository. The exam
 ## dotfiles-linux (Ubuntu and Debian)
 - To initialize the repository copy the following line to a bash shell:
 ```
-wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/develop/dotfiles-linux/initialize.sh && bash ./initialize.sh && rm ./initialize.sh 
+wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh && rm ./initialize.sh 
 ```
 - Complete the environment variables in `~/dotfiles-linux/config.sh`.
 - Run the script: `~/dotfiles-linux/main.sh`
 - Optionally, if you run on an asus device, you can run `~\doffiles-linux\main_asus.sh`.
 
 ## dotfiles-windows (Windows 10 & 11)
+- To initialize the repository copy the following line into powershell:
+```
+(wget "https://raw.githubusercontent.com/BartSte/dotfiles-windows/develop/dotfiles-windows/initialize.sh") -and (./initialize.ps1) -and (Remove-Item ./initialize.ps1)
+```
+- Complete the environment variables in `~/dotfiles-linux/config.sh`.
+- Run the script: `~/dotfiles-linux/main.sh`
+- Optionally, if you run on an asus device, you can run `~\doffiles-linux\main_asus.sh`.
 - To initialize the dotfiles repository for windows, please run script `\dotfiles-windows\main.ps1`. 
 - All the subfolders of `\dotfiles-windows` are runned by calling the `main.ps1` file. You can run each subfolder separately by calling the `main.ps1` file in each subfolder, e.g., `\dotfiles-windows\powershell\main.ps1`.
 - Apply your personal settings by altering the file `\dotfiles-windows\config.ps1`. If you are a new user, and your not planning to add new features to this repository, altering the `config.ps1` should be sufficient.
