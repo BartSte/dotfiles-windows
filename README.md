@@ -8,11 +8,11 @@ This readme is relevant for the following dotfiles repositories:
 Please read the following sections to get started with this repository. The examples below are writting in bash and powershell. 
 
 ## dotfiles (cross-platform)
-- No initialization needed. It only contains static dotfiles. Typically, you will not clone this repository by yourself, instead it will be cloned for you by the `dotfiles-linux` or the `dotfiles-win` repositories, as they depend on it.
+- No initialization needed. It only contains static dotfiles. Typically, you will not clone this repository by yourself, instead it will be cloned for you by the `dotfiles-linux` or the `dotfiles-windows` repositories, as they depend on it.
 
 ## dotfiles-linux (Ubuntu and Debian)
 - To initialize the repository copy the following line to a bash shell:
-```
+```bash
 wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh && rm ./initialize.sh 
 ```
 - Complete the environment variables in `~/dotfiles-linux/config.sh`.
@@ -21,18 +21,15 @@ wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-li
 
 ## dotfiles-windows (Windows 10 & 11)
 - To initialize the repository copy the following line into powershell:
-```
+```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; 
 [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544");
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BartSte/dotfiles-windows/master/dotfiles-windows/initialize.ps1'))
 ```
-- Complete the environment variables in `~/dotfiles-linux/config.sh`.
-- Run the script: `~/dotfiles-linux/main.sh`
-- Optionally, if you run on an asus device, you can run `~\doffiles-linux\main_asus.sh`.
-- To initialize the dotfiles repository for windows, please run script `\dotfiles-windows\main.ps1`. 
-- All the subfolders of `\dotfiles-windows` are runned by calling the `main.ps1` file. You can run each subfolder separately by calling the `main.ps1` file in each subfolder, e.g., `\dotfiles-windows\powershell\main.ps1`.
-- Apply your personal settings by altering the file `\dotfiles-windows\config.ps1`. If you are a new user, and your not planning to add new features to this repository, altering the `config.ps1` should be sufficient.
+- Complete the configuration file in `$HOME/dotfiles-windows/config.ps1`.
+- Run the script: `$HOME/dotfiles-windows/main.ps1`
+- All the subfolders of `$HOME\dotfiles-windows` are runned by calling the `main.ps1` file, e.g., `$HOME\dotfiles-windows\powershell\main.ps1`.
 
 ## dotfiles-secret (cross-platform)
 - Similarly to the `dotfiles` repository, the `dotfiles-secret` repository is a collection of static files. These files contains sensitive information and should therefore not be publicly shared.
