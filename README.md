@@ -22,7 +22,10 @@ wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-li
 ## dotfiles-windows (Windows 10 & 11)
 - To initialize the repository copy the following line into powershell:
 ```
-(wget "https://raw.githubusercontent.com/BartSte/dotfiles-windows/develop/dotfiles-windows/initialize.sh") -and (./initialize.ps1) -and (Remove-Item ./initialize.ps1)
+Set-ExecutionPolicy Bypass -Scope Process -Force; 
+[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544");
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BartSte/dotfiles-windows/master/dotfiles-windows/initialize.ps1'))
 ```
 - Complete the environment variables in `~/dotfiles-linux/config.sh`.
 - Run the script: `~/dotfiles-linux/main.sh`
