@@ -64,6 +64,25 @@ function Prepend-EnvPathIfExists([String]$path) { if (Test-Path $path) { Prepend
 function Append-EnvPath([String]$path) { $env:PATH = $env:PATH + ";$path" }
 function Append-EnvPathIfExists([String]$path) { if (Test-Path $path) { Append-EnvPath $path } }
 
+function Write-BranchName () {
+    try {
+        $branch = git rev-parse --abbrev-ref HEAD
+
+        if ($branch -eq "HEAD") {
+            # we're probably in detached HEAD state, so print the SHA
+            $branch = git rev-parse --short HEAD
+            Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+        }
+        else {
+            # we're on an actual branch, so print it
+            Write-Host " ($branch)" -ForegroundColor "green" -NoNewline
+        }
+    } catch {
+        # we'll end up here if we're in a newly initiated git repo
+        Write-Host " (no branches yet)" -ForegroundColor "yellow" -NoNewline
+    }
+}
+
 function prompt {
 
     #Assign Windows Title Text

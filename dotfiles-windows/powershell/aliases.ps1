@@ -15,7 +15,7 @@ ${function:secs} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
 ${function:dact} = {deactivate}
-${function:test} = {python -m unittest discover -s @args}
+${function:test} = {python -m unittest discover -v -s @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
 ${function:rm -r} = {Remove-ItemSafely -Recusively @args}
