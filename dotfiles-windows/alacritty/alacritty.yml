@@ -12,7 +12,3 @@ shell:
   args:
     - --cd ~
 
-key_bindings:
-  # In vim + powershell ctrl+h is not working. Therefore it is mapped to ctrl+x 
-  # which is than used in vim as if it were ctrl+h.
-  - { key: H,         mods: Control,                    chars: "\x18"}
