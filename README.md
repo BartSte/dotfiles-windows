@@ -10,7 +10,7 @@ Please read the following sections to get started with this repository. The exam
 ## dotfiles (cross-platform)
 - No initialization needed. It only contains static dotfiles. Typically, you will not clone this repository by yourself, instead it will be cloned for you by the `dotfiles-linux` or the `dotfiles-windows` repositories, as they depend on it.
 
-## dotfiles-linux (Ubuntu and Debian)
+## dotfiles-linux (Arch linux)
 - To initialize the repository copy the following line to a bash shell:
 ```bash
 wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh && rm ./initialize.sh 
@@ -29,7 +29,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 ```
 - Complete the configuration file in `$HOME/dotfiles-windows/config.ps1`.
 - Run the script: `$HOME/dotfiles-windows/main.ps1`
-- All the subfolders of `$HOME\dotfiles-windows` are runned by calling the `main.ps1` file, e.g., `$HOME\dotfiles-windows\powershell\main.ps1`.
+- All the subfolders of `$HOME/dotfiles-windows` are runned by calling the `main.ps1` file, e.g., `$HOME/dotfiles-windows/powershell/main.ps1`.
 
 ## dotfiles-secret (cross-platform)
 - Similarly to the `dotfiles` repository, the `dotfiles-secret` repository is a collection of static files. These files contains sensitive information and should therefore not be publicly shared.
@@ -89,3 +89,12 @@ base push
 lin push
 ```
 You will always need the base layer `dotfiles`. On top of that you can add an OS specific repostory: `dotfiles-linux` or `dotfiles-windows`. Optionally, you can create a private repository that holds sensitive information. I called this repository `dotfiles-secret`. More information about these repositories is provided below.
+
+# References
+This repos are inspired on the following projects:
+
+- [dotfiles for windows](https://github.com/jayharris/dotfiles-windows)
+- [polybar-connection](https://github.com/BartSte/polybar-collection)
+- [polybar-bluetooth](https://github.com/msaitz/polybar-bluetooth)
+- [mutt-oauth2](https://github.com/muttmua/mutt/blob/master/contrib/mutt_oauth2.py)
+- [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/)

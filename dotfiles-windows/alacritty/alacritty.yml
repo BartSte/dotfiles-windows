@@ -1,14 +1,16 @@
 window:
   opacity: 1
+  
+bell:
+  duration: 0
+  command: None
 
 font:
-  size: 10
+  size: 11
 
 colors:
   transparent_background_colors: false
 
 shell:
-  program: C:/Windows/System32/wsl.exe
-  args:
-    - --cd ~
+  program: Arch.exe
 
