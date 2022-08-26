@@ -24,12 +24,12 @@ $('python3', ''),
 @('vlc', ''),
 @('nodejs', ''),
 @('jetbrainsmono', ''),
-@('vscode', ''),
 @('yarn', ''),
 @('ccls', ''),
 @('winscp', ''),
 @('alacritty', ''),
 @('ag', '')
+@('cmake', '')
 )
 
 $vscode_extensions=@(

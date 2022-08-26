@@ -11,13 +11,19 @@ Please read the following sections to get started with this repository. The exam
 - No initialization needed. It only contains static dotfiles. Typically, you will not clone this repository by yourself, instead it will be cloned for you by the `dotfiles-linux` or the `dotfiles-windows` repositories, as they depend on it.
 
 ## dotfiles-linux (Arch linux)
-- To initialize the repository copy the following line to a bash shell:
+
+### Installation
+- To initialize the repository run the following line in a bash shell:
 ```bash
-wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh && rm ./initialize.sh 
+wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh; rm ./initialize.sh 
 ```
 - Complete the environment variables in `~/dotfiles-linux/config.sh`.
 - Run the script: `~/dotfiles-linux/main.sh`
 - Optionally, if you run on an asus device, you can run `~\doffiles-linux\main_asus.sh`.
+
+### Features
+
+- TODO
 
 ## dotfiles-windows (Windows 10 & 11)
 - To initialize the repository copy the following line into powershell:
