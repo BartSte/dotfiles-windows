@@ -1,12 +1,13 @@
 $Env:PATH+=";$HOME\vimfiles\plugged\fzf\bin"
 $Env:PATH+=";$Env:ProgramFiles\CMake\bin" 
-$Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\"
-$Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"
-$Env:PATH+=";C:\Qt\5.15.2\msvc2019_64\bin"
-$Env:PATH+=";C:\Qt\5.15.2\msvc2019_64\include"
-$Env:PATH+=";C:\tools\opencv\build\x64\vc15\bin"
+$Env:PATH+=";C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\Hostx64\x64"
+$Env:PATH+=";C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include"
+$Env:PATH+=";C:\Qt\5.12.0\msvc2017_64\include"
+$Env:PATH+=";C:\Qt\5.12.0\msvc2017_64\bin"
+$Env:PATH+=";C:\opencv\build"
+$Env:PATH+=";C:\opencv\build\x64\vc15\bin"
 
-$Env:EDITOR = "C:\tools\vim\vim90\vim.exe"
+$Env:EDITOR = "C:/tools/vim/vim90/vim.exe"
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 
