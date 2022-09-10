@@ -2,10 +2,9 @@ $Env:PATH+=";$HOME\vimfiles\plugged\fzf\bin"
 $Env:PATH+=";$Env:ProgramFiles\CMake\bin" 
 $Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64"
 $Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\"
-$Env:PATH+=";C:\opencv\build\x64\vc15\bin"
+$Env:PATH+=";C:\tools\opencv\build\x64\vc15\bin"
 $Env:PATH+=";C:\Qt\5.15.2\msvc2019_64\bin"
-# $Env:PATH+=";C:\Qt\5.12.0\msvc2017_64\include"
-# $Env:PATH+=";C:\opencv\build"
+$Env:PATH+=";C:\Qt\5.15.2\msvc2019_64\include"
 
 $Env:EDITOR = "C:/tools/vim/vim90/vim.exe"
 
