@@ -16,6 +16,7 @@ Install-Module PSReadline -Scope CurrentUser -Force
 Install-Module PSFzf
 Install-Module Terminal-Icons
 Install-Module Recycle 
+symlink-dotfile-scripts
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 Install-Chocolately

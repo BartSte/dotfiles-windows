@@ -110,3 +110,11 @@ function Get-Module-Installation-Status {
   }
 }
 
+function symlink-dotfile-scripts {
+    $target = "$HOME\dotfiles\scripts\sorters\sort_variable_length.py"
+    $path = "$HOME\bin\sort_variable_length"
+
+    write-host $path
+    Remove-Item $path -ErrorAction SilentlyContinue
+    New-Item -ItemType SymbolicLink -Path $path -Target $target
+}
