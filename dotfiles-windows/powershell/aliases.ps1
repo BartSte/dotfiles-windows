@@ -8,9 +8,11 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
 ${function:sec} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$HOME @args }
-${function:bases} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME status --untracked-files=no}
-${function:wins} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME status --untracked-files=no }
-${function:secs} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$HOME status --untracked-files=no }
+${function:bases} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME status -s --untracked-files=no}
+${function:wins} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME status -s --untracked-files=no }
+${function:secs} = { git.exe --git-dir="$home\dotfiles-secret.git\" --work-tree=$HOME status -s --untracked-files=no }
+${function:dots} = {bases; wins; secs}
+${function:pushs} = {base push; win push; sec push}
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
