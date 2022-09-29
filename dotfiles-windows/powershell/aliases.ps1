@@ -13,6 +13,7 @@ ${function:wins} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree
 ${function:secs} = { git.exe --git-dir="$home\dotfiles-secret.git\" --work-tree=$HOME status -s --untracked-files=no }
 ${function:dots} = {bases; wins; secs}
 ${function:pushs} = {base push; win push; sec push}
+${function:pulls} = {base pull; win pull; sec pull}
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
