@@ -14,13 +14,13 @@
       q w e r t y u i o p
       a s d f g h j k l ;
  lsft z x c v b n m , . /
-       lalt space ralt rctl 
+       lalt space ralt cmp 
 )
 
 (defalias
     met_a (tap-hold-next-release 200 a lmet)
-    alt_s (tap-hold-next-release 200 s lalt)
-    sft_d (tap-hold-next-release 200 d lsft)
+    alt_r (tap-hold-next-release 200 r lalt)
+    sft_s (tap-hold-next-release 200 s lsft)
     ctl_t (tap-hold-next-release 200 t lctl)
 
     ctl_n (tap-hold-next-release 200 n rctl)
@@ -30,13 +30,13 @@
 
     nav_tab (tap-hold-next-release 200 tab (layer-toggle navigation))
     sym_space (tap-hold-next-release 200 space (layer-toggle symbols))
-    sym_bksp (tap-hold-next-release 200 backspace (layer-toggle symbols))
+    sym_bksp (tap-hold-next-release 200 backspace (layer-toggle symbols2))
 )
 
 (deflayer homerowmods
-    q w f r b y u i o p
-    @met_a @alt_s @sft_d @ctl_t g m @ctl_n @sft_e @alt_l @met_;
-    z x c v j j k h , . /
+    q w f j b y u i o p
+    @met_a @alt_r @sft_s @ctl_t g m @ctl_n @sft_e @alt_l @met_;
+    z x c d v v k h , . /
     @nav_tab @sym_space @sym_bksp return 
 )
 
@@ -48,8 +48,16 @@
 )
 
 (deflayer symbols
-  ! @ #  $ %    * 7 8 9 +
-  { [ \( ' `    \ 4 5 6 -
-  } ] \) " ~  ^ & 1 2 3 _
-         = \_       0 _
+     !  @  #  $  %  *  7  8  9  +
+     {  [  \( '  `  \  4  5  6  -
+  }  ]  \) "  ~  &  |  1  2  3  _
+        =        \_       0  _
 )
+
+(deflayer symbols2
+     !  @  #  $  %  *  7  8  9  +
+     {  [  \( '  `  \  4  5  6  -
+  }  ]  \) "  ~  ^  |  1  2  3  _
+        =        \_       0  _
+)
+

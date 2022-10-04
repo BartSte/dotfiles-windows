@@ -4,6 +4,7 @@ $Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\To
 $Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\"
 $Env:PATH+=";C:\Users\BartSteensma\AppData\Local\Programs\MiKTeX\miktex\bin\x64"
 $Env:PATH+=";C:\Program Files\VideoLAN\VLC"
+$Env:PATH+=";C:\tools\neovim\nvim-win64\bin"
 
 $Env:EDITOR = "C:/tools/vim/vim90/vim.exe"
 
