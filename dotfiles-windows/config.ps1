@@ -9,7 +9,7 @@ $env_paths="$HOME\bin;"
 # @(program, args)
 $install = @(
 @('curl', ''),
-@('vim', ''),
+@('neovim', '--pre'),
 @('inkscape', ''),
 @('firefox', ''),
 @('slack', ''),

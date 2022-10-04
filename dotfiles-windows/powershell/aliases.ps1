@@ -5,8 +5,8 @@ ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
-${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe }
-${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe }
+${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
+${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe @args }
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
 ${function:sec} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$HOME @args }

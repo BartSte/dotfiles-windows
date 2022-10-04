@@ -1,12 +1,14 @@
-$Env:PATH+=";$HOME\vimfiles\plugged\fzf\bin"
-$Env:PATH+=";$Env:ProgramFiles\CMake\bin" 
-$Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64"
-$Env:PATH+=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\"
-$Env:PATH+=";C:\Users\BartSteensma\AppData\Local\Programs\MiKTeX\miktex\bin\x64"
-$Env:PATH+=";C:\Program Files\VideoLAN\VLC"
-$Env:PATH+=";C:\tools\neovim\nvim-win64\bin"
+$Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","Machine")  
+$Env:PATH+=";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+$Env:PATH+=";$Env:LOCALAPPDATA/nvim-data/plugged/fzf/bin"
+$Env:PATH+=";$Env:ProgramFiles/CMake/bin" 
+$Env:PATH+=";C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64"
+$Env:PATH+=";C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/"
+$Env:PATH+=";C:/Users/BartSteensma/AppData/Local/Programs/MiKTeX/miktex/bin/x64"
+$Env:PATH+=";C:/Program Files/VideoLAN/VLC"
+$Env:PATH+=";C:/tools/neovim/nvim-win64/bin"
 
-$Env:EDITOR = "C:/tools/vim/vim90/vim.exe"
+$Env:EDITOR = "C:/tools/neovim/nvim-win64/bin/nvim.exe"
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 
