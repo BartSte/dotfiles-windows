@@ -13,7 +13,7 @@ ${function:sec} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$
 ${function:bases} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME status -s --untracked-files=no}
 ${function:wins} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME status -s --untracked-files=no }
 ${function:secs} = { git.exe --git-dir="$home\dotfiles-secret.git\" --work-tree=$HOME status -s --untracked-files=no }
-${function:dots} = {bases; wins; secs}
+${function:dots} = {Write-Host 'Base:'; bases; Write-Host 'Win:'; wins; Write-Host 'Sec:' secs}
 ${function:pushs} = {base push; win push; sec push}
 ${function:pulls} = {base pull; win pull; sec pull}
 
