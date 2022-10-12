@@ -5,6 +5,7 @@ $git_settings=@{user='jsmith'; email='name@domain.com'}
 $wall_paper = "dotfiles\static\wallpaper_fleet_cleaner.png"
 
 $env_paths="$HOME\bin;"
+$env_paths+="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64;"
 
 # @(program, args)
 $install = @(

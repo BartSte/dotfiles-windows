@@ -2,9 +2,7 @@ $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","Machine")
 $Env:PATH+=";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 $Env:PATH+=";$Env:LOCALAPPDATA/nvim-data/plugged/fzf/bin"
 $Env:PATH+=";$Env:ProgramFiles/CMake/bin" 
-$Env:PATH+=";C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64"
-$Env:PATH+=";C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/"
-$Env:PATH+=";C:/Users/BartSteensma/AppData/Local/Programs/MiKTeX/miktex/bin/x64"
+$Env:PATH+=";$Env:LOCALAPPDATA/MiKTeX/miktex/bin/x64"
 $Env:PATH+=";C:/Program Files/VideoLAN/VLC"
 $Env:PATH+=";C:/tools/neovim/nvim-win64/bin"
 
