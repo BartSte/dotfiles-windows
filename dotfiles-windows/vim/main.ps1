@@ -3,6 +3,5 @@
 
 Admin-Check
 symbolic-link-configuration 
-install_vim_plug_nvim
-# install_vim_plug
+install_packer
 enable_python

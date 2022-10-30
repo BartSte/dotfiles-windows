@@ -25,7 +25,7 @@
 
     cn (tap-hold-next-release 200 n rctl)
     se (tap-hold-next-release 200 e rsft)
-    al (tap-hold-next-release 200 l lalt)
+    ai (tap-hold-next-release 200 i lalt)
     mo (tap-hold-next-release 200 o rmet)
 
     mt (around rmet 1)
@@ -43,8 +43,8 @@
 )
 
 (deflayer homerowmods
-    q   w   f   p   b   j   u   i   y   ;
-    @ma @ar @ss @ct g   m   @cn @se @al @mo
+    q   w   f   p   b   j   l   u   y   ;
+    @ma @ar @ss @ct g   m   @cn @se @ai @mo
 z   x   c   d   v   v   k   h   ,   .   /
     lmet @nav_tab @sym_space @sym_bksp @nav_ret 
 )
@@ -65,7 +65,7 @@ z   x   c   d   v   &  |  1  2  3  _
 
 (deflayer symbols2
      !  @  #  $  %  j   u   i   y   ;
-     {  [  \( '  `  m   @cn @se @al @mo
+     {  [  \( '  `  m   @cn @se @ai @mo
   }  ]  \) "  ~  ^  k   h   ,   .   /
            _ @eq \_ @sym_bksp @nav_ret
 )
