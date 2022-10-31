@@ -1,7 +1,8 @@
 . ~/dotfiles-windows/config.ps1
 . ~/dotfiles-windows/vim/helpers.ps1
 
-Admin-Check
 symbolic-link-configuration 
-install_packer
+Write-Host "########################################################"
+Write-Host "Run install_packer as non-admin manually to avoid issues"
+Write-Host "########################################################"
 enable_python

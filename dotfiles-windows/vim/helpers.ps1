@@ -21,7 +21,7 @@ function symbolic-link-configuration() {
 
 function _symlink($path, $target) {
     write-host $path
-    Remove-Item $path -ErrorAction SilentlyContinue
+    Remove-Item $path -ErrorAction SilentlyContinue -Recurse
     New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
 
@@ -30,5 +30,6 @@ function enable_python() {
 }
 
 function install_packer {
+    rm "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim" -Recurse -Force
     git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 }
