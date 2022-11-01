@@ -2,8 +2,6 @@ $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","Machine")
 $Env:PATH+=";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 $Env:PATH+=";$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin"
 $Env:PATH+=";C:\Program Files\VideoLAN\VLC"
-$env:GIT_TEST_DEBUG_UNSAFE_DIRECTORIES=$true
-$env:git_test_debug_unsafe_directories=$true
 
 $Env:EDITOR = "nvim.exe"
 
