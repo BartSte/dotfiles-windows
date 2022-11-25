@@ -1,7 +1,7 @@
 $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
 $Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
-$Env:PATH+=";$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin"
-$Env:PATH+=";C:\Program Files\VideoLAN\VLC"
+$Env:PATH+="$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin;"
+$Env:PATH+="C:\Program Files\VideoLAN\VLC;"
 
 $Env:EDITOR = "nvim.exe"
 
