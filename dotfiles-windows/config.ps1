@@ -18,6 +18,7 @@ $install = @(
 @('powertoys', ''),
 @('teamvier', ''),
 @('python3', '--version=3.6.8 --side-by-side'),
+@('python3', '--version=3.10.8 --side-by-side'),
 $('python3', ''),
 @('mingw', ''),
 @('innosetup', ''),
@@ -27,11 +28,11 @@ $('python3', ''),
 @('nodejs', ''),
 @('jetbrainsmono', ''),
 @('yarn', ''),
-@('ccls', ''),
 @('winscp', ''),
 @('alacritty', ''),
 @('ag', '')
 @('cmake', '')
+@('powershell-core', '')
 )
 
 $vscode_extensions=@(
