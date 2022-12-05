@@ -12,7 +12,6 @@ $install = @(
 @('curl', ''),
 @('neovim', '--pre'),
 @('inkscape', ''),
-@('firefox', ''),
 @('slack', ''),
 @('qtcreator', ''),
 @('powertoys', ''),
@@ -32,7 +31,7 @@ $('python3', ''),
 @('alacritty', ''),
 @('ag', '')
 @('cmake', '')
-@('powershell-core', '')
+@('qutebrowser', '')
 )
 
 $vscode_extensions=@(

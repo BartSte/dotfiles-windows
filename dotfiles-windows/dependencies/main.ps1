@@ -17,6 +17,7 @@ Install-Module PSFzf
 Install-Module Terminal-Icons
 Install-Module Recycle 
 symlink-dotfile-scripts
+New-SymbolicLink-QuteBrowser 
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 Install-Chocolately

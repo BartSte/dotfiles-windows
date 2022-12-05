@@ -118,3 +118,12 @@ function symlink-dotfile-scripts {
     Remove-Item $path -ErrorAction SilentlyContinue
     New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
+
+function New-SymbolicLink-QuteBrowser {
+    $target = "$HOME\dotfiles-windows\qutebrowser\config.py"
+    $path = "$Env:APPDATA\qutebrowser\config\config.py"
+
+    write-host $path
+    Remove-Item $path -ErrorAction SilentlyContinue
+    New-Item -ItemType SymbolicLink -Path $path -Target $target
+}
