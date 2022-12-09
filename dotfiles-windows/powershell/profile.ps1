@@ -1,7 +1,7 @@
-# Push-Location (Split-Path -parent $profile) 
-# cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools"
-# Launch-VsDevShell.ps1
-# Pop-Location
+Push-Location (Split-Path -parent $profile) 
+Set-Location "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools"
+Launch-VsDevShell.ps1
+Pop-Location
 
 Import-Module Terminal-Icons
 

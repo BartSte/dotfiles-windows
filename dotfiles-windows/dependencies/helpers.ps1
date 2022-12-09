@@ -120,7 +120,7 @@ function symlink-dotfile-scripts {
 }
 
 function New-SymbolicLink-QuteBrowser {
-    $target = "$HOME\dotfiles-windows\qutebrowser\config.py"
+    $target = "$HOME\dotfiles\qutebrowser\config.py"
     $path = "$Env:APPDATA\qutebrowser\config\config.py"
 
     write-host $path
