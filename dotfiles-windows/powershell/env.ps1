@@ -7,8 +7,8 @@ $Env:EDITOR = "nvim.exe"
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 
-$Env:FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --max-depth 3 --ignore-file $HOME\.ignore --type f"
-$Env:FZF_ALT_C_COMMAND = "fd --hidden --no-ignore-vcs --max-depth 4 --ignore-file $HOME\.ignore -t d"
+$Env:FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --max-depth 5 --ignore-file $HOME\.ignore --type f"
+$Env:FZF_ALT_C_COMMAND = "fd --hidden --no-ignore-vcs --max-depth 5 --ignore-file $HOME\.ignore -t d"
 
 $FZF_CTRL_T_OPTS_FILES='bat --theme=gruvbox-dark --style=numbers --color=always --line-range :500 {}'
 $FZF_CTRL_T_OPTS_DIR='dir /O-G /ON {} | bat --line-range 5:500'
