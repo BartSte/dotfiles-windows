@@ -32,6 +32,7 @@ $('python3', ''),
 @('ag', '')
 @('cmake', '')
 @('qutebrowser', '')
+@('wget', '')
 )
 
 $vscode_extensions=@(
