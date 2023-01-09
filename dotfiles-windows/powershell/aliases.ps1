@@ -19,7 +19,7 @@ ${function:pulls} = {base pull; win pull; sec pull}
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
-${function:dact} = {deactivate}
+${function:py36} = {C:/path/to/python.exe}
 ${function:test} = {python -m unittest discover -v -s @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
