@@ -1,3 +1,5 @@
+. C:\Users\BartSteensma\dotfiles-secret\secret-config.ps1
+
 $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
 $Env:PATH+=";"
 $Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
@@ -7,6 +9,7 @@ $Env:PATH+=";"
 $Env:PATH+="C:\Program Files\VideoLAN\VLC"
 
 $Env:EDITOR = "nvim.exe"
+$Env:HOME = $Env:USERPROFILE
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 
