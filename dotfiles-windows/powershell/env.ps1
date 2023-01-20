@@ -9,7 +9,6 @@ $Env:PATH+=";"
 $Env:PATH+="C:\Program Files\VideoLAN\VLC"
 
 $Env:EDITOR = "nvim.exe"
-$Env:HOME = $Env:USERPROFILE
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 
