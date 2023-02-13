@@ -1,6 +1,6 @@
 window:
   opacity: 1
-  
+
 bell:
   duration: 0
   command: None

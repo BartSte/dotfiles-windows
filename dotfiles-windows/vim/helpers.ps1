@@ -16,6 +16,10 @@ function symbolic-link-configuration() {
     $target = "${HOME}\dotfiles\nvim\ftplugin"
     $path = "${env:LOCALAPPDATA}\nvim\ftplugin"
     _symlink $path $target
+
+    $target = "${HOME}\dotfiles\nvim\after"
+    $path = "${env:LOCALAPPDATA}\nvim\after"
+    _symlink $path $target
 }
 
 function _symlink($path, $target) {
