@@ -33,6 +33,8 @@ $('python3', ''),
 @('cmake', '')
 @('qutebrowser', '')
 @('wget', '')
+@('grep', '')
+@('strawberryperl', '')
 )
 
 $vscode_extensions=@(
