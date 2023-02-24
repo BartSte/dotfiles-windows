@@ -64,52 +64,52 @@ function Prepend-EnvPathIfExists([String]$path) { if (Test-Path $path) { Prepend
 function Append-EnvPath([String]$path) { $env:PATH = $env:PATH + ";$path" }
 function Append-EnvPathIfExists([String]$path) { if (Test-Path $path) { Append-EnvPath $path } }
 
-function Write-BranchName () {
-    try {
-        $branch = git rev-parse --abbrev-ref HEAD
+# function Write-BranchName () {
+#     try {
+#         $branch = git rev-parse --abbrev-ref HEAD
 
-        if ($branch -eq "HEAD") {
-            # we're probably in detached HEAD state, so print the SHA
-            $branch = git rev-parse --short HEAD
-            Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
-        }
-        else {
-            # we're on an actual branch, so print it
-            Write-Host " ($branch)" -ForegroundColor "green" -NoNewline
-        }
-    } catch {
-        # we'll end up here if we're in a newly initiated git repo
-        Write-Host " (no branches yet)" -ForegroundColor "yellow" -NoNewline
-    }
-}
+#         if ($branch -eq "HEAD") {
+#             # we're probably in detached HEAD state, so print the SHA
+#             $branch = git rev-parse --short HEAD
+#             Write-Host " ($branch)" -ForegroundColor "red" -NoNewline
+#         }
+#         else {
+#             # we're on an actual branch, so print it
+#             Write-Host " ($branch)" -ForegroundColor "green" -NoNewline
+#         }
+#     } catch {
+#         # we'll end up here if we're in a newly initiated git repo
+#         Write-Host " (no branches yet)" -ForegroundColor "yellow" -NoNewline
+#     }
+# }
 
-function prompt {
+#function prompt {
 
-    #Assign Windows Title Text
-    $host.ui.RawUI.WindowTitle = "Current Folder: $pwd"
+#    #Assign Windows Title Text
+#    $host.ui.RawUI.WindowTitle = "Current Folder: $pwd"
 
-    #Configure current user, current folder and date outputs
-    $CmdPromptCurrentFolder = Split-Path -Path $pwd -Leaf
+#    #Configure current user, current folder and date outputs
+#    $CmdPromptCurrentFolder = Split-Path -Path $pwd -Leaf
 
-    # Test for Admin / Elevated
-    $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+#    # Test for Admin / Elevated
+#    $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 
-    #Decorate the CMD Prompt
-    Write-host "PS" -NoNewline -ForegroundColor White -BackgroundColor DarkRed
-    Write-host " " -NoNewline 
-    Write-host ($(if ($IsAdmin) { 'Admin' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
-    Write-host ($(if ($IsAdmin) { ' ' })) -NoNewline
+#    #Decorate the CMD Prompt
+#    Write-host "PS" -NoNewline -ForegroundColor White -BackgroundColor DarkRed
+#    Write-host " " -NoNewline 
+#    Write-host ($(if ($IsAdmin) { 'Admin' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
+#    Write-host ($(if ($IsAdmin) { ' ' })) -NoNewline
 
-    If ($CmdPromptCurrentFolder -like "*:*") {
-        Write-Host "$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
-    }
-    else {
-        Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
-    }
+#    If ($CmdPromptCurrentFolder -like "*:*") {
+#        Write-Host "$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
+#    }
+#    else {
+#        Write-Host ".\$CmdPromptCurrentFolder"  -NoNewline -ForegroundColor Cyan
+#    }
 
-    if (Test-Path .git) {
-        Write-BranchName
-    }
+#    if (Test-Path .git) {
+#        Write-BranchName
+#    }
 
-    return "> "
-} 
+#    return "> "
+#} 
