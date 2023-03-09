@@ -1,5 +1,6 @@
 *.swp
 *.pyc
+.luarc.json
 dotfiles.git\
 dotfiles-linux.git\
 dotfiles-secret.git\
