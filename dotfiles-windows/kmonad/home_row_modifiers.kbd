@@ -28,43 +28,44 @@
     ai (tap-hold-next-release 200 i lalt)
     mo (tap-hold-next-release 200 o rmet)
 
-    mt (around rmet 1)
-    mf (around rmet 2)
-    ms (around rmet 3)
-    mh (around rmet 4)
-    m, (around rmet 5)
-    m. (around rmet 6)
+    m1 (around rmet 1)
+    m2 (around rmet 2)
+    m3 (around rmet 3)
+    m4 (around rmet 4)
+    m5 (around rmet 5)
+    m6 (around rmet 6)
+    m7 (around rmet 7)
+    m8 (around rmet 8)
     eq (tap-macro space = space)
 
     nav_tab (tap-hold-next-release 200 tab (layer-toggle navigation_right))
     sym_space (tap-hold-next-release 200 space (layer-toggle symbols))
     nav_ret (tap-hold-next-release 200 return (layer-toggle navigation_left))
 )
-
 (deflayer homerowmods
     q   w   f   p   b   j   l   u   y   ;
     @ma @ar @ss @ct g   m   @cn @se @ai @mo
-z   x   c   d   v   v   k   h   ,   .   /
-    esc @nav_tab @sym_space @nav_ret _
+    z   x   c   d   v   v   k   h   ,   .   /
+      esc @nav_tab @sym_space @nav_ret del
 )
 
 (deflayer navigation_right
-   _   _   @mf _   _ Home     PageDown    PageUp  End      _ 
-   @ma @ar @ss @ct _ KeyLeft  KeyDown     KeyUp   KeyRight _
- _ _   _   _   _   _ _        @mh         @m,     @m.      _
+    _    _    _    _    _  Home     PageDown  PageUp  End       _  
+    @ma  @ar  @ss  @ct  _  KeyLeft  KeyDown   KeyUp   KeyRight  _  
+    _    _    _    _    _  _        _         _       _         _  _
          _ _ bspc _ _
 )
 
 (deflayer navigation_left
-   _ _ @mf _  _ _ _ _ _ _ 
-   _ _ @ms @mt _ _ _ _ _ _
- _ _ _ _ _ _ _ @mh @m, @m. _
+    @m7  @m8  @m2  _    _  _  _  _  _  _  
+    @m6  _    @m3  @m1  _  _  _  _  _  _  
+    _    @m5  @m4  _    _  _  _  _  _  _  _
          _ _ _ _ _
 )
 
 (deflayer symbols
      !  @  #  $  %  *  7  8  9  +
      {  [  \( '  `  \  4  5  6  -
-  }  ]  \) "  ~  &  |  1  2  3  _
+  }  ]  \) "  ~  _  |  1  2  3  &
               _ @eq \_ 0  _
 )
