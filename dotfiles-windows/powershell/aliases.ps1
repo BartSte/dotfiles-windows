@@ -5,7 +5,7 @@ ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
-${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
+${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args || C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
 ${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe @args }
 
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
