@@ -5,7 +5,6 @@ ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
-${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args || C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
 ${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe @args }
 
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
@@ -23,6 +22,15 @@ ${function:py36} = {C:/path/to/python.exe}
 ${function:test} = {python -m pytest @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
+
+${function:vim} = { 
+    if (Test-Path Session.vim) {
+        C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args 
+    }
+    else {
+        C:\tools\neovim\nvim-win64\bin\nvim.exe @args 
+    }
+}
 
 # Missing Bash aliases
 Set-Alias time Measure-Command
