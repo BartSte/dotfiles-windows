@@ -23,12 +23,13 @@ ${function:test} = {python -m pytest @args}
 
 ${function:rm} = {Remove-ItemSafely @args}
 
-${function:vim} = { 
+${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
+${function:vims} = { 
     if (Test-Path Session.vim) {
         C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args 
     }
     else {
-        C:\tools\neovim\nvim-win64\bin\nvim.exe @args 
+        Write-Host "No sesson found."
     }
 }
 
