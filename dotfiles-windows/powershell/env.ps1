@@ -1,5 +1,3 @@
-. C:\Users\BartSteensma\dotfiles-secret\secret-config.ps1
-
 $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
 $Env:PATH+=";"
 $Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
