@@ -1,4 +1,5 @@
 $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
+
 $Env:PATH+=";"
 $Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
 $Env:PATH+=";"

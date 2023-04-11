@@ -1,6 +1,6 @@
 if (-Not $Env:VIM) {
     Import-Module Terminal-Icons
-    }
+}
 
 Invoke-Expression (oh-my-posh --init --shell pwsh --config $HOME\dotfiles\posh\gruvbox.omp.json)
 
@@ -11,5 +11,3 @@ Where-Object { Test-Path "$_.ps1" } |
 ForEach-Object -process { Invoke-Expression ". .\$_.ps1" }
 
 Pop-Location
-
-Write-Host -NoNewLine "`e[6 q]"
