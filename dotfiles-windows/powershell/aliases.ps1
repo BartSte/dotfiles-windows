@@ -9,12 +9,13 @@ ${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe @args }
 
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
-${function:sec} = { git.exe --git-dir="$HOME\dotfiles-secret.git\" --work-tree=$HOME @args }
 ${function:bases} = { base status -s --untracked-files=no}
 ${function:wins} = { win status -s --untracked-files=no }
-${function:secs} = { sec status -s --untracked-files=no }
-${function:dots} = {Write-Host 'Base:'; bases; Write-Host 'Win:'; wins; Write-Host 'Sec:'; secs;}
+${function:dots} = {Write-Host 'Base:'; bases; Write-Host 'Win:'; wins}
 ${function:dot} = {base @args; win @args; sec @args }
+${function:dotc} = {base commit -am '""'; win commit -am '""'}
+${function:dotp} = {base push; win push}
+${function:dotcp} = {dotc; dotp}
 
 ${function:ex} = {explorer.exe .}
 ${function:act} = {.venv/Scripts/Activate.ps1}
