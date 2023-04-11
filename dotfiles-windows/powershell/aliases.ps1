@@ -12,9 +12,9 @@ ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=
 ${function:bases} = { base status -s --untracked-files=no}
 ${function:wins} = { win status -s --untracked-files=no }
 ${function:dots} = {Write-Host 'Base:'; bases; Write-Host 'Win:'; wins}
-${function:dot} = {base @args; win @args; sec @args }
-${function:dotc} = {base commit -am '""'; win commit -am '""'}
-${function:dotp} = {base push; win push}
+${function:dot} = {base @args; win @args}
+${function:dotc} = {dot commit -am '""'}
+${function:dotp} = {dot push}
 ${function:dotcp} = {dotc; dotp}
 
 ${function:ex} = {explorer.exe .}
