@@ -6,7 +6,7 @@ bell:
   command: None
 
 font:
-  size: 11
+  size: 9
 
 colors:
   transparent_background_colors: false
