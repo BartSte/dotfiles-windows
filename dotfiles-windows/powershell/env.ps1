@@ -7,6 +7,7 @@ $Env:PATH+="$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin"
 $Env:PATH+=";"
 $Env:PATH+="C:\Program Files\VideoLAN\VLC"
 
+$Env:VENVS = "$Env:USERPROFILE\venvs"
 $Env:EDITOR = "nvim.exe"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
