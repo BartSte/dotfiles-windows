@@ -35,6 +35,7 @@ $('python3', ''),
 @('wget', '')
 @('grep', '')
 @('strawberryperl', '')
+@('super-productivity', '')
 )
 
 $vscode_extensions=@(
