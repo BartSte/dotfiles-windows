@@ -12,6 +12,7 @@ $Env:EDITOR = "nvim.exe"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
+$Env:PYTHONBREAKPOINT="ipdb.set_trace"
 
 $Env:FZF_CTRL_T_COMMAND="fd --hidden --no-ignore-vcs --max-depth 5 --ignore-file $HOME\.ignore --type f"
 $Env:FZF_ALT_C_COMMAND = "fd --hidden --no-ignore-vcs --max-depth 5 --ignore-file $HOME\.ignore -t d"
