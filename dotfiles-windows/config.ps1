@@ -36,6 +36,7 @@ $('python3', ''),
 @('grep', '')
 @('strawberryperl', '')
 @('super-productivity', '')
+@('jetbrainsmononf', '--pre')
 )
 
 $vscode_extensions=@(

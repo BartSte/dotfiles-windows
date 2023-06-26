@@ -5,12 +5,28 @@ This readme is relevant for the following dotfiles repositories:
 - BartSte/dotfiles
 - BartSte/dotfiles-linux
 - BartSte/doffiles-windows
-- BartSte/doffiles-secret (private repo)
 
-Please read the following sections to get started with this repository. The examples below are writting in bash and powershell. 
+Please read the following sections to get started with this repository. The
+examples below are writing in bash and powershell. 
 
 ## Dotfiles (cross-platform)
-- No initialization needed. It only contains static dotfiles. Typically, you will not clone this repository by yourself, instead it will be cloned for you by the `dotfiles-linux` or the `dotfiles-windows` repositories, as they depend on it.
+- No initialization needed. It only contains static dotfiles. Typically, you
+will not clone this repository by yourself, instead it will be cloned for you
+by the `dotfiles-linux` or the `dotfiles-windows` repositories, as they depend
+on it.
+
+### Neovim (`dotfiles/nvim`) Some directories of the neovim configuration could
+use some explanation:
+- `dotfiles/nvim/lua`: 
+    - `helpers`: helper functions that are used in the other lua files.
+    - `plugins`: plugins that are loaded by lazy.nvim
+    - `config`: plugin configuration files.
+- `dotfiles/nvim/vim`: plugin configuration files in vimscript.
+- `dotfiles/nvim/plugin`: non-plugin configuration files that must be sourced
+before `after/plugin`.
+- `dotfiles/nvim/after/plugin`: non-plugin configuration files.
+- `dotfiles/nvim/after/ftplugin`: configuration files that are loaded after the
+filetype is detected.
 
 ## Dotfiles-linux (Arch linux)
 
@@ -19,13 +35,9 @@ Please read the following sections to get started with this repository. The exam
 ```bash
 wget https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles-linux/initialize.sh && bash ./initialize.sh; rm ./initialize.sh 
 ```
-- Complete the environment variables in `~/dotfiles-linux/config.sh`.
+- Complete the environment variables in `~/.dotfiles_config.sh`.
 - Run the script: `~/dotfiles-linux/main.sh`
 - Optionally, if you run on an asus device, you can run `~\doffiles-linux\main_asus.sh`.
-
-### Features
-
-- TODO
 
 ## Dotfiles-windows (Windows 10 & 11)
 - To initialize the repository copy the following line into powershell:
@@ -37,17 +49,15 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 ```
 - Complete the configuration file in `$HOME/dotfiles-windows/config.ps1`.
 - Run the script: `$HOME/dotfiles-windows/main.ps1`
-- All the subfolders of `$HOME/dotfiles-windows` are runned by calling the `main.ps1` file, e.g., `$HOME/dotfiles-windows/powershell/main.ps1`.
-
-## Dotfiles-secret (cross-platform)
-- Similarly to the `dotfiles` repository, the `dotfiles-secret` repository is a collection of static files. These files contains sensitive information and should therefore not be publicly shared.
+- All the subfolders of `$HOME/dotfiles-windows` are executed by calling the
+`main.ps1` file, e.g., `$HOME/dotfiles-windows/powershell/main.ps1`.
 
 # Background
 
 ## Bare repository
 The text below was inspired on the following article of [atlassian](https://www.atlassian.com/git/tutorials/dotfiles). This article will also explain the difference between a normal repository and a bare repository.
 
-Clone the project (dotfiles, dotfiles-linux, dotfiles-secret or dotfiles-windows) into a bare repository. I will call the bare repository: `dotfiles.git`:
+Clone the project (dotfiles, dotfiles-linux, or dotfiles-windows) into a bare repository. I will call the bare repository: `dotfiles.git`:
 ```powershell
 git clone --bare <git-repo-url> $HOME/dotfiles.git
 ```
@@ -87,7 +97,7 @@ base commit -m "Add README.md"
 base push
 ```
 ## Multiple layers
-Using a bare repository allows you to working on multiple repositories in the same folder. For dotfiles this is typically the `$HOME` folder. As such, the repositories `dotfiles` `dotfiles-linux`, `dotfiles-secret` (private) and `dotfiles-windows` should all be created in a bare repository in the `$HOME` folder. I call them `<repo-name>.git`. Here, the repository `dotfiles.git` can be interpreted as the base layer, containing dotfiles that are cross-platform. On top of that, a linux layer can be added, i.e., the `dotfiles-linux.git` bare repository. As an example, the following code adds a file `.foo` to the `dotfiles` repository (using the alias `base`), and a file `.bar` to the `dotfiles-linux` repostory (using the alias `lin`):
+Using a bare repository allows you to working on multiple repositories in the same folder. For dotfiles this is typically the `$HOME` folder. As such, the repositories `dotfiles` `dotfiles-linux`, and `dotfiles-windows` should all be created in a bare repository in the `$HOME` folder. I call them `<repo-name>.git`. Here, the repository `dotfiles.git` can be interpreted as the base layer, containing dotfiles that are cross-platform. On top of that, a linux layer can be added, i.e., the `dotfiles-linux.git` bare repository. As an example, the following code adds a file `.foo` to the `dotfiles` repository (using the alias `base`), and a file `.bar` to the `dotfiles-linux` repostory (using the alias `lin`):
 ```bash
 base add .foo
 lin add .bar
@@ -96,7 +106,7 @@ lin commit -m "Add .bar"
 base push
 lin push
 ```
-You will always need the base layer `dotfiles`. On top of that you can add an OS specific repostory: `dotfiles-linux` or `dotfiles-windows`. Optionally, you can create a private repository that holds sensitive information. I called this repository `dotfiles-secret`. More information about these repositories is provided below.
+You will always need the base layer `dotfiles`. On top of that you can add an OS specific repostory: `dotfiles-linux` or `dotfiles-windows`.
 
 # References
 This repos are inspired on the following projects:

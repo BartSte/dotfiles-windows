@@ -1,4 +1,4 @@
-
+${function:dev} = {& "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\Launch-VsDevShell.ps1"}
 
 ${function:~} = { Set-Location ~ }
 ${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation

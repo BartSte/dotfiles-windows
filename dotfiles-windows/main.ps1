@@ -9,6 +9,7 @@ Write-Host "Please don't use your device while the script is running." -Foregrou
 . ~/dotfiles-windows/alacritty/main.ps1
 . ~/dotfiles-windows/powertoys/main.ps1
 . ~/dotfiles-windows/kmonad/main.ps1
+. ~/dotfiles-windows/capslock/main.ps1
 # . ~/dotfiles-windows/vscode/main.ps1
 
 Write-Host "The process has finished." -ForegroundColor "Yellow";

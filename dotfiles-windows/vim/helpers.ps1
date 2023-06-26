@@ -1,20 +1,20 @@
 function symbolic-link-configuration() {
     mkdir "${env:LOCALAPPDATA}\nvim" -ErrorAction SilentlyContinue   
 
-    $target = "${HOME}\dotfiles\nvim\init.vim"
-    $path = "${env:LOCALAPPDATA}\nvim\init.vim" 
-    _symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\ginit.vim"
-    $path = "${env:LOCALAPPDATA}\nvim\ginit.vim" 
+    $target = "${HOME}\dotfiles\nvim\init.lua"
+    $path = "${env:LOCALAPPDATA}\nvim\init.lua" 
     _symlink $path $target
 
     $target = "${HOME}\dotfiles\nvim\lua"
     $path = "${env:LOCALAPPDATA}\nvim\lua"
     _symlink $path $target
 
-    $target = "${HOME}\dotfiles\nvim\ftplugin"
-    $path = "${env:LOCALAPPDATA}\nvim\ftplugin"
+    $target = "${HOME}\dotfiles\nvim\plugin"
+    $path = "${env:LOCALAPPDATA}\nvim\plugin"
+    _symlink $path $target
+
+    $target = "${HOME}\dotfiles\nvim\vim"
+    $path = "${env:LOCALAPPDATA}\nvim\vim"
     _symlink $path $target
 
     $target = "${HOME}\dotfiles\nvim\after"
