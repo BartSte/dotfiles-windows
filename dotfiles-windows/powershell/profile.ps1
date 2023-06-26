@@ -1,8 +1,3 @@
-if (-Not $Env:VIM) {
-    # Not needed?
-    # Import-Module Terminal-Icons
-}
-
 Invoke-Expression (oh-my-posh --init --shell pwsh --config $HOME\dotfiles\posh\gruvbox.omp.json)
 
 Push-Location (Split-Path -parent $profile) 

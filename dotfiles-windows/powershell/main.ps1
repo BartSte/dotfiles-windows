@@ -1,3 +1,5 @@
+Install-Module -Name Recycle
+
 $profileDir = Split-Path -parent $profile
 New-Item $profileDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 
