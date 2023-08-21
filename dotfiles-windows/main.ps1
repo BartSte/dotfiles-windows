@@ -2,16 +2,18 @@ Write-Host "Welcome to Dotfiles for Microsoft Windows 11" -ForegroundColor "Yell
 Write-Host "Please don't use your device while the script is running." -ForegroundColor "Yellow";
 
 # Run other scripts here
-. ~/dotfiles-windows/powershell/main.ps1
-. ~/dotfiles-windows/dependencies/main.ps1
-. ~/dotfiles-windows/windows/main.ps1
-. ~/dotfiles-windows/vim/main.ps1
-. ~/dotfiles-windows/alacritty/main.ps1
-. ~/dotfiles-windows/powertoys/main.ps1
-. ~/dotfiles-windows/kmonad/main.ps1
-. ~/dotfiles-windows/capslock/main.ps1
-. ~/dotfiles-windows/qutebrowser/main.ps1
-# . ~/dotfiles-windows/vscode/main.ps1
+$dir = "$HOME/dotfiles-windows"
+. "$dir/powershell/main.ps1"
+. "$dir/dependencies/main.ps1"
+. "$dir/windows/main.ps1"
+. "$dir/vim/main.ps1"
+. "$dir/alacritty/main.ps1"
+. "$dir/powertoys/main.ps1"
+. "$dir/kmonad/main.ps1"
+. "$dir/capslock/main.ps1"
+. "$dir/qutebrowser/main.ps1"
+. "$dir/waka/main.ps1"
+# . $dir/vscode/main.ps1"
 
 Write-Host "The process has finished." -ForegroundColor "Yellow";
 Write-Host "Restarting the PC in 10 seconds..." -ForegroundColor "Green";
