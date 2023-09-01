@@ -1,4 +1,4 @@
-Invoke-Expression (oh-my-posh --init --shell pwsh --config $HOME\dotfiles\posh\gruvbox.omp.json)
+Invoke-Expression (oh-my-posh --init --shell pwsh --config $HOME\dotfiles-windows\posh\gruvbox.omp.json)
 
 Push-Location (Split-Path -parent $profile) 
 
