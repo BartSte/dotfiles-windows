@@ -132,13 +132,15 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 ### Git crypt
 
 The `dotfiles` repository contains some files that are encrypted using
-`git-crypt`. However, using git crypt on windows is not straightforward yet. To
-be able to read the encrypted files, we use WSL to unlock the `dotfiles`
-repository, by using the following script:
-[dotfiles-linux/crypt/main](https://github.com/BartSte/dotfiles-linux/blob/master/dotfiles-linux/crypt/main_windows).
-Here, it is assumed that, in WSL, the environment variable `WH` is set to the
-windows home directory of the user. When using the `dotfiles-linux` repository,
-this variable is already set when the `.zshrc` file is sourced.
+`git-crypt`. However, using git crypt on windows is not straightforward yet.
+However, there are some files, that are now encrypted, we need to access
+somehow. As a solution we symlink to the files from the `dotfiles` repository
+from the WLS account, instead of the windows account. For example, we symlink
+the `urls` from `qutebrowser` from WSL to the windows AppData folder. This way,
+we can still use the `dotfiles` repository, but we do not have to use git crypt
+on windows. To facilitate linking, an environment variable `LH` is created which
+hold the windows path to the WSL home directory. This variable is set when you
+enter a powershell session.
 
 # Background
 
