@@ -8,7 +8,7 @@ function New-SymbolicLink-Config {
 }
 
 function New-SymbolicLink-Urls {
-    $target = "$HOME\Dropbox\Config\urls"
+    $target = "$HOME\dotfiles\qutebrowser\urls"
     $path = "$Env:APPDATA\qutebrowser\config\bookmarks\urls"
     
     write-host "SymbolicLink from $path to $target"
@@ -16,7 +16,7 @@ function New-SymbolicLink-Urls {
 }
 
 function New-SymbolicLink-Quickmarks {
-    $target = "$HOME\Dropbox\Config\quickmarks"
+    $target = "$HOME\dotfiles\qutebrowser\quickmarks"
     $path = "$Env:APPDATA\qutebrowser\config\quickmarks"
     
     write-host "SymbolicLink from $path to $target"
