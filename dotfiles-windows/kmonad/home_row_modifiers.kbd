@@ -38,34 +38,54 @@
     m8 (around rmet 8)
     eq (tap-macro space = space)
 
+    num_f (tap-hold-next-release 200 f (layer-toggle numpad))
+    sym_u (tap-hold-next-release 200 u (layer-toggle symbols))
+    fk_g (tap-hold-next-release 200 g (layer-toggle fkeys))
     nav_tab (tap-hold-next-release 200 tab (layer-toggle navigation_right))
-    sym_space (tap-hold-next-release 200 space (layer-toggle symbols))
     nav_ret (tap-hold-next-release 200 return (layer-toggle navigation_left))
+
+    ;; TODO: Add macro layers. End goal is to make kmonad the same as my
+    ;; Atreus.
 )
+
 (deflayer homerowmods
-    q   w   f   p   b   j   l   u   y   ;
-    @ma @ar @ss @ct g   m   @cn @se @ai @mo
-    z   x   c   d   v   v   k   h   ,   .   /
-      esc @nav_tab @sym_space @nav_ret del
+    q   w   @num_f  p   b      j   l   @sym_u  y   ;
+    @ma @ar @ss     @ct @fk_g  m   @cn @se     @ai @mo
+    z   x   c       d   v   _  k   h   ,       .   /
+      esc @nav_tab space @nav_ret del
 )
 
 (deflayer navigation_right
     _    _    _    _    _  Home     PageDown  PageUp  End       _  
     @ma  @ar  @ss  @ct  _  KeyLeft  KeyDown   KeyUp   KeyRight  _  
     _    _    _    _    _  _        _         _       _         _  _
-         _ _ bspc _ _
+         _ _ bspc  _    _
 )
 
 (deflayer navigation_left
-    @m7  @m8  @m2  _    _  _  _  _  _  _  
-    @m6  _    @m3  @m1  _  _  _  _  _  _  
-    _    @m5  @m4  _    _  _  _  _  _  _  _
+    @m7  @m8  @m2  _    _  _  _   _   _   _  
+    @m6  _    @m3  @m1  _  _  @cn @se @ai @mo  
+    _    @m5  @m4  _    _  _  _   _   _   _   _
          _ _ _ _ _
 )
 
+(deflayer numpad
+     _  _  _  _  _  *  7  8  9  +
+     _  _  _  _  _  \  4  5  6  -
+  }  _  _  _  _  _  |  1  2  3  &
+              _  _  =  0  _
+)
+
 (deflayer symbols
-     !  @  #  $  %  *  7  8  9  +
-     {  [  \( '  `  \  4  5  6  -
-  }  ]  \) "  ~  _  |  1  2  3  &
-              _ @eq \_ 0  _
+     !  @  #  $  %  _  _  _  _  _
+     {  [  \( '  `  _  _  _  _  _
+  }  ]  \) "  ~  _  _  _  _  _  _
+              _ ^ \_   _  _
+)
+
+(deflayer fkeys
+     _    _    _    _    _  _  F7 F8 F9 F10
+     @ma  @ar  @ss  @ct  _  _  F4 F5 F6 F11
+  _  _    _    _    _    _  _  F1 F2 F3 F12
+                _  _  _  _  _
 )
