@@ -43,16 +43,15 @@
     fk_g (tap-hold-next-release 200 g (layer-toggle fkeys))
     nav_tab (tap-hold-next-release 200 tab (layer-toggle navigation_right))
     nav_ret (tap-hold-next-release 200 return (layer-toggle navigation_left))
-
-    ;; TODO: Add macro layers. End goal is to make kmonad the same as my
-    ;; Atreus.
+    mac_d (tap-hold-next-release 200 d (layer-toggle macroright))
+    mac_h (tap-hold-next-release 200 h (layer-toggle macroleft))
 )
 
 (deflayer homerowmods
-    q   w   @num_f  p   b      j   l   @sym_u  y   ;
-    @ma @ar @ss     @ct @fk_g  m   @cn @se     @ai @mo
-    z   x   c       d   v   _  k   h   ,       .   /
-      esc @nav_tab space @nav_ret del
+    q   w   @num_f  p       b      j   l        @sym_u  y   ;
+    @ma @ar @ss     @ct     @fk_g  m   @cn      @se     @ai @mo
+    z   x   c       @mac_d  v   _  k   @mac_h   ,       .   /
+              esc @nav_tab space @nav_ret del
 )
 
 (deflayer navigation_right
@@ -88,4 +87,18 @@
      @ma  @ar  @ss  @ct  _  _  F4 F5 F6 F11
   _  _    _    _    _    _  _  F1 F2 F3 F12
                 _  _  _  _  _
+)
+
+(deflayer macroright
+  _ _ _ _ _ _ _ _ _ _ 
+  _ _ _ _ _ _ _ _ _ _ 
+ _ _ _ _ _ _ _ _ _ _ _ 
+       _ _ @eq _ _ 
+)
+
+(deflayer macroleft
+  _ _ _ _ _ _ _ _ _ _ 
+  _ _ _ _ _ _ _ _ _ _ 
+ _ _ _ _ _ _ _ _ _ _ _ 
+       _ _ _ _ _ 
 )
