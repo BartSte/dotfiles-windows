@@ -25,7 +25,6 @@ $('python3', ''),
 @('adobereader', ''),
 @('vlc', ''),
 @('nodejs', ''),
-@('jetbrainsmono', ''),
 @('yarn', ''),
 @('winscp', ''),
 @('alacritty', ''),
@@ -36,7 +35,7 @@ $('python3', ''),
 @('grep', '')
 @('strawberryperl', '')
 @('super-productivity', '')
-@('jetbrainsmononf', '--pre')
+@('nerd-fonts-jetbrainsmono', '')
 )
 
 $vscode_extensions=@(
