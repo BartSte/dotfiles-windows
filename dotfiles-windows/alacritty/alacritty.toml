@@ -1,0 +1,31 @@
+[bell]
+command = "None"
+duration = 0
+
+[colors]
+transparent_background_colors = false
+
+[font]
+size = 9
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[shell]
+program = "Arch.exe"
+
+[window]
+opacity = 1
