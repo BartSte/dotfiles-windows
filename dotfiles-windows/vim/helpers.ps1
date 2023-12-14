@@ -7,6 +7,10 @@ function New-Link-Config() {
     $path = "${env:LOCALAPPDATA}\nvim\init.lua" 
     New-Symlink $path $target
 
+    $target = "${HOME}\dotfiles\nvim\ginit.vim"
+    $path = "${env:LOCALAPPDATA}\nvim\ginit.vim" 
+    New-Symlink $path $target
+
     $target = "${HOME}\dotfiles\nvim\vim"
     $path = "${env:LOCALAPPDATA}\nvim\vim"
     New-Symlink $path $target
