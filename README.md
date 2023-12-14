@@ -45,7 +45,9 @@ curl -O https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles
 - Run the script: `~/dotfiles-linux/main`
 - Afterwards, authenticate for:
   - Dropbox
-  - Davmail
+  - Git crypt
+  - Mutt
+  - Khal & khalorg
 
 ### Authenticate dropbox
 
@@ -103,8 +105,8 @@ fields may be handled differently for each account:
 - Signature (is added to the notes section of rbw)
 
 Which account I am using, is determined by setting the environment variable
-`MICROSOFTACCOUNT` to `Personal` or `Work`. This variable is set in the
-`.dotfiles_config.sh` file that is created when initializing the
+`MICROSOFTACCOUNT` to `MicrosoftPersonal` or `MicrosoftWork`. This variable is
+set in the `.dotfiles_config.sh` file that is created when initializing the
 `dotfiles-linux` repository.
 
 The next sections explain the following:

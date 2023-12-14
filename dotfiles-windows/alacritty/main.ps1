@@ -1,7 +1,7 @@
 function symbolic-link-config {
-    $target = "${HOME}\.alacritty.yml"
+    $target = "${HOME}\.alacritty.toml"
     $directory = "${env:APPDATA}\alacritty" 
-    $file = "alacritty.yml" 
+    $file = "alacritty.toml" 
     $path = "${directory}\${file}"
     
     write-host $path
