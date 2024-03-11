@@ -44,7 +44,7 @@ curl -O https://raw.githubusercontent.com/BartSte/dotfiles-linux/master/dotfiles
 - Complete the environment variables in `~/.dotfiles_config.sh`.
 - Run the script: `~/dotfiles-linux/main`
 - Afterwards, authenticate for:
-  - Dropbox
+  - Dropbox (TODO: outdated, I use rclone now).
   - Git crypt
   - Mutt
   - Khal & khalorg
