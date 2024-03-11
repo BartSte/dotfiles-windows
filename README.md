@@ -274,6 +274,35 @@ will also be synced when het `mycalsync` script is called. You can check if
 khard list
 ```
 
+#### Setting up OpenVino + GPU
+
+I had some issue making OpenVino detect my GPU (Intel UHD Graphics 620). The
+following solved the issue:
+
+```bash
+sudo pacman -S level-zero-headers level-zero-loader intel-graphics-compiler
+yay -S ocl-icd intel-opencl
+```
+
+#### Pinentry endless password input
+
+I need do set many passwords: login, rbw, mail. I want to set 1 password for
+all apps and I want to enter just 1 password. I still want to be able to use
+pinentry for other apps in the future I guess. One hacky way could be:
+
+- Create a personal `pinentry` program and put it at the front of the PATH.
+- Check who is calling: if it is rbw or mail, echo the password (in the format
+  pinentry expects). Otherwise, call the real pinentry program.
+
+- Note, when possible, it is easier to do:
+
+```bash
+rbg get field | gpg --pinentry-mode loopback --batch --passphrase-fd 0 -d ./foo.txt.gpg
+```
+
+This will read the password from stdin, instead of using pinentry. This cannot
+be done when you have no access to the command that is calling gpg.
+
 ### Dotfiles-windows (Windows 10 & 11)
 
 - To initialize the repository copy the following line into powershell:

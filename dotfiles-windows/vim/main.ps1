@@ -1,4 +1,4 @@
-. ~/dotfiles-windows/config.ps1
+. ~/dotfiles-config.ps1
 . ~/dotfiles-windows/vim/helpers.ps1
 
 New-Link-Config

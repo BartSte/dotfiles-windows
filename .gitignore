@@ -7,3 +7,4 @@ dotfiles-secret.git
 dotfiles-windows.git
 __pycache__
 nvim.shada
+.null-ls*

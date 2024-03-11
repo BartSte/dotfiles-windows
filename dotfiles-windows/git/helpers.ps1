@@ -1,5 +1,4 @@
-. ~/dotfiles-windows/config.ps1
-. ~/dotfiles-secret/secret-config.ps1
+. ~/dotfiles-config.ps1
 
 function set_git_config () {
     git config --global user.name $git_settings['user']

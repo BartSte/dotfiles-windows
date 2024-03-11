@@ -1,7 +1,6 @@
 function New-Link-Config() {
     Remove-Item "${env:LOCALAPPDATA}\nvim" -ErrorAction SilentlyContinue -Recurse
     mkdir "${env:LOCALAPPDATA}\nvim" -ErrorAction SilentlyContinue   
-    mkdir "${env:LOCALAPPDATA}\nvim\lua" -ErrorAction SilentlyContinue
 
     $target = "${HOME}\dotfiles\nvim\init.lua"
     $path = "${env:LOCALAPPDATA}\nvim\init.lua" 
@@ -15,28 +14,8 @@ function New-Link-Config() {
     $path = "${env:LOCALAPPDATA}\nvim\vim"
     New-Symlink $path $target
 
-    $target = "${HOME}\dotfiles\nvim\after"
-    $path = "${env:LOCALAPPDATA}\nvim\after"
-    New-Symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\plugin"
-    $path = "${env:LOCALAPPDATA}\nvim\plugin"
-    New-Symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\lua\config"
-    $path = "${env:LOCALAPPDATA}\nvim\lua\config"
-    New-Symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\lua\helpers"
-    $path = "${env:LOCALAPPDATA}\nvim\lua\helpers"
-    New-Symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\lua\plugins"
-    $path = "${env:LOCALAPPDATA}\nvim\lua\plugins"
-    New-Symlink $path $target
-
-    $target = "${HOME}\dotfiles\nvim\lua\init.lua"
-    $path = "${env:LOCALAPPDATA}\nvim\lua\init.lua"
+    $target = "${HOME}\dotfiles\nvim\lua"
+    $path = "${env:LOCALAPPDATA}\nvim\lua"
     New-Symlink $path $target
 
     $target = "${HOME}\dotfiles\nvim\lazy-lock.json"

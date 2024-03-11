@@ -7,8 +7,6 @@ ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
-${function:gvim} = { C:\tools\neovim\nvim-win64\bin\nvim-qt.exe @args }
-
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
 ${function:bases} = { base status -s --untracked-files=no}
@@ -17,27 +15,23 @@ ${function:dots} = {Write-Host 'Base:'; bases; Write-Host 'Win:'; wins}
 ${function:dot} = {base @args; win @args}
 ${function:dotc} = {dot commit -am '""'}
 ${function:dotp} = {dot push}
-${function:dotcp} = {dotc; dotp}
+${function:dotu} = {dotc; dot pull; dotp}
 
 ${function:ex} = {explorer.exe .}
 ${function:py36} = {C:/path/to/python.exe}
-${function:test} = {python -m pytest @args}
 
+${function:dl} = {Remove-ItemSafely @args}
 
-${function:rm} = {Remove-ItemSafely @args}
-
-${function:vim} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
+${function:v} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
 ${function:vims} = { 
-    if (Test-Path Session.vim) {
-C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args 
-    }
-    else {
+    if (Test-Path Session.vim)
+    {
+        C:\tools\neovim\nvim-win64\bin\nvim.exe -S Session.vim @args 
+    } else
+    {
         Write-Host "No sesson found."
     }
 }
-
-# Missing Bash aliases
-Set-Alias time Measure-Command
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `wget.exe` if available
@@ -50,19 +44,19 @@ if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path)
 if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path)
 {
     rm alias:ls -ErrorAction SilentlyContinue
-# Set `ls` to call `ls.exe` and always use --color
-        ${function:ls} = { ls.exe --color @args }
-# List all files in long format
+    # Set `ls` to call `ls.exe` and always use --color
+    ${function:ls} = { ls.exe --color @args }
+    # List all files in long format
     ${function:l} = { ls -lF @args }
-# List all files in long format, including hidden files
+    # List all files in long format, including hidden files
     ${function:la} = { ls -laF @args }
-# List only directories
+    # List only directories
     ${function:ld} = { Get-ChildItem -Directory -Force @args }
 } else
 {
-# List all files, including hidden files
+    # List all files, including hidden files
     ${function:la} = { ls -Force @args }
-# List only directories
+    # List only directories
     ${function:ld} = { Get-ChildItem -Directory -Force @args }
 }
 
@@ -70,13 +64,13 @@ if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path)
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path)
 {
     rm alias:curl -ErrorAction SilentlyContinue
-# Set `ls` to call `ls.exe` and always use --color
-        ${function:curl} = { curl.exe @args }
-# Gzip-enabled `curl`
+    # Set `ls` to call `ls.exe` and always use --color
+    ${function:curl} = { curl.exe @args }
+    # Gzip-enabled `curl`
     ${function:gurl} = { curl --compressed @args }
 } else
 {
-# Gzip-enabled `curl`
+    # Gzip-enabled `curl`
     ${function:gurl} = { curl -TransferEncoding GZip }
 }
 
@@ -85,16 +79,3 @@ Set-Alias mkd CreateAndSet-Directory
 
 # Determine size of a file or total size of a directory
 Set-Alias fs Get-DiskUsage
-
-# Empty the Recycle Bin on all drives
-Set-Alias emptytrash Empty-RecycleBin
-
-# Cleanup old files all drives
-Set-Alias cleandisks Clean-Disks
-
-# Reload the shell
-Set-Alias reload Reload-Powershell
-
-# Update installed Ruby Gems, NPM, and their installed packages.
-Set-Alias update System-Update
-

@@ -56,6 +56,10 @@ Write-Host $win
 clone $win $win_dir -and checkout $win_dir
 Refresh-Environment
 
-Write-Host "# Please complete the file ~/dotfiles-windows/config.ps1"
+if (-not (Test-Path "$HOME/dotfiles-config.ps1")) {
+    Copy-Item "$HOME/dotfiles-windows/default_config.ps1" "$HOME/dotfiles-config.ps1"
+}
+
+Write-Host "# Please complete the file $HOME/dotfiles-config.ps1"
 Write-Host "# Next, run the ~/dotfiles-windows/main.ps1"
 
