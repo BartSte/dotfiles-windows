@@ -83,6 +83,7 @@ if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path)
 {
     Remove-Item alias:wget -ErrorAction SilentlyContinue
 }
+
 # Directory Listing: Use `ls.exe` if available
 if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path)
 {
