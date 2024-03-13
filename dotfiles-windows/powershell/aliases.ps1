@@ -26,7 +26,7 @@ ${function:dev} = {& "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildT
 ${function:dl} = {Remove-ItemSafely @args}
 ${function:ex} = {explorer.exe .}
 ${function:touch} = { "" | Out-File $file -Encoding ASCII }
-${function:which} = { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
+${function:which} = { Get-Command @args -ErrorAction SilentlyContinue | Select-Object Definition }
 
 # Vim
 ${function:v} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
@@ -75,4 +75,44 @@ function deact
     {
         Write-Host "No python virtualenvironmet found for: $folder"
     }
+}
+
+# Correct PowerShell Aliases if tools are available (aliases win if set)
+# WGet: Use `wget.exe` if available
+if (Get-Command wget.exe -ErrorAction SilentlyContinue | Test-Path)
+{
+    Remove-Item alias:wget -ErrorAction SilentlyContinue
+}
+# Directory Listing: Use `ls.exe` if available
+if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path)
+{
+    Remove-Item alias:ls -ErrorAction SilentlyContinue
+    # Set `ls` to call `ls.exe` and always use --color
+    ${function:ls} = { ls.exe --color @args }
+    # List all files in long format
+    ${function:l} = { ls -lF @args }
+    # List all files in long format, including hidden files
+    ${function:la} = { ls -laF @args }
+    # List only directories
+    ${function:ld} = { Get-ChildItem -Directory -Force @args }
+} else
+{
+    # List all files, including hidden files
+    ${function:la} = { ls -Force @args }
+    # List only directories
+    ${function:ld} = { Get-ChildItem -Directory -Force @args }
+}
+
+# curl: Use `curl.exe` if available
+if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path)
+{
+    Remove-Item alias:curl -ErrorAction SilentlyContinue
+    # Set `ls` to call `ls.exe` and always use --color
+    ${function:curl} = { curl.exe @args }
+    # Gzip-enabled `curl`
+    ${function:gurl} = { curl --compressed @args }
+} else
+{
+    # Gzip-enabled `curl`
+    ${function:gurl} = { curl -TransferEncoding GZip }
 }

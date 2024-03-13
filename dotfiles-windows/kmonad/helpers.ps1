@@ -1,7 +1,7 @@
 function download_kmonad($version)
 {
     $source="https://github.com/kmonad/kmonad/releases/download/$version/kmonad-$version-win.exe"    
-    $destination_dir="$LOCALAPPDATA\kmonad"
+    $destination_dir="$Env:LOCALAPPDATA\kmonad"
     $destination="$destination_dir\kmonad.exe"
 
     Write-Host "Downloading Kmonad version: $version"
@@ -16,7 +16,7 @@ function download_kmonad($version)
         Remove-Item $destination -ErrorAction SilentlyContinue
     }
 
-    wget -Uri $source -Outfile $destination
+    Invoke-WebRequest -Uri $source -OutFile $destination
 }
 
 function symlink_to_desktop
