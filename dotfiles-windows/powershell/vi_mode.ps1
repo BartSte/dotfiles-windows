@@ -7,5 +7,6 @@ function OnViModeChange {
         Write-Host -NoNewLine "`e[6 q"
     }
 }
+
 Set-PSReadlineOption -EditMode vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange

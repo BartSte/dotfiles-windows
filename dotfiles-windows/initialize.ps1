@@ -18,7 +18,6 @@ function Install-Chocolately {
         Set-ExecutionPolicy Bypass -Scope Process -Force; 
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
         iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-        Refresh-Environment
         choco feature enable -n=allowGlobalConfirmation
     }
 }
@@ -54,7 +53,6 @@ clone $base $base_dir -and checkout $base_dir
 Write-Host "# Clone BartSte/dotfiles-windows.git as a bare repository"
 Write-Host $win
 clone $win $win_dir -and checkout $win_dir
-Refresh-Environment
 
 if (-not (Test-Path "$HOME/dotfiles-config.ps1")) {
     Copy-Item "$HOME/dotfiles-windows/default_config.ps1" "$HOME/dotfiles-config.ps1"

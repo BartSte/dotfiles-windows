@@ -1,3 +1,8 @@
+function Set-WSL-HOME() 
+{
+    $Env:LH=$(arch run echo -E '$(wslpath -w ~)') # WSL home (Linux Home)
+}
+
 function New-SymbolicLink-Config {
     $target = "$HOME\dotfiles\qutebrowser\config.py"
     $path = "$Env:APPDATA\qutebrowser\config\config.py"
@@ -27,6 +32,7 @@ function New-SymbolicLink-Quickmarks {
     New-Item -ItemType SymbolicLink -Path $path -Target $target -Force
 }
 
+Set-WSL-HOME
 New-SymbolicLink-Config
 New-SymbolicLink-Urls
 New-SymbolicLink-Quickmarks

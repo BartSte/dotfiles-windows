@@ -22,6 +22,3 @@ New-SymbolicLink-QuteBrowser
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 Install-Chocolately
 Install-Desktop-Apps
-
-Refresh-Environment
-
