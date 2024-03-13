@@ -1,18 +1,14 @@
-function symbolic-link-config {
-    $target = "${HOME}\.alacritty.toml"
-    $directory = "${env:APPDATA}\alacritty" 
-    $file = "alacritty.toml" 
-    $path = "${directory}\${file}"
-    
-    write-host $path
-    If (!(test-path $directory)) {
-        New-Item -ItemType Directory -Force -Path $directory
-    } 
-    else {
-        Remove-Item $path -ErrorAction SilentlyContinue
-    }
+$target = "${HOME}\.alacritty.toml"
+$directory = "${env:APPDATA}\alacritty" 
+$file = "alacritty.toml" 
+$path = "${directory}\${file}"
 
-    New-Item -ItemType SymbolicLink -Path $path -Target $target
+write-host $path
+If (!(test-path $directory)) {
+    New-Item -ItemType Directory -Force -Path $directory
+} 
+else {
+    Remove-Item $path -ErrorAction SilentlyContinue
 }
 
-symbolic-link-config
+New-Item -ItemType SymbolicLink -Path $path -Target $target

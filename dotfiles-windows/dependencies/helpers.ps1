@@ -1,13 +1,5 @@
 . ~\dotfiles-config.ps1
-
-function Admin-Check
-{
-    if (!(Verify-Elevated))
-    {
-        Write-Host 'You need to be an Admin to run this script.'
-        exit
-    }
-}
+. ~\dotfiles-windows\helpers.ps1
 
 function Install-Chocolately {
     if ((which cinst) -eq $null) {
@@ -117,13 +109,3 @@ function Get-Module-Installation-Status {
     return $FALSE;
   }
 }
-
-function symlink-dotfile-scripts {
-    $target = "$HOME\dotfiles\scripts\sorters\sort_variable_length.py"
-    $path = "$HOME\bin\sort_variable_length"
-
-    write-host $path
-    Remove-Item $path -ErrorAction SilentlyContinue
-    New-Item -ItemType SymbolicLink -Path $path -Target $target
-}
-

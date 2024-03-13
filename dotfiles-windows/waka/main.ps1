@@ -1,7 +1,4 @@
-function Set-WSL-HOME() 
-{
-    $Env:LH=$(arch run echo -E '$(wslpath -w ~)') # WSL home (Linux Home)
-}
+. ~\dotfiles-windows\helpers.ps1
 
 function New-Symlink($path, $target)
 {

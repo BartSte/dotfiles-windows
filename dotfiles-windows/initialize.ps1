@@ -60,4 +60,3 @@ if (-not (Test-Path "$HOME/dotfiles-config.ps1")) {
 
 Write-Host "# Please complete the file $HOME/dotfiles-config.ps1"
 Write-Host "# Next, run the ~/dotfiles-windows/main.ps1"
-

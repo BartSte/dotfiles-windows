@@ -1,4 +1,5 @@
-. ~/dotfiles-windows/git/helpers.ps1
+. ~/dotfiles-config.ps1
 
-
-set_git_config;
+git config --global user.name $git_settings['user']
+git config --global user.email $git_settings['email']
+git config --global core.autocrlf true

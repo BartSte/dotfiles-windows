@@ -1,11 +1,4 @@
-function Admin-Check
-{
-    if (!(Verify-Elevated))
-    {
-        Write-Host 'You need to be an Admin to run this script.'
-        exit
-    }
-}
+. ~\dotfiles-windows\helpers.ps1
 
 function Set-WallPaper ([string]$desktopImage)
 {

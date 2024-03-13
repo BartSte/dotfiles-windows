@@ -1,6 +1,12 @@
 Write-Host "Welcome to Dotfiles for Microsoft Windows 11" -ForegroundColor "Yellow";
 Write-Host "Please don't use your device while the script is running." -ForegroundColor "Yellow";
 
+if (-not (Test-Path ~\dotfiles-config.ps1))
+{
+    Write-Host "The file ~\dotfiles-config.ps1 does not exist. Aborting." -ForegroundColor "Red";
+    return;
+}
+
 $dir = "$HOME/dotfiles-windows"
 . "$dir/powershell/main.ps1"
 . "$dir/dependencies/main.ps1"
