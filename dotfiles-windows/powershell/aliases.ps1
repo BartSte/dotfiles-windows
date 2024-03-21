@@ -44,15 +44,11 @@ ${function:vims} = {
 function act
 {
     $folder = $(Split-Path -Path (Get-Location) -Leaf)
-    $opt1 =  "$PWD\venv"        
-    $opt2 =  "$PWD\.venv"
+    $venv =  "$PWD\.venv"
 
-    if (Test-Path $opt1)
+    if (Test-Path $venv)
     {
-        & $(Join-Path -Path $local -Child "Scripts\Activate.ps1")
-    } elseif (Test-Path $opt2)
-    {
-        & $(Join-Path -Path $local -Child "Scripts\Activate.ps1")
+        & $(Join-Path -Path $venv -Child "Scripts\Activate.ps1")
     } else
     {
         Write-Host "No python virtualenvironmet found for: $folder"
@@ -62,15 +58,11 @@ function act
 function deact
 {
     $folder = $(Split-Path -Path (Get-Location) -Leaf)
-    $opt1 =  "$PWD\venv"        
-    $opt2 =  "$PWD\.venv"
+    $venv =  "$PWD\.venv"        
 
-    if (Test-Path $opt1)
+    if (Test-Path $venv)
     {
-        & $(Join-Path -Path $local -Child "Scripts\Deactivate.ps1")
-    } elseif (Test-Path $opt2)
-    {
-        & $(Join-Path -Path $local -Child "Scripts\Deactivate.ps1")
+        & $(Join-Path -Path $venv -Child "Scripts\Deactivate.ps1")
     } else
     {
         Write-Host "No python virtualenvironmet found for: $folder"
