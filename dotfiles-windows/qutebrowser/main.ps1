@@ -12,7 +12,7 @@ function New-SymbolicLink-Config {
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
 # variable LH.
 function New-SymbolicLink-Urls {
-    $target = "$Env:LH\dotfiles\qutebrowser\urls"
+    $target = "$Env:LH\dropbox\Config\urls-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\bookmarks\urls"
     
     write-host "SymbolicLink from $path to $target"
@@ -22,7 +22,7 @@ function New-SymbolicLink-Urls {
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
 # variable LH.
 function New-SymbolicLink-Quickmarks {
-    $target = "$Env:LH\dotfiles\qutebrowser\quickmarks"
+    $target = "$Env:LH\dropbox\Config\quickmarks-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\quickmarks"
     
     write-host "SymbolicLink from $path to $target"
