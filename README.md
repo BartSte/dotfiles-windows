@@ -281,18 +281,15 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 - All the subfolders of `$HOME/dotfiles-windows` are executed by calling the
   `main.ps1` file, e.g., `$HOME/dotfiles-windows/powershell/main.ps1`.
 
-#### Git crypt
+#### Alacritty
 
-The `dotfiles` repository contains some files that are encrypted using
-`git-crypt`. However, using git crypt on windows is not straightforward yet.
-However, there are some files, that are now encrypted, we need to access
-somehow. As a solution we symlink to the files from the `dotfiles` repository
-from the WLS account, instead of the windows account. For example, we symlink
-the `urls` from `qutebrowser` from WSL to the windows AppData folder. This way,
-we can still use the `dotfiles` repository, but we do not have to use git crypt
-on windows. To facilitate linking, an environment variable `LH` is created which
-hold the windows path to the WSL home directory. This variable is set when you
-enter a powershell session.
+At the moment of this writing, Alacritty + tmux has issue rendering icons. This
+is because Alacritty does not use the newest version of conPTY and
+OpenConsole. Funny thing is, that when you install WezTerm on your machine, the
+issue is solved. This is because WezTerm uses the newest version of conPTY and
+OpenConsole. So you can either do this, or extract the conpty.dll and
+OpenConsole.exe from the WezTerm installation and place them around the
+alacritty.exe executable (and later remove wezterm).
 
 ## Background
 
