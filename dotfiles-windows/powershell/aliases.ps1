@@ -22,11 +22,14 @@ ${function:dotp} = { dot push}
 ${function:dotu} = { dotc; dot pull; dotp }
 
 # Cli
-${function:dev} = {& "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\Launch-VsDevShell.ps1"}
 ${function:dl} = {Remove-ItemSafely @args}
 ${function:ex} = {explorer.exe .}
 ${function:touch} = { "" | Out-File $file -Encoding ASCII }
 ${function:which} = { Get-Command @args -ErrorAction SilentlyContinue | Select-Object Definition }
+function Append-Path($path) { 
+    $env:Path += ";$path" 
+}
+
 
 # Vim
 ${function:v} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
@@ -68,6 +71,7 @@ function deact
         Write-Host "No python virtualenvironmet found for: $folder"
     }
 }
+
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # WGet: Use `wget.exe` if available
