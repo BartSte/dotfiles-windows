@@ -1,11 +1,20 @@
-$Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
+function Append-Path($path) { 
+    $Env:PATH += "$path;" 
+}
 
-$Env:PATH+=";"
-$Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
-$Env:PATH+=";"
-$Env:PATH+="$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin"
-$Env:PATH+=";"
-$Env:PATH+="C:\Program Files\VideoLAN\VLC"
+function Prepend-Path($path) {
+    $Env:PATH = "$path;$Env:PATH"
+}
+
+function Reset-Path {
+    $Env:PATH=[System.Environment]::GetEnvironmentVariable("Path","User") 
+    $Env:PATH+=[System.Environment]::GetEnvironmentVariable("Path","Machine") 
+}
+
+Reset-Path
+Append-Path "$Env:LOCALAPPDATA\nvim-data\plugged\fzf\bin"
+Append-Path "C:\Program Files\VideoLAN\VLC"
+Prepend-Path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin"
 
 $Env:EDITOR = "nvim.exe"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1

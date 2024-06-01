@@ -6,6 +6,10 @@ ${function:....} = { Set-Location ..\..\.. }
 ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
+${function:dev} = { & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\Launch-VsDevShell.ps1" @args }
+${function:dev64} = { dev -Arch amd64 }
+${function:vcvarsall} = { & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" @args }
+
 # Git dotfiles
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:bases} = { base status -s --untracked-files=no}
@@ -26,10 +30,6 @@ ${function:dl} = {Remove-ItemSafely @args}
 ${function:ex} = {explorer.exe .}
 ${function:touch} = { "" | Out-File $file -Encoding ASCII }
 ${function:which} = { Get-Command @args -ErrorAction SilentlyContinue | Select-Object Definition }
-function Append-Path($path) { 
-    $env:Path += ";$path" 
-}
-
 
 # Vim
 ${function:v} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
