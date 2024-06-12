@@ -19,6 +19,7 @@ Prepend-Path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSB
 $Env:EDITOR = "nvim.exe"
 $Env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 $Env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\"
+$Env:CMAKE_EXPORT_COMPILE_COMMANDS="ON"
 
 $Env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --preview-window=right,65%"
 $Env:PYTHONBREAKPOINT="ipdb.set_trace"
