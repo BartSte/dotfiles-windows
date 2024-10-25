@@ -1,13 +1,26 @@
 . ~\dotfiles-windows\helpers.ps1
 
 function New-SymbolicLink-Config {
-    $target = "$HOME\dotfiles\qutebrowser\config.py"
-    $path = "$Env:APPDATA\qutebrowser\config\config.py"
+    param (
+        [string]$SourceDir = "$HOME\dotfiles\qutebrowser",
+        [string]$DestinationDir = "$Env:APPDATA\qutebrowser\config"
+    )
 
-    write-host "SymbolicLink from $path to $target"
-    Remove-Item $path -ErrorAction SilentlyContinue
-    New-Item -ItemType SymbolicLink -Path $path -Target $target -Force
+    Write-Host "Ensure $DestinationDir exists"
+    New-Item -ItemType Directory -Force -Path $DestinationDir | Out-Null
+
+    Write-Host "Link all files from $SourceDir to $DestinationDir"
+    $files = Get-ChildItem -Path $SourceDir -File
+
+    foreach ($file in $files) {
+        $source = Join-Path -Path $SourceDir -ChildPath $file.Name
+        $destination = Join-Path -Path $DestinationDir -ChildPath $file.Name
+
+        Write-Host "Link $source to $destination"
+        New-Item -ItemType SymbolicLink -Path $destination -Target $source -Force
+    }
 }
+
 
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
 # variable LH.
