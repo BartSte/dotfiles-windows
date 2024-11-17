@@ -1,5 +1,5 @@
-[shell]
-program = "Arch.exe"
+[terminal]
+shell = "Arch.exe"
 
 [window]
 opacity = 1.0
