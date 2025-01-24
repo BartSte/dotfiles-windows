@@ -1,5 +1,5 @@
 # CD
-${function:~} = { Set-Location ~ }
+${function:~} = { Set-Location $Env:USERPROFILE }
 ${function:Set-ParentLocation} = { Set-Location .. }; Set-Alias ".." Set-ParentLocation
 ${function:...} = { Set-Location ..\.. }
 ${function:....} = { Set-Location ..\..\.. }
@@ -13,11 +13,11 @@ ${function:vcvarsall} = { & "C:\Program Files (x86)\Microsoft Visual Studio\2022
 # Git dotfiles
 ${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
 ${function:bases} = { base status -s --untracked-files=no}
-${function:basec} = { Write-Host 'Base:'; base add ~/dotfiles; bases; base commit --untracked-files=no -a -m "Automatic update";}
+${function:basec} = { Write-Host 'Base:'; base add $Env:USERPROFILE/dotfiles; bases; base commit --untracked-files=no -a -m "Automatic update";}
 
 ${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
 ${function:wins} = { win status -s --untracked-files=no }
-${function:winc} = { Write-Host 'Win:'; win add ~/dotfiles-windows; wins; win commit --untracked-files=no -a -m "Automatic update";}
+${function:winc} = { Write-Host 'Win:'; win add $Env:USERPROFILE/dotfiles-windows; wins; win commit --untracked-files=no -a -m "Automatic update";}
 
 ${function:dot} = { base @args; win @args }
 ${function:dots} = { Write-Host 'Base:'; bases; Write-Host 'Win:'; wins }

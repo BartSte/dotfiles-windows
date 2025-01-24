@@ -279,18 +279,41 @@ be done when you have no access to the command that is calling gpg.
 
 ### DNS
 
-Custom dns servers can be set directly through NetworkManager, or by using
-systemd-resolved. The former is simpler but more limited compared to the latter.
-Both configurations can be found in the `dns` folder. For now the NetworkManager
-is used as we do not need a complex setup. This is setup when running
-`dns/main`.
+Custom DNS servers are set manually. This is done by disabling the
+`systemd-resolved` service and enabling `NetworkManager`. Next, by setting
+`dns=none` in het `[main]` section of the `NetworkManager.conf` file, the
+`/etc/resolv.conf` file is not overwritten by `NetworkManager`. Now, we can
+define the DNS servers ourselves. These server will be used by all connections.
 
-In addition, the `/etc/resolv.conf`, NetworkManager.conf, and
-`/etc/sudoers` files can be locked using the `dns/lock` script (as root). It
-ensures that the user needs to enter the root password to in order to make the
-files mutable or immutable again. If you set the root password to a long complex
-password, it will discourage you from changing the files. If you want to make
-the files mutable again, you can run the `dns/unlock` script (as root).
+### Productivity
+
+In relation to the [dns](#dns) section, we can lock the DNS settings to prevent
+them from being changed. This is useful when the dns servers act as an internet
+filter, e.g., blocking pornographic websites. It works as follows:
+
+- The `/etc/sudoers` file is set to:
+
+  ```bash
+  Defaults!/usr/bin/chattr rootpw
+  %wheel ALL=(ALL) NOPASSWD: ALL, !/usr/bin/chattr
+  ```
+
+  Which means that the users in the wheel group can use `sudo` without a
+  password, except for the `chattr` command. This command can only be executed
+  from the root account.
+
+- By logging in to the root account and running the `lock` script, the following
+  files will be made immutable:
+
+  - `/etc/sudoers` -> protects the `chattr` command
+  - `/etc/resolv.conf` -> holds the DNS servers
+  - `/etc/NetworkManager/NetworkManager.conf` -> holds the NetworkManager config
+
+  By setting the root password to a long complex password, it will discourage
+  you from changing the files.
+
+- The `unlock` script can be used to make the files mutable again. This script
+  can only be executed by the root account.
 
 ### Dotfiles-windows (Windows 10 & 11)
 
