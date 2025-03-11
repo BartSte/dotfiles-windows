@@ -1,11 +1,12 @@
-*.swp
 *.pyc
+*.swp
 .luarc.json
-dotfiles.git
+.null-ls*
+.venv
+Session.vim
+__pycache__
 dotfiles-linux.git
 dotfiles-secret.git
 dotfiles-windows.git
-__pycache__
+dotfiles.git
 nvim.shada
-.null-ls*
-Session.vim
