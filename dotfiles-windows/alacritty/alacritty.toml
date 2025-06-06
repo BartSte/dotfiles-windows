@@ -1,15 +1,15 @@
 [terminal]
 shell = "Arch.exe"
 
+[colors]
+transparent_background_colors = false
+
 [window]
 opacity = 1.0
 
 [bell]
 command = "None"
 duration = 0
-
-[colors]
-transparent_background_colors = false
 
 [font]
 size = 9
@@ -29,3 +29,4 @@ style = "Bold Italic"
 [font.italic]
 family = "JetBrainsMono Nerd Font"
 style = "Italic"
+
