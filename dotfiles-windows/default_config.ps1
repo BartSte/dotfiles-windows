@@ -26,8 +26,7 @@ $install = @(
     @('nerd-fonts-jetbrainsmono', '')
     @('nodejs', ''),
     @('powertoys', ''),
-    @('python3', ''),
-    @('python3', '--version=3.10.8 --side-by-side'),
+    @('uv', ''),
     @('qtcreator', ''),
     @('qutebrowser', '')
     @('slack', ''),
