@@ -284,7 +284,6 @@ filter, e.g., blocking pornographic websites. It works as follows:
 
 - By logging in to the root account and running the `lock` script, the following
   files will be made immutable:
-
   - `/etc/sudoers` -> protects the `chattr` command
   - `/etc/resolv.conf` -> holds the DNS servers
   - `/etc/NetworkManager/NetworkManager.conf` -> holds the NetworkManager config
@@ -320,6 +319,82 @@ issue is solved. This is because WezTerm uses the newest version of conPTY and
 OpenConsole. So you can either do this, or extract the conpty.dll and
 OpenConsole.exe from the WezTerm installation and place them around the
 alacritty.exe executable (and later remove wezterm).
+
+### Projectrc
+
+For the neovim integration of projectrc check [nvim-projectrc](https:/github.com/BartSte/nvim-projectrc).
+
+Loads directory-specific zsh configs **once at shell startup** based on the initial `$PWD`. No `chpwd` hooks. Nothing in projects.
+
+#### How it works
+
+- You source the script `projectrc` from `.zshrc`.
+- It resolves `PROJECTRC_HOME` relative to the script location: `<script-dir>/projectrc`.
+- It reads `PROJECTRC_HOME/mappings.conf` with lines: `<glob> <snippet-file>`.
+- It matches all globs against the initial `$PWD`, de-duplicates, and `source`s the corresponding files from `PROJECTRC_HOME/projectrc.d/` in file order.
+- It sets `PROJECTRC` to the **profile name** of the first matched snippet (basename without `.zsh`).
+
+#### Exported env var
+
+- `PROJECTRC` — the primary profile name (e.g. `python-dev`). Use this in editors or tooling to branch per project profile.
+
+Example Neovim usage:
+
+```lua
+local profile = vim.env.PROJECTRC
+if profile == "python-dev" then
+  vim.g.python3_host_prog = vim.fn.getcwd() .. "/.venv/bin/python"
+end
+```
+
+#### File layout
+
+```
+### script you source in .zshrc
+~/.config/zsh/projectrc.zsh
+
+### resolved home for data, relative to the script
+~/.config/zsh/projectrc/
+  mappings.conf
+  projectrc.d/
+    default.zsh
+    python-dev.zsh
+    fleetcleaner.zsh
+```
+
+#### `mappings.conf`
+
+```
+### <glob>                              <snippet in projectrc.d>
+~/work/fleetcleaner/**                fleetcleaner.zsh
+~/projects/python/**                  python-dev.zsh
+~/**                                  default.zsh
+```
+
+#### Snippet example (`projectrc.d/python-dev.zsh`)
+
+```zsh
+export PYTHONWARNINGS=default
+export PYTHONPATH="$PWD/src:$PYTHONPATH"
+alias rtest='pytest -q'
+path=("$PWD/.venv/bin" $path)
+```
+
+#### Safety
+
+- Only files under `PROJECTRC_HOME` are sourced.
+- A file is loaded only if it is a regular, readable file inside `PROJECTRC_HOME`.
+
+## Aider
+
+You can install pywright to let aider scrape the web. Arch does not officially support pywright but it works as long as you install the dependencies yourself. You should do at least:
+
+```bash
+yay -S enchant icu66-bin libwebp0.5
+/some/path/uv/tools/aider-chat/bin/python3 -m playwright install
+```
+The other missing dependencies will be reported and are more easy to figure out.
+
 
 ## Background
 
