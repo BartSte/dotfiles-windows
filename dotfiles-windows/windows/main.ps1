@@ -2,6 +2,7 @@
 . ~/dotfiles-windows/windows/helpers.ps1
 
 Admin-Check;
+
 Rename-PC($computer_name);
 
 ##############################################################################

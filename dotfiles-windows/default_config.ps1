@@ -29,7 +29,8 @@ $install = @(
     @('teamviewer', ''),
     @('vlc', ''),
     @('wget', ''),
-    @('yarn', '')
+    @('yarn', ''),
+    @('vcredist', '')
 )
 
 # The following built-in Windows features are disabled. The first element is the

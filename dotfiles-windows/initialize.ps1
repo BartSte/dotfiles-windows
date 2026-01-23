@@ -1,18 +1,3 @@
-function Admin-Check {
-    if (!(Verify-Elevated)) {
-        Write-Host 'You need to be an Admin to run this script.'
-        exit
-    }
-}
-
-function Verify-Elevated {
-    # Get the ID and security principal of the current user account
-    $myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-    $myPrincipal=new-object System.Security.Principal.WindowsPrincipal($myIdentity)
-    # Check to see if we are currently running "as Administrator"
-    return $myPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-}
-
 function Install-Scoop {
     if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
         Set-ExecutionPolicy Bypass -Scope Process -Force;
@@ -28,8 +13,6 @@ function clone($repo, $directory) {
 function checkout($directory) {
     git --work-tree=$HOME --git-dir=$directory checkout
 }
-
-Admin-Check
 
 $github="https://github.com/BartSte" 
 

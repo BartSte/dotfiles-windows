@@ -1,10 +1,5 @@
 . ~/dotfiles-windows/dependencies/helpers.ps1
 
-Admin-Check;
-
-Write-Host "Updating Help..." -ForegroundColor "Yellow"
-Update-Help -Force
-
 Write-Host "Installing Package Providers..." -ForegroundColor "Yellow"
 Install-NuGet
 Install-PSGallery
@@ -16,9 +11,7 @@ Install-Module PSReadline -Scope CurrentUser -Force
 Install-Module PSFzf
 Install-Module Terminal-Icons
 Install-Module Recycle 
-symlink-dotfile-scripts
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 Install-Scoop
 Install-Desktop-Apps
-New-SymbolicLink-QuteBrowser 
