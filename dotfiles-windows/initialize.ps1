@@ -13,12 +13,11 @@ function Verify-Elevated {
     return $myPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-function Install-Chocolately {
-    if ((which cinst) -eq $null) {
-        Set-ExecutionPolicy Bypass -Scope Process -Force; 
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-        choco feature enable -n=allowGlobalConfirmation
+function Install-Scoop {
+    if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex (iwr -useb get.scoop.sh)
     }
 }
 
@@ -40,11 +39,11 @@ $base_dir="$HOME/dotfiles.git"
 $win="$github/dotfiles-windows.git"
 $win_dir="$HOME/dotfiles-windows.git"
 
-Write-Host "# Installing chocolatey"
-Install-Chocolately
+Write-Host "# Installing scoop"
+Install-Scoop
 
 Write-Host "# Installing git"
-choco install git
+scoop install git
 
 Write-Host "# Clone BartSte/dotfiles.git as a bare repository"
 Write-Host $base

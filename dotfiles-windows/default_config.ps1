@@ -8,35 +8,28 @@ $wall_paper = "$HOME\dotfiles\static\wallpaper_fleet_cleaner.png"
 # the ./powershell/env.ps1 file which is only added when a shell is started.
 $env_paths+="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64;"
 
-# The following programs are installed with chocolatey. The first element is the
-# program name and the second element are the optional arguments that are passed
-# to the choco.
+# The following programs are installed with scoop. The first element is the
+# program name and the second element are the optional arguments (not used
+# for scoop installs in this repo).
 # @(program, args)
 $install = @(
-    @('adobereader', ''),
-    @('ag', '')
-    @('alacritty', ''),
-    @('cmake', '')
+    @('ag', ''),
+    @('cmake', ''),
     @('curl', ''),
-    @('grep', '')
-    @('inkscape', ''),
-    @('innosetup', ''),
+    @('fzf', ''),
+    @('grep', ''),
     @('mingw', ''),
     @('neovim', '--pre'),
-    @('nerd-fonts-jetbrainsmono', '')
+    @('JetBrainsMono-NF', ''),
+    @('firefox', ''),
     @('nodejs', ''),
     @('powertoys', ''),
     @('uv', ''),
-    @('qtcreator', ''),
-    @('qutebrowser', '')
     @('slack', ''),
-    @('strawberryperl', '')
-    @('super-productivity', '')
     @('teamviewer', ''),
     @('vlc', ''),
-    @('wget', '')
-    @('winscp', ''),
-    @('yarn', ''),
+    @('wget', ''),
+    @('yarn', '')
 )
 
 # The following built-in Windows features are disabled. The first element is the
@@ -102,7 +95,7 @@ $uninstall = @(
     "Microsoft.XboxApp", 
     "Microsoft.XboxGamingOverlay", 
     "Microsoft.XboxIdentityProvider", 
-    "Microsoft.XboxSpeechToTextOverlay"
+    "Microsoft.XboxSpeechToTextOverlay",
     "Microsoft.YourPhone", 
     "Microsoft.ZuneMusic", 
     "Microsoft.ZuneVideo", 

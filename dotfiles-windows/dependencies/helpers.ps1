@@ -1,18 +1,34 @@
 . ~\dotfiles-config.ps1
 . ~\dotfiles-windows\helpers.ps1
 
-function Install-Chocolately {
-    if ((which cinst) -eq $null) {
-        Set-ExecutionPolicy Bypass -Scope Process -Force; 
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-        choco feature enable -n=allowGlobalConfirmation
+function Install-Scoop {
+    if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex (iwr -useb get.scoop.sh)
+    }
+
+    if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+        scoop install git
+    }
+
+    $buckets = @(
+        "extras",
+        "nerd-fonts",
+        "versions"
+    )
+
+    $existing = scoop bucket list
+    foreach ($bucket in $buckets) {
+        if ($existing -notcontains $bucket) {
+            scoop bucket add $bucket
+        }
     }
 }
 
 function Install-Desktop-Apps {
     foreach($app in $install){
-        choco install $app[0] $app[1]
+        scoop install $app[0]
     }
 }
 

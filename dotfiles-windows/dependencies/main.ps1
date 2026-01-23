@@ -19,6 +19,6 @@ Install-Module Recycle
 symlink-dotfile-scripts
 
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
-Install-Chocolately
+Install-Scoop
 Install-Desktop-Apps
 New-SymbolicLink-QuteBrowser 
