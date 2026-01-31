@@ -133,6 +133,11 @@ These are defined in `dotfiles-linux/zsh/git.zsh`:
 - `linpi` / `linpis`
 - `dot` / `dots` / `dotu`
 
+## Main vs Auth
+
+- **main**: non‑interactive setup (safe to run in CI).
+- **auth**: interactive steps (logins, tokens, pairing). Run manually.
+
 ## Notes
 
 - If a module requires authentication or interactive steps, keep those in `auth` files.
