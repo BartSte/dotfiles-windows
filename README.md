@@ -47,7 +47,6 @@ export BWEMAIL=
 export MICROSOFT_ACCOUNT=
 ```
 
-> Note: the old `dotfiles-linux/initialize` is deprecated.
 
 ---
 
