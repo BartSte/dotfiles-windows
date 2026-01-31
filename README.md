@@ -47,6 +47,8 @@ export BWEMAIL=
 export MICROSOFT_ACCOUNT=
 ```
 
+> Note: the old `dotfiles-linux/initialize` is deprecated.
+
 ---
 
 ## Windows install
@@ -121,6 +123,16 @@ Paths are now under:
 - `~/dotfiles-arch/khalorg/*`
 
 ---
+
+## Aliases (bare repos)
+
+These are defined in `dotfiles-linux/zsh/git.zsh`:
+
+- `base` / `bases`
+- `lin` / `lins`
+- `linarch` / `linarchs`
+- `linpi` / `linpis`
+- `dot` / `dots` / `dotu`
 
 ## Notes
 
