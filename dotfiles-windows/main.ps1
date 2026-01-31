@@ -14,10 +14,8 @@ $dir = "$HOME/dotfiles-windows"
 . "$dir/git/main.ps1"
 . "$dir/nvim/main.ps1"
 . "$dir/alacritty/main.ps1"
-. "$dir/powertoys/main.ps1"
 . "$dir/kmonad/main.ps1"
 . "$dir/capslock/main.ps1"
 . "$dir/qutebrowser/main.ps1"
-. "$dir/waka/main.ps1"
 
 Write-Host "Finished!" -ForegroundColor "Yellow";
