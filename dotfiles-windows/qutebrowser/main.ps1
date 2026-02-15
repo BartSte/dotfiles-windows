@@ -25,7 +25,7 @@ function New-SymbolicLink-Config {
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
 # variable LH.
 function New-SymbolicLink-Urls {
-    $target = "$Env:LH\dropbox\Config\urls-$(hostname)"
+    $target = "$Env:LH\dotfiles-secret\dropbox\Config\urls-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\bookmarks\urls"
     
     write-host "SymbolicLink from $path to $target"
@@ -35,7 +35,7 @@ function New-SymbolicLink-Urls {
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
 # variable LH.
 function New-SymbolicLink-Quickmarks {
-    $target = "$Env:LH\dropbox\Config\quickmarks-$(hostname)"
+    $target = "$Env:LH\dotfiles-secret\dropbox\Config\quickmarks-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\quickmarks"
     
     write-host "SymbolicLink from $path to $target"
@@ -45,7 +45,7 @@ function New-SymbolicLink-Quickmarks {
 # Uses the greasemonkey files from the dotfiles repo from WSL. See the environment
 # variable LH.
 function New-SymbolicLink-Greasemonkey {
-    $source_dir = "$Env:LH\dropbox\Config\tampermonkey"
+    $source_dir = "$Env:LH\dotfiles-secret\dropbox\Config\tampermonkey"
     $destination_dir = "$Env:APPDATA\qutebrowser\config\greasemonkey"
 
     $source_files = Get-ChildItem -Path $source_dir -File
