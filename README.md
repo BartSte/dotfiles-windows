@@ -7,6 +7,7 @@ This README is shared across these repositories:
 - **BartSte/dotfiles-arch** (Arch‑specific)
 - **BartSte/dotfiles-pi** (Raspberry Pi / Debian‑based)
 - **BartSte/dotfiles-windows** (Windows)
+- **BartSte/dotfiles-secret** (private: personal state and configs that should never be public)
 
 ---
 
@@ -137,6 +138,17 @@ These are defined in `dotfiles-linux/zsh/git.zsh`:
 
 - **main**: non‑interactive setup (safe to run in CI).
 - **auth**: interactive steps (logins, tokens, pairing). Run manually.
+
+## dotfiles-secret (private)
+
+There is a private repo: **BartSte/dotfiles-secret**.
+
+Use it for things you want versioned but *not* public, for example:
+- Clawdbot private workspace state (memory, notes)
+- Redacted config templates (tokens replaced with `REDACTED`)
+- Browser bookmarks/quickmarks/userscripts that may contain private URLs
+
+**Passwords/tokens never go in git**; they are fetched at runtime from **rbw**.
 
 ## Notes
 

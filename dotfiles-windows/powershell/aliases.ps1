@@ -11,17 +11,21 @@ ${function:dev64} = { dev -Arch amd64 }
 ${function:vcvarsall} = { & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" @args }
 
 # Git dotfiles
-${function:base} = { git.exe --git-dir="$HOME\dotfiles.git\" --work-tree=$HOME @args }
+${function:base} = { git.exe --git-dir="$env:USERPROFILE\dotfiles.git\" --work-tree=$env:USERPROFILE @args }
 ${function:bases} = { base status -s --untracked-files=no}
 ${function:basec} = { Write-Host 'Base:'; base add $Env:USERPROFILE/dotfiles; bases; base commit --untracked-files=no -a -m "Automatic update";}
 
-${function:win} = { git.exe --git-dir="$HOME\dotfiles-windows.git\" --work-tree=$HOME @args }
+${function:win} = { git.exe --git-dir="$env:USERPROFILE\dotfiles-windows.git\" --work-tree=$env:USERPROFILE @args }
 ${function:wins} = { win status -s --untracked-files=no }
 ${function:winc} = { Write-Host 'Win:'; win add $Env:USERPROFILE/dotfiles-windows; wins; win commit --untracked-files=no -a -m "Automatic update";}
 
-${function:dot} = { base @args; win @args }
-${function:dots} = { Write-Host 'Base:'; bases; Write-Host 'Win:'; wins }
-${function:dotc} = { basec; winc; }
+${function:secret} = { git.exe --git-dir="$env:USERPROFILE\dotfiles-secret.git\" --work-tree=$env:USERPROFILE @args }
+${function:secrets} = { secret status -s --untracked-files=no }
+${function:secretc} = { Write-Host 'Win:'; secret add $Env:USERPROFILE/dotfiles-windows; secrets; secret commit --untracked-files=no -a -m "Automatic update";}
+
+${function:dot} = { base @args; win @args; secret @args;}
+${function:dots} = { Write-Host 'Base:'; bases; Write-Host 'Win:'; wins; Write-Host 'Secret:'; secrets }
+${function:dotc} = { basec; winc; secretc}
 ${function:dotp} = { dot push}
 ${function:dotu} = { dotc; dot pull; dotp }
 
