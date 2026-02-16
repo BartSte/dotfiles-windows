@@ -21,7 +21,7 @@ ${function:winc} = { Write-Host 'Win:'; win add $Env:USERPROFILE/dotfiles-window
 
 ${function:secret} = { git.exe --git-dir="$env:USERPROFILE\dotfiles-secret.git\" --work-tree=$env:USERPROFILE @args }
 ${function:secrets} = { secret status -s --untracked-files=no }
-${function:secretc} = { Write-Host 'Win:'; secret add $Env:USERPROFILE/dotfiles-windows; secrets; secret commit --untracked-files=no -a -m "Automatic update";}
+${function:secretc} = { Write-Host 'Secret:'; secret add $Env:USERPROFILE/dotfiles-secret; secrets; secret commit --untracked-files=no -a -m "Automatic update";}
 
 ${function:dot} = { base @args; win @args; secret @args;}
 ${function:dots} = { Write-Host 'Base:'; bases; Write-Host 'Win:'; wins; Write-Host 'Secret:'; secrets }
