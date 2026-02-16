@@ -45,7 +45,7 @@ function New-SymbolicLink-Quickmarks {
 # Uses the greasemonkey files from the dotfiles repo from WSL. See the environment
 # variable LH.
 function New-SymbolicLink-Greasemonkey {
-    $source_dir = "$Env:LH\dotfiles-secret\tampermonkey"
+    $source_dir = "$Env:LH\dotfiles-secret\qutebrowser\tampermonkey"
     $destination_dir = "$Env:APPDATA\qutebrowser\config\greasemonkey"
 
     $source_files = Get-ChildItem -Path $source_dir -File
