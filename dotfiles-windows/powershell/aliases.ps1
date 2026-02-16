@@ -32,7 +32,7 @@ ${function:touch} = { "" | Out-File $file -Encoding ASCII }
 ${function:which} = { Get-Command @args -ErrorAction SilentlyContinue | Select-Object Definition }
 
 # Vim
-${function:v} = { C:\tools\neovim\nvim-win64\bin\nvim.exe @args }
+${function:v} = { C:\Users\BartSteensma\scoop\shims\nvim.exe }
 ${function:vims} = { 
     if (Test-Path Session.vim)
     {
