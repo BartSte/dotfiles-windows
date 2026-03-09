@@ -144,7 +144,7 @@ These are defined in `dotfiles-linux/zsh/git.zsh`:
 There is a private repo: **BartSte/dotfiles-secret**.
 
 Use it for things you want versioned but *not* public, for example:
-- Clawdbot private workspace state (memory, notes)
+- openclaw private workspace state (memory, notes)
 - Redacted config templates (tokens replaced with `REDACTED`)
 - Browser bookmarks/quickmarks/userscripts that may contain private URLs
 
