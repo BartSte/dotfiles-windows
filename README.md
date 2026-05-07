@@ -93,8 +93,14 @@ General Linux config shared by all distros (zsh, tmux, git, nvim, scripts, etc.)
 
 ## Arch layer (dotfiles-arch)
 
-Arch‑specific modules (pacman/aur, sway/waybar/kmonad, DNS/firewall, systemd units).  
+Arch‑specific modules (pacman/aur, sway/waybar/kmonad, DNS/firewall, VPN, systemd units).  
 Also contains **mutt**, **khal**, and **khalorg**.
+
+---
+
+## VPN (Arch layer)
+
+VPN service: **Proton VPN CLI** (`proton-vpn-cli`).
 
 ---
 
