@@ -23,9 +23,9 @@ function New-SymbolicLink-Config {
 
 
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
-# variable LH.
+# variable USERPROFILE.
 function New-SymbolicLink-Urls {
-    $target = "$Env:LH\dotfiles-secret\qutebrowser\urls-$(hostname)"
+    $target = "$Env:USERPROFILE\dotfiles-secret\qutebrowser\urls-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\bookmarks\urls"
     
     write-host "SymbolicLink from $path to $target"
@@ -33,9 +33,9 @@ function New-SymbolicLink-Urls {
 }
 
 # Uses the quickmarks file from the dotfiles repo from WSL. See the environment 
-# variable LH.
+# variable USERPROFILE.
 function New-SymbolicLink-Quickmarks {
-    $target = "$Env:LH\dotfiles-secret\qutebrowser\quickmarks-$(hostname)"
+    $target = "$Env:USERPROFILE\dotfiles-secret\qutebrowser\quickmarks-$(hostname)"
     $path = "$Env:APPDATA\qutebrowser\config\quickmarks"
     
     write-host "SymbolicLink from $path to $target"
@@ -43,9 +43,9 @@ function New-SymbolicLink-Quickmarks {
 }
 
 # Uses the greasemonkey files from the dotfiles repo from WSL. See the environment
-# variable LH.
+# variable USERPROFILE.
 function New-SymbolicLink-Greasemonkey {
-    $source_dir = "$Env:LH\dotfiles-secret\qutebrowser\tampermonkey"
+    $source_dir = "$Env:USERPROFILE\dotfiles-secret\qutebrowser\tampermonkey"
     $destination_dir = "$Env:APPDATA\qutebrowser\config\greasemonkey"
 
     $source_files = Get-ChildItem -Path $source_dir -File
