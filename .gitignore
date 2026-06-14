@@ -1,8 +1,6 @@
 .codex
 *.pyc
 *.swp
-.aider*
-.luarc.json
 .null-ls*
 .venv
 Session.vim
