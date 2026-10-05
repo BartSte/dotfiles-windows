@@ -1,162 +1,156 @@
-# Dotfiles BartSte
+# BartSte dotfiles
 
-This README is shared across these repositories:
+Each dotfiles repository tracks this README. Their bare Git checkouts share the home directory.
 
-- **BartSte/dotfiles** (base, cross‑platform)
-- **BartSte/dotfiles-linux** (Linux common)
-- **BartSte/dotfiles-arch** (Arch‑specific)
-- **BartSte/dotfiles-pi** (Raspberry Pi / Debian‑based)
-- **BartSte/dotfiles-windows** (Windows)
-- **BartSte/dotfiles-secret** (private: personal state and configs that should never be public)
+These repositories put configuration files in the home directory:
 
----
+| Repository | Purpose |
+| --- | --- |
+| `dotfiles` | Base files, Neovim configuration, and Linux and Windows initialization scripts |
+| `dotfiles-linux` | Linux configuration for the shell, Git, mail, calendars, Codex, and other tools |
+| `dotfiles-arch` | Arch packages, Sway, Waybar, DNS, firewall, and systemd units |
+| `dotfiles-pi` | Raspberry Pi packages, services, network setup, and application setup |
+| `dotfiles-windows` | Windows and PowerShell setup |
+| `dotfiles-secret` | Optional private configuration, including Codex and qutebrowser files |
 
-## Layered model
+The Linux initializer checks out the selected repositories into `$HOME` from separate bare Git repositories.
+It installs the base and Linux layers, then selects the Arch or Raspberry Pi layer.
+It also tries to check out `dotfiles-secret` when access is available.
 
-- **Base** → `dotfiles`
-- **Linux common** → `dotfiles-linux`
-- **Linux distro layer** → `dotfiles-arch` **or** `dotfiles-pi`
-- **Windows** → `dotfiles-windows`
+The private `dotfiles-hermes` workspace is separate from `dotfiles-secret`.
+The Raspberry Pi setup runs `~/dotfiles-hermes/main` when that workspace exists.
 
-On Linux, install **base + linux + distro layer**.
-On Windows, install **base + windows**.
+## Linux installation
 
----
-
-## Linux install (Arch / Pi)
-
-Use the **base** initialize script. It clones base + linux + the appropriate distro layer.
+Run the initializer on Arch Linux or a Raspberry Pi:
 
 ```bash
-curl -O https://raw.githubusercontent.com/BartSte/dotfiles/master/dotfiles/initialize && bash ./initialize; rm ./initialize
+curl -fsSLo /tmp/dotfiles-initialize https://raw.githubusercontent.com/BartSte/dotfiles/master/dotfiles/initialize
+bash /tmp/dotfiles-initialize
 ```
 
-Then:
-
-```bash
-~/dotfiles-linux/main
-# Arch:
-~/dotfiles-arch/main
-# or Raspberry Pi:
-~/dotfiles-pi/main
-```
-
-Finish by setting `~/.dotfiles_config.sh`:
+The initializer can replace tracked files in your home directory.
+It creates `~/.dotfiles_config.sh` when that file does not exist.
+Set the values that you use before you run the setup scripts:
 
 ```bash
 export BWEMAIL=
 export MICROSOFT_ACCOUNT=
 ```
 
+Run the common setup, then the setup for your machine:
 
----
-
-## Windows install
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force;
-[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544");
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BartSte/dotfiles-windows/master/dotfiles-windows/initialize.ps1'))
+```bash
+~/dotfiles-linux/main
+~/dotfiles-arch/main    # Arch Linux
+# or
+~/dotfiles-pi/main      # Raspberry Pi
 ```
 
-Then:
+Run `~/dotfiles-linux/auth` for interactive login and pairing steps.
+The `main` scripts run module setup and can install packages or request input.
+The `auth` scripts handle services such as Bitwarden, Git, calendars, and Dropbox.
+
+## Windows installation
+
+The Windows initializer is in the base repository at `dotfiles/initialize.ps1`.
+Run it in PowerShell:
 
 ```powershell
-$HOME/dotfiles-windows/main.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BartSte/dotfiles/master/dotfiles/initialize.ps1'))
 ```
 
----
+If the initializer did not create `$HOME/dotfiles-config.ps1`, copy the template:
 
-## Dotfiles (cross‑platform)
+```powershell
+Copy-Item "$HOME/dotfiles-windows/default_config.ps1" "$HOME/dotfiles-config.ps1"
+```
 
-Contains static dotfiles used by other layers. You typically don’t clone this directly.
+Edit the values in `$HOME/dotfiles-config.ps1`, then run:
 
-### Neovim (`dotfiles/nvim`)
+```powershell
+& "$HOME/dotfiles-windows/main.ps1"
+```
 
-- `dotfiles/nvim/lua`:
-  - `helpers`: helper functions
-  - `plugins`: lazy.nvim plugins
-  - `config`: plugin config
-- `dotfiles/nvim/vim`: vimscript plugin config
-- `dotfiles/nvim/plugin`: non‑plugin config loaded before `after/plugin`
-- `dotfiles/nvim/after/plugin`: non‑plugin config
-- `dotfiles/nvim/after/ftplugin`: filetype‑specific config
+The Windows setup uses the base and Windows repositories.
+It needs `$HOME/dotfiles-config.ps1` before `main.ps1` runs.
 
----
+## Repository contents
 
-## Linux common (dotfiles-linux)
+### Base: `dotfiles`
 
-General Linux config shared by all distros (zsh, tmux, git, nvim, scripts, etc.).
+`dotfiles/nvim` contains the Neovim configuration.
+Its Lua configuration uses `lua/before`, `lua/config`, `lua/helpers`, `lua/plugins`, and `lua/after`.
+The `vim` and `queries` directories contain Vim configuration and Tree-sitter queries.
+The base repository also contains qutebrowser files and the two initialization scripts.
 
----
+### Linux: `dotfiles-linux`
 
-## Arch layer (dotfiles-arch)
+This layer contains Zsh, tmux, Git, NeoMutt, isync, vdirsyncer, khal, khalorg, khard, Codex, and command-line scripts.
+Mail configuration is under `dotfiles-linux/mutt`.
+Calendar configuration is under `dotfiles-linux/vdirsyncer`, `khal`, and `khalorg`.
+The `MICROSOFT_ACCOUNT` value selects the NeoMutt account.
+The configuration reads credentials with `bw-cli-get` or `rbw`.
 
-Arch‑specific modules (pacman/aur, sway/waybar/kmonad, DNS/firewall, VPN, systemd units).  
-Also contains **mutt**, **khal**, and **khalorg**.
+### Arch: `dotfiles-arch`
 
----
+This layer contains package lists and setup for Sway, Waybar, DNS, firewall rules, qutebrowser, and systemd units.
+The `dropboxsync.timer` unit belongs to this layer.
 
-## VPN (Arch layer)
+### Raspberry Pi: `dotfiles-pi`
 
-VPN service: **Proton VPN CLI** (`proton-vpn-cli`).
+This layer contains apt, network, Tailscale, UFW, pipx, and systemd setup.
+It also contains setup modules for Summit, Hermes, and the grocery agent.
+The Hermes module runs the separate private workspace when that workspace exists.
 
----
+### Windows: `dotfiles-windows`
 
-## Raspberry Pi layer (dotfiles-pi)
+`main.ps1` configures PowerShell, dependencies, Windows settings, Git, Neovim, Alacritty, KMonad, Caps Lock, and qutebrowser.
+Its `default_config.ps1` is a template for the local `dotfiles-config.ps1` file.
 
-Debian/RPi specific packages (apt), Tailscale, moltbot, etc.
+### Private configuration
 
----
+`dotfiles-secret` holds versioned private configuration, including Codex configuration and qutebrowser URLs.
+Keep passwords and API tokens in a credential store such as `rbw`.
+Do not commit them to the dotfiles repositories.
 
-## Mutt (Arch layer)
+## Dropbox files
 
-Two accounts (personal/work) are configured via a single `muttrc` using `MICROSOFT_ACCOUNT`.
-Credentials are fetched via `rbw`/`bw-cli-get`.
+`~/dropbox/org` contains personal Org notes and their archives.
+`~/dropbox/generated` contains files that scheduled jobs replace.
+Do not edit the files in `generated` as personal notes.
 
-Paths are now under:
-- `~/dotfiles-arch/mutt/*`
+| Files in `~/dropbox/generated` | Publisher on the Raspberry Pi |
+| --- | --- |
+| `outlook_personal.org`, `outlook_work.org` | `calsync.timer` runs `dotfiles-linux/bin/mycalsync` |
+| `activities.org` | `garmin-activities.timer` runs Summit |
+| `personal_records.org` | `garmin-update.timer` runs Summit |
+| `training-schedule.org`, `recent-training.csv` | The Hermes training schedule publisher |
 
----
+The Pi service definitions live in `dotfiles-pi/systemd/user`.
+The Pi publishes generated files to Dropbox.
+Its `dropboxpull.timer` copies remote files to `~/dropbox`.
+That pull excludes `activities.org` and `personal_records.org` because Summit writes them locally.
 
-## khal & khalorg (Arch layer)
+On Arch Linux, `dropboxsync.timer` runs `rclone bisync` between Dropbox and `~/dropbox`.
+It syncs both `org` and `generated`.
+The Dropbox remote is named `dropbox` in the rclone configuration.
 
-Calendar setup for office calendar using vdirsyncer + khal + khalorg.
+## Bare Git repositories
 
-Paths are now under:
-- `~/dotfiles-arch/khal/*`
-- `~/dotfiles-arch/khalorg/*`
+`dotfiles-linux/zsh/git.zsh` defines these commands:
 
----
+| Repository | Git command | Status command |
+| --- | --- | --- |
+| Base | `base` | `bases` |
+| Linux | `lin` | `lins` |
+| Arch | `linarch` | `linarchs` |
+| Raspberry Pi | `linpi` | `linpis` |
+| Private configuration | `secret` | `secrets` |
 
-## Aliases (bare repos)
-
-These are defined in `dotfiles-linux/zsh/git.zsh`:
-
-- `base` / `bases`
-- `lin` / `lins`
-- `linarch` / `linarchs`
-- `linpi` / `linpis`
-- `dot` / `dots` / `dotu`
-
-## Main vs Auth
-
-- **main**: non‑interactive setup (safe to run in CI).
-- **auth**: interactive steps (logins, tokens, pairing). Run manually.
-
-## dotfiles-secret (private)
-
-There is a private repo: **BartSte/dotfiles-secret**.
-
-Use it for things you want versioned but *not* public, for example:
-- openclaw private workspace state (memory, notes)
-- Redacted config templates (tokens replaced with `REDACTED`)
-- Browser bookmarks/quickmarks/userscripts that may contain private URLs
-
-**Passwords/tokens never go in git**; they are fetched at runtime from **rbw**.
-
-## Notes
-
-- If a module requires authentication or interactive steps, keep those in `auth` files.
-- Secrets should live in **rbw** (never in the repos).
+`dot` runs a Git command across the available repositories.
+`dots` shows their status.
+`dotc` commits changes in the available repositories, and `dotu` commits, pulls, and pushes them.
+`dotc` stages the layer directories, but it does not stage this root README.
+Stage this README separately in each repository that must receive the update.
