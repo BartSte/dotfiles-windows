@@ -1,3 +1,4 @@
+.codex
 *.pyc
 *.swp
 .aider*
@@ -11,3 +12,4 @@ dotfiles-secret.git
 dotfiles-windows.git
 dotfiles.git
 nvim.shada
+nvim.log
